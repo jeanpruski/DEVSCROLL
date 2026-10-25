@@ -1,0 +1,1743 @@
+[
+  {
+    "schemaVersion": 1,
+    "slug": "promise-all-ne-stoppe-pas-les-autres-promesses",
+    "locale": "fr",
+    "title": "Promise.all rejette. Le travail continue.",
+    "format": "code",
+    "difficulty": "intermediate",
+    "topic": "javascript",
+    "tags": [
+      "async",
+      "promises"
+    ],
+    "conceptKey": "js.promise-all.failure",
+    "learningObjective": "Distinguer le rejet du résultat agrégé et l’annulation des opérations.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Tu lances deux opérations : la première échoue, la seconde écrit encore dans les logs. Ce comportement est normal. Promise.all rejette dès qu’un rejet lui est transmis, mais ne dispose d’aucun mécanisme pour arrêter les opérations déjà lancées."
+      },
+      {
+        "type": "code",
+        "language": "javascript",
+        "code": "const events = [];\nlet finish;\nconst work = new Promise(resolve => {\n  finish = () => { events.push(\"terminé\"); resolve(\"ok\"); };\n});\ntry {\n  await Promise.all([Promise.reject(Error(\"échec\")), work]);\n} catch { events.push(\"rejet\"); }\nfinish();\nawait work;\nconsole.log(events.join(\" → \"));"
+      },
+      {
+        "type": "paragraph",
+        "text": "Résultat : rejet → terminé. Ici, nous décidons explicitement de finir le travail après avoir observé le rejet. En production, une API annulable demande son propre signal. Pour attendre tous les résultats, succès et échecs, examine plutôt Promise.allSettled."
+      }
+    ],
+    "takeaway": "Un rejet agrégé ne constitue pas une annulation.",
+    "searchAliases": [
+      "annuler promesses",
+      "erreur parallèle",
+      "Promise.all",
+      "Promise all"
+    ],
+    "context": {
+      "technology": "JavaScript",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.all",
+        "title": "ECMA-262 — Promise.all et PerformPromiseAll",
+        "publisher": "Ecma International / TC39",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Promise.all transmet les rejets à la promesse agrégée sans annuler les opérations sous-jacentes."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Source primaire consultée et exemple exact exécuté sous Node.js v22.19.0 dans tests/content.test.ts ; sortie attendue vérifiée. Le cas de microtâches est aussi confronté au modèle HTML ; aucun benchmark ni test multi-navigateur revendiqué."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "abortcontroller-un-signal-pas-un-retour-arriere",
+    "locale": "fr",
+    "title": "Annuler une requête ne remonte pas le temps",
+    "format": "tip",
+    "difficulty": "intermediate",
+    "topic": "javascript",
+    "tags": [
+      "fetch",
+      "cancellation"
+    ],
+    "conceptKey": "web.abort-controller.cooperation",
+    "learningObjective": "Utiliser une annulation coopérative sans lui attribuer un rollback serveur.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Une recherche part à chaque frappe. Quand la saisie change, un AbortController permet de signaler à l’opération précédente qu’elle doit s’arrêter, si cette API accepte un AbortSignal. Crée un contrôleur par opération et transmets son signal dès le départ."
+      },
+      {
+        "type": "paragraph",
+        "text": "Après abort(), ce signal reste annulé : il faut en créer un nouveau pour une nouvelle opération. Certaines fonctions vérifient aussi signal.aborted avant de démarrer. Ce contrat est coopératif ; un signal ignoré ne peut pas interrompre un calcul arbitraire."
+      },
+      {
+        "type": "paragraph",
+        "text": "Enfin, arrêter d’attendre une réponse ne prouve pas que le serveur a annulé une écriture déjà reçue. Pour une mutation, prévois un protocole métier de confirmation ou de compensation. Pour une recherche, évite aussi d’afficher les résultats devenus obsolètes."
+      }
+    ],
+    "takeaway": "AbortController exprime une demande d’arrêt ; son effet dépend de l’opération.",
+    "searchAliases": [
+      "annuler requête",
+      "annuler requete",
+      "AbortController",
+      "abort signal",
+      "recherche obsolète"
+    ],
+    "context": {
+      "technology": "DOM / AbortSignal",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://dom.spec.whatwg.org/#aborting-ongoing-activities",
+        "title": "DOM Standard — Aborting ongoing activities",
+        "publisher": "WHATWG",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Un signal conserve son état annulé ; les API qui l’observent décident comment réagir.",
+          "Le signal ne définit pas de transaction ou de retour arrière sur une opération distante."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "microtaches-avant-le-prochain-timer",
+    "locale": "fr",
+    "title": "Un timer à zéro ne passe pas devant une promesse",
+    "format": "code",
+    "difficulty": "intermediate",
+    "topic": "javascript",
+    "tags": [
+      "event-loop",
+      "microtasks"
+    ],
+    "conceptKey": "js.event-loop.microtasks",
+    "learningObjective": "Prédire l’ordre entre code synchrone, réactions de promesses et timer.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Lis cet extrait comme un script autonome, sans autre travail en attente. Le délai zéro rend le timer éligible plus tard ; il ne lui donne pas la priorité sur la fin du script ni sur les microtâches."
+      },
+      {
+        "type": "code",
+        "language": "javascript",
+        "code": "console.log(\"A\");\nsetTimeout(() => console.log(\"T\"), 0);\nPromise.resolve().then(() => console.log(\"P\"));\nqueueMicrotask(() => console.log(\"Q\"));\nconsole.log(\"B\");"
+      },
+      {
+        "type": "paragraph",
+        "text": "On observe A, B, P, Q, T. Les deux appels synchrones passent d’abord. La réaction de promesse puis queueMicrotask ont été enregistrées dans cet ordre. Le navigateur traite les microtâches à ses points de contrôle avant de choisir une nouvelle tâche comme le timer."
+      },
+      {
+        "type": "paragraph",
+        "text": "Une microtâche peut en ajouter une autre. Une chaîne qui ne se vide jamais peut donc retarder les tâches suivantes et le rendu : déplacer un gros calcul dans queueMicrotask ne le rend pas léger."
+      }
+    ],
+    "takeaway": "Un délai de zéro ne garantit ni une exécution immédiate ni une priorité.",
+    "searchAliases": [
+      "event loop",
+      "ordre promesse timer",
+      "setTimeout zéro",
+      "queueMicrotask"
+    ],
+    "context": {
+      "technology": "JavaScript / Web APIs",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://html.spec.whatwg.org/multipage/webappapis.html#event-loops",
+        "title": "HTML Standard — Event loops et microtask checkpoints",
+        "publisher": "WHATWG",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Les points de contrôle drainent les microtâches, y compris celles ajoutées pendant leur traitement."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Source primaire consultée et exemple exact exécuté sous Node.js v22.19.0 dans tests/content.test.ts ; sortie attendue vérifiée. Le cas de microtâches est aussi confronté au modèle HTML ; aucun benchmark ni test multi-navigateur revendiqué."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "closure-garde-acces-variable",
+    "locale": "fr",
+    "title": "Une closure garde un accès, pas une photo",
+    "format": "code",
+    "difficulty": "beginner",
+    "topic": "javascript",
+    "tags": [
+      "closures",
+      "scope"
+    ],
+    "conceptKey": "js.closure.binding",
+    "learningObjective": "Comprendre qu’une fonction fermée sur une variable observe sa liaison.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un compteur privé peut tenir dans une fonction. La fonction renvoyée conserve un accès à la variable count créée lors de l’appel à counter. Deux appels à counter construisent deux environnements distincts."
+      },
+      {
+        "type": "code",
+        "language": "javascript",
+        "code": "function counter() {\n  let count = 0;\n  return () => ++count;\n}\nconst first = counter();\nconst second = counter();\nconsole.log(first(), first(), second());"
+      },
+      {
+        "type": "paragraph",
+        "text": "Résultat : 1, 2, 1. Le second appel à first lit la valeur déjà modifiée ; il ne repart pas d’une copie figée à zéro. second utilise sa propre liaison. Ce mécanisme sert à encapsuler un état, mais explique aussi pourquoi un callback peut conserver des données en mémoire aussi longtemps qu’il reste accessible."
+      }
+    ],
+    "takeaway": "Une closure conserve l’accès à son environnement lexical.",
+    "searchAliases": [
+      "fermeture",
+      "variable capturée",
+      "compteur privé"
+    ],
+    "context": {
+      "technology": "JavaScript",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-ordinaryfunctioncreate",
+        "title": "ECMA-262 — OrdinaryFunctionCreate",
+        "publisher": "Ecma International / TC39",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Une fonction possède un environnement lexical associé, utilisé pour résoudre ses liaisons."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Source primaire consultée et exemple exact exécuté sous Node.js v22.19.0 dans tests/content.test.ts ; sortie attendue vérifiée. Le cas de microtâches est aussi confronté au modèle HTML ; aucun benchmark ni test multi-navigateur revendiqué."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "typescript-satisfies-valider-sans-elargir",
+    "locale": "fr",
+    "title": "satisfies vérifie la forme et garde l’inférence",
+    "format": "comparison",
+    "difficulty": "intermediate",
+    "topic": "typescript",
+    "tags": [
+      "types",
+      "validation"
+    ],
+    "conceptKey": "ts.satisfies.inference",
+    "learningObjective": "Choisir satisfies pour vérifier un objet tout en conservant ses propriétés inférées.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Tu décris une configuration dont les valeurs acceptées sont des chaînes ou des nombres. Une annotation générale sur la variable peut rendre chaque lecture aussi générale. satisfies vérifie la compatibilité de l’expression sans remplacer son type résultant par le type cible."
+      },
+      {
+        "type": "comparison",
+        "leftLabel": "Annotation",
+        "rightLabel": "satisfies",
+        "left": "Une variable annotée Record<string, string | number> expose des valeurs string | number. Il faut affiner ce type avant d’appeler une méthode spécifique.",
+        "right": "Avec satisfies Record<string, string | number>, l’objet conserve ses propriétés inférées : host reste une chaîne et port un nombre."
+      },
+      {
+        "type": "code",
+        "language": "typescript",
+        "code": "const config = {\n  host: \"localhost\",\n  port: 3000,\n} satisfies Record<string, string | number>;\nconst host = config.host.toUpperCase();\nconsole.log(host, config.port.toFixed(0));"
+      },
+      {
+        "type": "paragraph",
+        "text": "Disponible depuis TypeScript 4.9. Cette vérification disparaît à l’exécution : une réponse réseau nécessite toujours une validation de ses données."
+      }
+    ],
+    "takeaway": "satisfies contrôle la compatibilité ; il ne valide pas une donnée réseau à l’exécution.",
+    "searchAliases": [
+      "satisfies",
+      "TypeScript 4.9",
+      "annotation objet"
+    ],
+    "context": {
+      "technology": "TypeScript",
+      "version": "≥ 4.9"
+    },
+    "sources": [
+      {
+        "url": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator",
+        "title": "TypeScript 4.9 — The satisfies operator",
+        "publisher": "Microsoft / TypeScript",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "satisfies est introduit en 4.9 et vérifie la compatibilité sans remplacer le type résultant de l’expression."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Extrait exact contrôlé par TypeScript 5.9.3 (tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext), puis JavaScript exécuté sous Node.js v22.19.0 : LOCALHOST 3000. Test conservé dans tests/content.test.ts."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "react-state-un-instantane",
+    "locale": "fr",
+    "title": "Pourquoi le state semble avoir un clic de retard",
+    "format": "pitfall",
+    "difficulty": "intermediate",
+    "topic": "react",
+    "tags": [
+      "state",
+      "render"
+    ],
+    "conceptKey": "react.state.snapshot",
+    "learningObjective": "Relier les lectures d’état au rendu qui a créé le gestionnaire.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Dans un gestionnaire, tu demandes de mettre count à count + 1 puis tu lis count. Cette lecture appartient encore au rendu qui a créé le gestionnaire. React prépare un prochain rendu ; il ne remplace pas la variable locale de la fonction déjà en cours."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trois demandes identiques calculées à partir du même count produisent donc la même valeur suivante. Pour cumuler des incréments, utilise une fonction de mise à jour qui reçoit la valeur en attente. Ce choix exprime que le prochain état dépend du précédent."
+      },
+      {
+        "type": "paragraph",
+        "text": "La même idée explique un message affiché dans un timer : le callback peut lire l’état capturé lors de sa création. Avant de chercher un problème de timing réseau, demande-toi à quel rendu cette fonction appartient."
+      }
+    ],
+    "takeaway": "Chaque rendu fournit son propre instantané de l’état et ses propres gestionnaires.",
+    "searchAliases": [
+      "state en retard",
+      "setState immédiat",
+      "ancienne valeur react"
+    ],
+    "context": {
+      "technology": "React",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://react.dev/learn/state-as-a-snapshot",
+        "title": "State as a Snapshot",
+        "publisher": "React",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Une mise à jour demande un prochain rendu ; les gestionnaires conservent les valeurs de leur rendu."
+        ]
+      },
+      {
+        "url": "https://react.dev/learn/queueing-a-series-of-state-updates",
+        "title": "Queueing a Series of State Updates",
+        "publisher": "React",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Une fonction de mise à jour peut appliquer plusieurs transformations à l’état en attente."
+        ]
+      }
+    ],
+    "reviewAfterDays": 90,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "react-effet-ou-calcul",
+    "locale": "fr",
+    "title": "Avant useEffect, cherche ce que tu synchronises",
+    "format": "carousel",
+    "difficulty": "intermediate",
+    "topic": "react",
+    "tags": [
+      "effects",
+      "state"
+    ],
+    "conceptKey": "react.effects.external-system",
+    "learningObjective": "Distinguer calcul de rendu, action utilisateur et synchronisation externe.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "1 / 4 — Le symptôme. Une liste filtrée est stockée dans un second state. À chaque changement du filtre, un effet recalcule cette liste puis déclenche un autre rendu."
+      },
+      {
+        "type": "paragraph",
+        "text": "2 / 4 — Le calcul. Si la liste affichée se déduit déjà des props et du state, calcule-la pendant le rendu. Tu supprimes un état redondant et le risque que deux valeurs se désaccordent."
+      },
+      {
+        "type": "paragraph",
+        "text": "3 / 4 — L’événement. Un achat demandé par un clic appartient au gestionnaire de ce clic. Un effet peut se relancer pour des raisons qui ne correspondent pas à un nouvel achat."
+      },
+      {
+        "type": "paragraph",
+        "text": "4 / 4 — La synchronisation. Une connexion à un système externe, comme un abonnement réseau, peut justifier un effet. Décris alors son installation, ses dépendances et son nettoyage. Pour charger des données, vérifie aussi les mécanismes proposés par ton framework."
+      }
+    ],
+    "takeaway": "Calcule ce qui se déduit ; réserve les effets aux synchronisations nécessaires.",
+    "searchAliases": [
+      "useEffect inutile",
+      "state dérivé",
+      "filtrer liste react"
+    ],
+    "context": {
+      "technology": "React",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://react.dev/learn/you-might-not-need-an-effect",
+        "title": "You Might Not Need an Effect",
+        "publisher": "React",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Les calculs de rendu et les actions utilisateur n’exigent généralement pas d’effet.",
+          "Les effets servent à synchroniser un composant avec un système externe."
+        ]
+      }
+    ],
+    "reviewAfterDays": 90,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "node-eventemitter-synchrone",
+    "locale": "fr",
+    "title": "emit() appelle ses listeners maintenant",
+    "format": "code",
+    "difficulty": "intermediate",
+    "topic": "node",
+    "tags": [
+      "events",
+      "async"
+    ],
+    "conceptKey": "node.event-emitter.synchronous",
+    "learningObjective": "Distinguer émission d’événement et planification d’un travail asynchrone.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Le mot événement ne veut pas dire asynchrone. EventEmitter appelle ses listeners synchrones dans leur ordre d’inscription. Un calcul lourd dans un listener retarde donc aussi le retour de emit()."
+      },
+      {
+        "type": "code",
+        "language": "javascript",
+        "code": "import { EventEmitter } from \"node:events\";\nconst bus = new EventEmitter();\nbus.on(\"saved\", () => console.log(\"listener\"));\nconsole.log(\"avant\");\nbus.emit(\"saved\");\nconsole.log(\"après\");"
+      },
+      {
+        "type": "paragraph",
+        "text": "Résultat : avant, listener, après. Un listener async peut commencer son exécution immédiatement, puis suspendre sa suite à un await. emit() n’attend pas la promesse renvoyée. Si le producteur doit connaître la réussite de toutes les opérations, définis un contrat explicite qui renvoie et attend leurs promesses, plutôt que de supposer que l’émission les a terminées."
+      }
+    ],
+    "takeaway": "EventEmitter distribue un événement ; emit() n’attend pas les promesses des listeners.",
+    "searchAliases": [
+      "EventEmitter",
+      "emit async",
+      "ordre listeners"
+    ],
+    "context": {
+      "technology": "Node.js",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://nodejs.org/api/events.html#asynchronous-vs-synchronous",
+        "title": "Node.js — Events, asynchronous vs synchronous",
+        "publisher": "Node.js",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Les listeners sont appelés synchroniquement dans l’ordre d’inscription ; leurs valeurs de retour sont ignorées."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Source primaire consultée et exemple exact exécuté sous Node.js v22.19.0 dans tests/content.test.ts ; sortie attendue vérifiée. Le cas de microtâches est aussi confronté au modèle HTML ; aucun benchmark ni test multi-navigateur revendiqué."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "sql-null-troisieme-valeur",
+    "locale": "fr",
+    "title": "NULL = NULL ne donne pas vrai",
+    "format": "code",
+    "difficulty": "beginner",
+    "topic": "sql",
+    "tags": [
+      "null",
+      "predicates"
+    ],
+    "conceptKey": "sql.null.comparison",
+    "learningObjective": "Choisir IS NULL ou une égalité qui traite explicitement les valeurs nulles.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "NULL représente une absence de valeur connue. Une comparaison ordinaire qui implique NULL produit généralement une valeur inconnue, représentée elle aussi par NULL. Dans un WHERE, seules les lignes dont le prédicat vaut vrai sont conservées."
+      },
+      {
+        "type": "code",
+        "language": "sql",
+        "code": "SELECT\n  NULL = NULL AS egalite_inconnue,\n  NULL IS NULL AS absence,\n  NULL IS NOT DISTINCT FROM NULL AS egalite_totale,\n  1 IS DISTINCT FROM NULL AS difference;"
+      },
+      {
+        "type": "paragraph",
+        "text": "Avec PostgreSQL : NULL, true, true, true. Pour chercher les adresses absentes, utilise IS NULL. Pour comparer deux colonnes en considérant deux absences comme égales, IS NOT DISTINCT FROM exprime ce choix. Ne remplace pas aveuglément NULL par une chaîne vide : tu confondrais une donnée manquante et une donnée connue mais vide."
+      }
+    ],
+    "takeaway": "IS NULL teste l’absence ; = compare des valeurs connues.",
+    "searchAliases": [
+      "SQL NULL",
+      "égalité null",
+      "valeur inconnue"
+    ],
+    "context": {
+      "technology": "PostgreSQL",
+      "version": "18"
+    },
+    "sources": [
+      {
+        "url": "https://www.postgresql.org/docs/18/functions-comparison.html",
+        "title": "PostgreSQL 18 — Comparison functions and operators",
+        "publisher": "PostgreSQL Global Development Group",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Les comparaisons ordinaires impliquant NULL renvoient NULL.",
+          "IS NULL et IS NOT DISTINCT FROM expriment des traitements explicites de NULL."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Requête exacte exécutée en lecture seule sur PostgreSQL 16 local : NULL, true, true, true. La documentation PostgreSQL 18 citée décrit les mêmes prédicats. Commande et limites consignées dans content/REVIEW.md."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "index-composite-ordre-colonnes",
+    "locale": "fr",
+    "title": "L’ordre d’un index composite suit tes filtres",
+    "format": "concept",
+    "difficulty": "advanced",
+    "topic": "sql",
+    "tags": [
+      "indexes",
+      "performance"
+    ],
+    "conceptKey": "sql.index.composite-order",
+    "learningObjective": "Relier l’ordre des colonnes B-tree aux contraintes des requêtes.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Une table contient des commandes de plusieurs clients. Tu recherches souvent les commandes d’un client depuis une date. Dans un B-tree sur client_id puis created_at, l’égalité sur le client et la plage sur la date peuvent délimiter une zone utile de l’index."
+      },
+      {
+        "type": "paragraph",
+        "text": "Une recherche par date seule n’a pas la même efficacité : l’ordre des entrées commence par le client. Cela ne signifie pas que l’index est impossible à utiliser. PostgreSQL peut choisir d’autres parcours, y compris un skip scan dans les cas appropriés."
+      },
+      {
+        "type": "paragraph",
+        "text": "Le bon ordre dépend donc des requêtes, de la distribution des données et des tris nécessaires. Compare les plans et les mesures sur un volume représentatif ; ne déduis pas une amélioration d’une simple liste de colonnes."
+      }
+    ],
+    "takeaway": "Un index composite s’évalue avec ses requêtes et ses données.",
+    "searchAliases": [
+      "index composite",
+      "ordre colonnes",
+      "skip scan"
+    ],
+    "context": {
+      "technology": "PostgreSQL",
+      "version": "18"
+    },
+    "sources": [
+      {
+        "url": "https://www.postgresql.org/docs/18/indexes-multicolumn.html",
+        "title": "PostgreSQL 18 — Multicolumn indexes",
+        "publisher": "PostgreSQL Global Development Group",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Un B-tree multicolonne exploite efficacement les contraintes sur les premières colonnes.",
+          "Des conditions sur les colonnes suivantes restent utilisables ; le skip scan dépend du coût estimé."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "transaction-frontiere-atomique",
+    "locale": "fr",
+    "title": "Une transaction protège une frontière précise",
+    "format": "carousel",
+    "difficulty": "intermediate",
+    "topic": "sql",
+    "tags": [
+      "transactions",
+      "atomicity"
+    ],
+    "conceptKey": "sql.transaction.boundary",
+    "learningObjective": "Identifier ce qui appartient à une transaction de base de données.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "1 / 4 — Le besoin. Un virement simplifié retire une somme d’un compte et l’ajoute à un autre. Deux écritures indépendantes peuvent laisser un état incomplet si la seconde échoue."
+      },
+      {
+        "type": "paragraph",
+        "text": "2 / 4 — La frontière. Regroupe les écritures dans une transaction. La validation rend l’ensemble effectif ; l’annulation abandonne les changements transactionnels encore en attente."
+      },
+      {
+        "type": "paragraph",
+        "text": "3 / 4 — La limite. Envoyer un e-mail ou appeler un CRM pendant la transaction ne rend pas ces effets externes annulables par la base. Ils ont leur propre cycle de vie."
+      },
+      {
+        "type": "paragraph",
+        "text": "4 / 4 — La conséquence. Définis ce qui doit être atomique en base, puis organise les effets externes de façon récupérable. L’atomicité ne suffit pas non plus à décrire toutes les interactions concurrentes : le niveau d’isolation reste un choix distinct."
+      }
+    ],
+    "takeaway": "La transaction couvre les opérations transactionnelles de la base, pas tous les effets du programme.",
+    "searchAliases": [
+      "transaction rollback",
+      "virement atomique",
+      "effet externe"
+    ],
+    "context": {
+      "technology": "PostgreSQL",
+      "version": "18"
+    },
+    "sources": [
+      {
+        "url": "https://www.postgresql.org/docs/18/tutorial-transactions.html",
+        "title": "PostgreSQL 18 — Transactions",
+        "publisher": "PostgreSQL Global Development Group",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Une transaction regroupe des étapes en une opération atomique dans la base.",
+          "COMMIT valide et ROLLBACK abandonne les modifications transactionnelles en attente."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "put-et-patch-deux-contrats",
+    "locale": "fr",
+    "title": "PUT ou PATCH : quel contrat promets-tu ?",
+    "format": "comparison",
+    "difficulty": "intermediate",
+    "topic": "http",
+    "tags": [
+      "methods",
+      "idempotency"
+    ],
+    "conceptKey": "http.methods.put-patch",
+    "learningObjective": "Distinguer représentation de remplacement et instructions de modification.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Pour changer le nom d’un profil, lire le contrat de l’API compte davantage que choisir le verbe le plus court. Les méthodes HTTP définissent une intention commune, mais les formats et règles de validation restent à documenter."
+      },
+      {
+        "type": "comparison",
+        "leftLabel": "PUT",
+        "rightLabel": "PATCH",
+        "left": "Demande la création ou le remplacement de l’état de la ressource cible par la représentation fournie. Sa sémantique est idempotente : répéter la même requête vise le même effet.",
+        "right": "Fournit un ensemble d’instructions de modification. Le type de contenu précise leur sens. PATCH n’est pas idempotent par définition ; certaines opérations le sont, d’autres non."
+      },
+      {
+        "type": "paragraph",
+        "text": "« Remplacer le nom par Léa » et « incrémenter le compteur » n’ont pas les mêmes propriétés lors d’un nouvel essai. Pour éviter d’écraser une modification concurrente, le contrat peut aussi exiger une précondition comme If-Match."
+      }
+    ],
+    "takeaway": "Le verbe indique l’intention ; le contrat précise le format, les répétitions et les conflits.",
+    "searchAliases": [
+      "PUT PATCH",
+      "mise à jour partielle",
+      "If-Match"
+    ],
+    "context": {
+      "technology": "HTTP",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc9110.html#name-put",
+        "title": "RFC 9110 — PUT et méthodes idempotentes",
+        "publisher": "IETF / RFC Editor",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "PUT demande une création ou un remplacement et possède une sémantique idempotente."
+        ]
+      },
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc5789.html",
+        "title": "RFC 5789 — PATCH method for HTTP",
+        "publisher": "IETF / RFC Editor",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "PATCH applique des instructions de modification et n’est pas intrinsèquement idempotent.",
+          "Les requêtes conditionnelles peuvent protéger contre des modifications concurrentes."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "429-retry-after-attendre",
+    "locale": "fr",
+    "title": "Un 429 demande une stratégie, pas une boucle",
+    "format": "tip",
+    "difficulty": "intermediate",
+    "topic": "http",
+    "tags": [
+      "rate-limits",
+      "retries"
+    ],
+    "conceptKey": "http.rate-limit.retry-after",
+    "learningObjective": "Interpréter Retry-After et borner les nouvelles tentatives.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "429 signifie que trop de requêtes ont été envoyées selon la politique du serveur. Le statut seul ne te dit pas si la limite porte sur une clé, un utilisateur ou une autre dimension. Consulte le contrat du fournisseur."
+      },
+      {
+        "type": "paragraph",
+        "text": "La réponse peut contenir Retry-After. Cet en-tête accepte un nombre de secondes ou une date HTTP ; ce n’est donc pas toujours un entier à passer directement à un timer. Respecte une attente valide, puis garde un nombre de tentatives et une durée totale plafonnés."
+      },
+      {
+        "type": "paragraph",
+        "text": "Sans indication exploitable, applique une stratégie de reprise documentée. Refaire une écriture exige aussi de savoir si elle est répétable. Une boucle immédiate transforme souvent une limite temporaire en charge supplémentaire."
+      }
+    ],
+    "takeaway": "Lis Retry-After, borne les essais et vérifie la répétabilité de l’opération.",
+    "searchAliases": [
+      "429",
+      "Retry-After",
+      "trop de requêtes",
+      "rate limit"
+    ],
+    "context": {
+      "technology": "HTTP",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc6585.html#section-4",
+        "title": "RFC 6585 — 429 Too Many Requests",
+        "publisher": "IETF / RFC Editor",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "429 signale un excès de requêtes et peut inclure Retry-After."
+        ]
+      },
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc9110.html#name-retry-after",
+        "title": "RFC 9110 — Retry-After",
+        "publisher": "IETF / RFC Editor",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Retry-After est une date HTTP ou un délai en secondes."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "backoff-jitter-eviter-le-rendez-vous",
+    "locale": "fr",
+    "title": "Le jitter disperse les nouvelles tentatives",
+    "format": "code",
+    "difficulty": "advanced",
+    "topic": "cloud",
+    "tags": [
+      "backoff",
+      "jitter"
+    ],
+    "conceptKey": "cloud.retries.full-jitter",
+    "learningObjective": "Ajouter une dispersion aléatoire à un délai exponentiel plafonné.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Cent clients échouent ensemble puis attendent tous une seconde. Ils risquent de se retrouver ensemble au prochain essai. Le backoff augmente le délai ; le jitter disperse les instants de reprise."
+      },
+      {
+        "type": "code",
+        "language": "javascript",
+        "code": "function delayMs(attempt, random = Math.random) {\n  const ceiling = Math.min(30_000, 500 * 2 ** attempt);\n  return Math.floor(random() * ceiling);\n}\nconsole.log(delayMs(0, () => 0.5));\nconsole.log(delayMs(2, () => 0.5));\nconsole.log(delayMs(10, () => 0.5));"
+      },
+      {
+        "type": "paragraph",
+        "text": "Résultat : 250, 1000, 15000 millisecondes. Cet exemple de full jitter suppose un indice entier entre 0 et 10 ; le générateur injecté rend les tests déterministes. Il calcule un délai, sans effectuer de requête. Ajoute séparément le plafond d’essais, le traitement de Retry-After et la classification des erreurs réessayables."
+      }
+    ],
+    "takeaway": "Augmenter un délai ralentit ; ajouter du jitter désynchronise.",
+    "searchAliases": [
+      "backoff exponentiel",
+      "jitter",
+      "réessayer api"
+    ],
+    "context": {
+      "technology": "Stratégies de reprise",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/",
+        "title": "Exponential Backoff and Jitter",
+        "publisher": "Amazon Web Services",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Le full jitter tire un délai dans une fenêtre exponentielle plafonnée pour disperser les reprises."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Source primaire consultée et exemple exact exécuté sous Node.js v22.19.0 dans tests/content.test.ts ; sortie attendue vérifiée. Le cas de microtâches est aussi confronté au modèle HTML ; aucun benchmark ni test multi-navigateur revendiqué."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "webhook-doublons-idempotence",
+    "locale": "fr",
+    "title": "Un webhook peut arriver deux fois",
+    "format": "carousel",
+    "difficulty": "intermediate",
+    "topic": "integrations",
+    "tags": [
+      "webhooks",
+      "idempotency"
+    ],
+    "conceptKey": "integration.webhook.idempotency",
+    "learningObjective": "Concevoir un traitement résistant aux livraisons répétées.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "1 / 4 — Le cas réel. Le fournisseur envoie un événement, ton serveur le traite, puis la réponse se perd. Une nouvelle livraison peut contenir le même événement."
+      },
+      {
+        "type": "paragraph",
+        "text": "2 / 4 — L’identité. Conserve l’identifiant d’événement traité. Chez Stripe, la documentation recommande cette détection ; certains doublons métier demandent aussi de considérer l’objet concerné et le type d’événement."
+      },
+      {
+        "type": "paragraph",
+        "text": "3 / 4 — La concurrence. Vérifier « existe déjà ? » puis écrire dans deux opérations séparées laisse une course possible. Unicité et transaction peuvent rendre atomiques l’enregistrement et l’effet en base."
+      },
+      {
+        "type": "paragraph",
+        "text": "4 / 4 — Le périmètre. Pour un effet externe, comme un e-mail, il faut encore un mécanisme de déduplication ou de reprise adapté. La recette de transaction est un choix d’architecture ; le contrat du fournisseur détermine les identifiants et les répétitions possibles."
+      }
+    ],
+    "takeaway": "Une livraison répétée doit pouvoir produire un seul effet métier attendu.",
+    "searchAliases": [
+      "webhook doublon",
+      "idempotence webhook",
+      "livraison au moins une fois"
+    ],
+    "context": {
+      "technology": "Webhooks / Stripe",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://docs.stripe.com/webhooks#handle-duplicate-events",
+        "title": "Receive Stripe events — Handle duplicate events",
+        "publisher": "Stripe",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Un événement peut être livré plusieurs fois ; conserver les identifiants traités aide à détecter les doublons.",
+          "Deux événements distincts peuvent nécessiter une déduplication par objet et type."
+        ]
+      }
+    ],
+    "reviewAfterDays": 60,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "signature-webhook-corps-brut",
+    "locale": "fr",
+    "title": "La signature porte sur les octets reçus",
+    "format": "pitfall",
+    "difficulty": "intermediate",
+    "topic": "security",
+    "tags": [
+      "signature",
+      "webhooks"
+    ],
+    "conceptKey": "security.webhook.raw-body",
+    "learningObjective": "Préserver le corps brut pour vérifier une signature de webhook.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un webhook signé échoue alors que son JSON paraît correct. Le problème peut venir du parseur : analyser le corps puis le sérialiser modifie parfois les espaces, l’ordre des propriétés ou l’encodage. Un contenu équivalent en JSON n’est pas nécessairement la même suite d’octets."
+      },
+      {
+        "type": "paragraph",
+        "text": "Dans l’intégration Stripe, fournis au vérificateur le corps brut, l’en-tête de signature et le secret du bon endpoint. Configure la route avant un middleware qui consommerait ou transformerait le corps. Ne journalise pas le secret pour diagnostiquer un échec."
+      },
+      {
+        "type": "paragraph",
+        "text": "Utilise la bibliothèque de vérification du fournisseur plutôt qu’une comparaison improvisée. La signature et la déduplication répondent à deux questions différentes : « message authentifié ? » puis « effet déjà appliqué ? »."
+      }
+    ],
+    "takeaway": "Vérifie le message reçu avant de transformer son corps.",
+    "searchAliases": [
+      "HMAC",
+      "signature webhook",
+      "raw body",
+      "corps brut"
+    ],
+    "context": {
+      "technology": "Signature de webhook Stripe",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://docs.stripe.com/events/manage-webhook-endpoints#signature-errors",
+        "title": "Manage webhook endpoints — Resolve signature verification errors",
+        "publisher": "Stripe",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "La vérification utilise le corps brut, la signature et le secret d’endpoint.",
+          "Une transformation du corps avant vérification peut invalider la signature."
+        ]
+      }
+    ],
+    "reviewAfterDays": 60,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "pagination-curseur-contrat",
+    "locale": "fr",
+    "title": "Un curseur est une position dans un contrat",
+    "format": "concept",
+    "difficulty": "intermediate",
+    "topic": "integrations",
+    "tags": [
+      "pagination",
+      "sync"
+    ],
+    "conceptKey": "integration.pagination.cursor",
+    "learningObjective": "Parcourir une API à curseur sans inventer la sémantique du jeton.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Une API à curseur te donne une position à partir de laquelle demander la suite. Ce n’est pas forcément un numéro de page. Chez Stripe, les listes classiques utilisent starting_after ou ending_before avec un identifiant d’objet ; ces paramètres sont mutuellement exclusifs."
+      },
+      {
+        "type": "paragraph",
+        "text": "Après une page, reprends le dernier identifiant selon le sens prévu et vérifie has_more. Ne mélange pas le curseur avec de nouveaux filtres sans relire le contrat : tu pourrais changer la liste dont il désigne la position."
+      },
+      {
+        "type": "paragraph",
+        "text": "Un curseur ne promet pas à lui seul un instantané immuable des données. Pour une synchronisation, documente ce qui peut changer pendant le parcours et conserve un état de reprise. Les noms de paramètres et l’ordre varient selon les API, y compris chez un même fournisseur."
+      }
+    ],
+    "takeaway": "Conserve le curseur avec le sens du parcours et les filtres qui lui donnent son sens.",
+    "searchAliases": [
+      "pagination curseur",
+      "starting_after",
+      "synchroniser crm"
+    ],
+    "context": {
+      "technology": "API Stripe, listes classiques",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://docs.stripe.com/api/pagination",
+        "title": "API reference — Pagination",
+        "publisher": "Stripe",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Les listes Stripe classiques utilisent starting_after ou ending_before et exposent has_more.",
+          "Ces paramètres sont mutuellement exclusifs et utilisent des identifiants d’objet."
+        ]
+      }
+    ],
+    "reviewAfterDays": 60,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "cors-ne-remplace-pas-authentification",
+    "locale": "fr",
+    "title": "CORS ne verrouille pas ton API",
+    "format": "pitfall",
+    "difficulty": "intermediate",
+    "topic": "web",
+    "tags": [
+      "cors",
+      "origin"
+    ],
+    "conceptKey": "web.cors.response-sharing",
+    "learningObjective": "Distinguer partage de réponse dans le navigateur et autorisation serveur.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Ton frontend voit une erreur CORS. Tu en déduis que personne ne peut appeler l’API depuis un autre site. Le protocole contrôle surtout si le navigateur peut partager une réponse avec le script d’une autre origine. Ce n’est pas une authentification du demandeur."
+      },
+      {
+        "type": "paragraph",
+        "text": "Certaines requêtes peuvent être envoyées sans preflight ; d’autres déclenchent d’abord une requête OPTIONS. Refuser la lecture de la réponse n’est donc pas une garantie générale d’absence d’effet serveur. Un client hors navigateur n’applique pas cette politique de partage."
+      },
+      {
+        "type": "paragraph",
+        "text": "Vérifie les droits dans l’API et protège séparément les actions sensibles. Pour diagnostiquer CORS, distingue la requête préalable, la requête effective et la réponse que le navigateur autorise à lire. Chacune peut expliquer un symptôme différent."
+      }
+    ],
+    "takeaway": "CORS contrôle un partage entre origines ; les droits se vérifient côté serveur.",
+    "searchAliases": [
+      "CORS",
+      "preflight",
+      "OPTIONS",
+      "accès api navigateur"
+    ],
+    "context": {
+      "technology": "Fetch / navigateurs",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://fetch.spec.whatwg.org/#http-cors-protocol",
+        "title": "Fetch Standard — CORS protocol",
+        "publisher": "WHATWG",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "CORS indique quand une réponse peut être partagée entre origines.",
+          "Certaines requêtes exigent un preflight et d’autres non ; une réponse non partagée peut correspondre à un travail serveur déjà exécuté."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "httponly-limite-acces-script",
+    "locale": "fr",
+    "title": "HttpOnly protège une lecture, pas toute la session",
+    "format": "tip",
+    "difficulty": "beginner",
+    "topic": "security",
+    "tags": [
+      "cookies",
+      "session"
+    ],
+    "conceptKey": "security.cookie.httponly",
+    "learningObjective": "Identifier la protection précise apportée par HttpOnly.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un cookie de session marqué HttpOnly n’est pas exposé aux API de cookies destinées aux scripts, comme document.cookie. Cela réduit la possibilité de voler directement cette valeur par un script injecté."
+      },
+      {
+        "type": "paragraph",
+        "text": "Le navigateur peut pourtant continuer à joindre ce cookie aux requêtes qui remplissent ses règles d’envoi. Un script malveillant exécuté dans la page peut donc encore tenter des actions avec la session de la victime. HttpOnly n’efface pas les conséquences d’une injection."
+      },
+      {
+        "type": "paragraph",
+        "text": "Secure répond à une autre question : l’envoi du cookie sur un canal sécurisé. Combine les attributs adaptés au contexte et traite aussi les autorisations serveur. Lire les attributs comme des garanties distinctes permet d’éviter qu’un seul réglage devienne une fausse preuve de sécurité complète."
+      }
+    ],
+    "takeaway": "HttpOnly masque le cookie aux scripts ; il ne retire pas leurs capacités d’action.",
+    "searchAliases": [
+      "HttpOnly",
+      "document.cookie",
+      "cookie session"
+    ],
+    "context": {
+      "technology": "Cookies HTTP",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc6265.html#section-4.1.2.6",
+        "title": "RFC 6265 — The HttpOnly attribute",
+        "publisher": "IETF / RFC Editor",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "HttpOnly exclut le cookie des API non HTTP, indépendamment de Secure.",
+          "Les cookies continuent à suivre les règles d’envoi dans les requêtes HTTP."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "frontend-variable-publique-secret",
+    "locale": "fr",
+    "title": "Une variable publique finit dans le navigateur",
+    "format": "pitfall",
+    "difficulty": "intermediate",
+    "topic": "security",
+    "tags": [
+      "environment",
+      "secrets"
+    ],
+    "conceptKey": "security.frontend.public-env",
+    "learningObjective": "Garder les secrets dans la partie serveur de l’application.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un fichier .env ne chiffre pas une valeur. Dans Next.js, une référence statique à une variable préfixée NEXT_PUBLIC_ peut être remplacée pendant le build par sa valeur dans le JavaScript livré au navigateur. L’utilisateur reçoit donc cette valeur."
+      },
+      {
+        "type": "paragraph",
+        "text": "C’est adapté à une configuration publique, comme une URL de service. Ce n’est pas un emplacement pour une clé qui autorise des opérations privées. Garde cette clé côté serveur et expose uniquement l’action limitée dont le client a besoin, avec contrôle d’accès."
+      },
+      {
+        "type": "paragraph",
+        "text": "Autre conséquence : une valeur ainsi intégrée reste celle du build. Modifier l’environnement du serveur après compilation ne la remplace pas dans les fichiers déjà construits. Distingue configuration publique de build et configuration privée lue au moment de la requête."
+      }
+    ],
+    "takeaway": "Une valeur envoyée au navigateur doit être considérée comme publique.",
+    "searchAliases": [
+      ".env",
+      "NEXT_PUBLIC_",
+      "variable publique",
+      "clé frontend"
+    ],
+    "context": {
+      "technology": "Next.js App Router",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://nextjs.org/docs/app/guides/environment-variables#bundling-environment-variables-for-the-browser",
+        "title": "Next.js — Bundling environment variables for the browser",
+        "publisher": "Vercel / Next.js",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Les références statiques NEXT_PUBLIC_ sont intégrées au bundle au build.",
+          "Leur valeur est figée lors du build et accessible au client."
+        ]
+      }
+    ],
+    "reviewAfterDays": 90,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "df-du-deux-mesures",
+    "locale": "fr",
+    "title": "df et du ne mesurent pas le même périmètre",
+    "format": "comparison",
+    "difficulty": "beginner",
+    "topic": "linux",
+    "tags": [
+      "disk",
+      "diagnostic"
+    ],
+    "conceptKey": "linux.disk.df-du",
+    "learningObjective": "Choisir une mesure de système de fichiers ou de répertoire.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Le disque semble plein, mais le dossier de l’application reste petit. Avant de supprimer quoi que ce soit, vérifie ce que chaque outil mesure et sur quel système de fichiers se trouve le chemin."
+      },
+      {
+        "type": "comparison",
+        "leftLabel": "df",
+        "rightLabel": "du",
+        "left": "Rapporte l’espace du système de fichiers contenant un chemin : capacité, utilisation et disponibilité selon les informations du système.",
+        "right": "Parcourt des fichiers et répertoires pour estimer leur espace. Le résultat dépend des chemins parcourus, des droits et des options."
+      },
+      {
+        "type": "paragraph",
+        "text": "Un sous-dossier ne représente pas tout le volume. Les montages, fichiers creux et liens peuvent aussi compliquer une comparaison naïve. Commence par le périmètre, puis vérifie les options de ta version : GNU Coreutils et les outils BSD de macOS ne partagent pas toutes leurs options."
+      }
+    ],
+    "takeaway": "df situe le volume ; du situe les fichiers parcourus.",
+    "searchAliases": [
+      "df du",
+      "disque plein",
+      "espace répertoire"
+    ],
+    "context": {
+      "technology": "Linux / GNU Coreutils",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/coreutils/coreutils/master/doc/coreutils.texi",
+        "title": "GNU Coreutils manual source — df invocation et du invocation",
+        "publisher": "GNU Coreutils",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "df rapporte l’usage des systèmes de fichiers ; du estime l’espace des fichiers parcourus.",
+          "Le résultat de du dépend notamment du périmètre, des liens et des fichiers creux."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "linux-permission-traverser-repertoire",
+    "locale": "fr",
+    "title": "Lire un fichier exige de traverser son chemin",
+    "format": "concept",
+    "difficulty": "intermediate",
+    "topic": "linux",
+    "tags": [
+      "permissions",
+      "filesystem"
+    ],
+    "conceptKey": "linux.permissions.path-search",
+    "learningObjective": "Relier un refus d’accès aux permissions des répertoires parents.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un fichier est lisible pour ton utilisateur, mais l’ouverture renvoie Permission denied. Il manque peut-être le droit de recherche sur un répertoire parent. Sous Linux, résoudre un chemin demande d’accéder à chacune de ses composantes."
+      },
+      {
+        "type": "paragraph",
+        "text": "Sur un répertoire, le bit x permet cette recherche ou traversée. Le bit r concerne la lecture de la liste des entrées. Ces droits ont donc un sens différent de l’exécution d’un fichier programme. Connaître un nom ne donne pas automatiquement le droit de l’atteindre."
+      },
+      {
+        "type": "paragraph",
+        "text": "Pour diagnostiquer, examine tout le chemin, l’identité effective du processus et les mécanismes complémentaires applicables, comme les ACL. Modifier seulement les permissions du fichier peut laisser le vrai blocage intact. Évite de rendre toute une arborescence accessible sans identifier ce besoin précis."
+      }
+    ],
+    "takeaway": "Le droit du fichier ne suffit pas : chaque répertoire du chemin compte.",
+    "searchAliases": [
+      "permission denied",
+      "chmod répertoire",
+      "droit traversée",
+      "EACCES"
+    ],
+    "context": {
+      "technology": "Linux",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://man7.org/linux/man-pages/man7/path_resolution.7.html",
+        "title": "Linux man-pages — path_resolution(7)",
+        "publisher": "Linux man-pages project",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "La résolution d’un chemin vérifie le droit de recherche sur les répertoires traversés.",
+          "Un défaut de permission de recherche peut produire EACCES."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "readiness-et-liveness",
+    "locale": "fr",
+    "title": "Prêt à servir et vivant sont deux questions",
+    "format": "comparison",
+    "difficulty": "intermediate",
+    "topic": "devops",
+    "tags": [
+      "health",
+      "deployment"
+    ],
+    "conceptKey": "ops.probes.readiness-liveness",
+    "learningObjective": "Choisir une sonde selon l’action souhaitée en cas d’échec.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un service démarre, mais n’a pas encore chargé ses données. Le redémarrer à chaque seconde peut prolonger indéfiniment cette phase. Une sonde doit déclencher une action qui aide à récupérer."
+      },
+      {
+        "type": "comparison",
+        "leftLabel": "Readiness",
+        "rightLabel": "Liveness",
+        "left": "Indique si le conteneur peut recevoir du trafic. Un échec le rend non prêt et le retire du trafic des Services correspondants.",
+        "right": "Détecte un état pour lequel un redémarrage est utile. Des échecs au-delà du seuil configuré entraînent l’arrêt puis le traitement selon la politique de redémarrage."
+      },
+      {
+        "type": "paragraph",
+        "text": "Kubernetes propose aussi une startup probe pour protéger les démarrages longs avant d’activer les autres sondes. Si une dépendance distante tombe pour tous les pods, la tester naïvement en liveness peut provoquer une cascade de redémarrages sans réparer la dépendance."
+      }
+    ],
+    "takeaway": "Choisis d’abord l’action de récupération, puis la condition mesurée.",
+    "searchAliases": [
+      "readiness",
+      "liveness",
+      "health check",
+      "sonde démarrage"
+    ],
+    "context": {
+      "technology": "Kubernetes",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://kubernetes.io/docs/concepts/workloads/pods/probes/",
+        "title": "Kubernetes — Liveness, readiness and startup probes",
+        "publisher": "Kubernetes",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Readiness contrôle l’éligibilité au trafic ; liveness peut déclencher un redémarrage.",
+          "Une startup probe retarde les autres sondes jusqu’à sa réussite.",
+          "Une sonde mal conçue peut provoquer des échecs en cascade."
+        ]
+      }
+    ],
+    "reviewAfterDays": 90,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "rollback-code-et-schema",
+    "locale": "fr",
+    "title": "Revenir au code précédent ne remonte pas le schéma",
+    "format": "carousel",
+    "difficulty": "advanced",
+    "topic": "devops",
+    "tags": [
+      "migrations",
+      "rollback"
+    ],
+    "conceptKey": "ops.migration.expand-contract",
+    "learningObjective": "Préserver une période de compatibilité pendant une évolution de schéma.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "1 / 4 — Le piège. Le nouveau déploiement renomme une colonne. Tu remets l’ancienne version de l’application, qui continue de lire l’ancien nom. Le code a reculé ; la base a gardé sa nouvelle forme."
+      },
+      {
+        "type": "paragraph",
+        "text": "2 / 4 — Étendre. Ajoute la nouvelle structure sans retirer immédiatement celle dont l’ancienne application dépend. Prévois la copie des données et la coexistence temporaire des lecteurs."
+      },
+      {
+        "type": "paragraph",
+        "text": "3 / 4 — Basculer. Déploie une version compatible, vérifie les données transférées et les usages réels. Cette étape doit avoir ses propres critères de validation."
+      },
+      {
+        "type": "paragraph",
+        "text": "4 / 4 — Réduire. Retire l’ancienne structure seulement quand elle n’est plus nécessaire. Ce retrait peut fermer la possibilité de revenir au vieux code. Le pattern expand-and-contract aide à organiser cette transition ; il ne remplace ni une sauvegarde ni un essai de restauration."
+      }
+    ],
+    "takeaway": "Un rollback applicatif exige un schéma encore compatible.",
+    "searchAliases": [
+      "rollback application",
+      "migration compatible",
+      "expand contract"
+    ],
+    "context": {
+      "technology": "Migrations relationnelles",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://www.prisma.io/docs/guides/database/data-migration",
+        "title": "Expand-and-contract migrations",
+        "publisher": "Prisma",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Le pattern étend d’abord le schéma et copie les données, puis retire l’ancienne structure quand elle n’est plus utilisée."
+        ]
+      }
+    ],
+    "reviewAfterDays": 90,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "dns-ttl-pas-un-interrupteur",
+    "locale": "fr",
+    "title": "Le TTL DNS laisse vivre les anciennes réponses",
+    "format": "concept",
+    "difficulty": "intermediate",
+    "topic": "cloud",
+    "tags": [
+      "dns",
+      "cache"
+    ],
+    "conceptKey": "dns.ttl.cache-duration",
+    "learningObjective": "Préparer une modification DNS en tenant compte des caches existants.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Tu modifies l’adresse d’un service, mais certains clients atteignent encore l’ancienne. Un enregistrement DNS peut être conservé en cache pendant son TTL, exprimé en secondes. Changer la source n’invalide pas instantanément toutes les réponses déjà distribuées."
+      },
+      {
+        "type": "paragraph",
+        "text": "Pour une migration prévue, réduire le TTL à l’avance peut raccourcir la durée de vie des réponses qui seront récupérées ensuite. Réduire le TTL au dernier moment ne réécrit pas celui des réponses déjà stockées dans les caches."
+      },
+      {
+        "type": "paragraph",
+        "text": "Il faut donc garder l’ancien service disponible pendant une transition adaptée et observer les deux destinations. Le TTL décrit une règle de cache DNS, pas une promesse que tous les clients basculeront exactement à la même seconde : d’autres caches et connexions peuvent intervenir."
+      }
+    ],
+    "takeaway": "Le TTL s’attache aux réponses mises en cache ; il ne diffuse pas une invalidation mondiale.",
+    "searchAliases": [
+      "DNS TTL",
+      "propagation dns",
+      "migration domaine"
+    ],
+    "context": {
+      "technology": "DNS",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc1035.html#section-3.2.1",
+        "title": "RFC 1035 — Resource record format, TTL",
+        "publisher": "IETF / RFC Editor",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Le TTL indique la durée en secondes pendant laquelle un enregistrement peut rester en cache."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "npm-ci-lockfile-contrat",
+    "locale": "fr",
+    "title": "npm ci fait respecter ton lockfile",
+    "format": "tip",
+    "difficulty": "intermediate",
+    "topic": "devops",
+    "tags": [
+      "npm",
+      "lockfile"
+    ],
+    "conceptKey": "npm.ci.lockfile",
+    "learningObjective": "Utiliser une installation figée pour détecter un manifeste désynchronisé.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un lockfile versionné décrit l’arbre de dépendances résolu. Avec npm ci, l’installation exige un lockfile existant et échoue si ses dépendances ne correspondent pas à package.json, au lieu de mettre le verrou à jour silencieusement."
+      },
+      {
+        "type": "paragraph",
+        "text": "La commande enlève aussi un node_modules existant avant de réinstaller. Elle modifie donc les dépendances locales : ce n’est pas une simple vérification de fichiers. Utilise-la dans un environnement préparé pour une installation propre, notamment en CI."
+      },
+      {
+        "type": "paragraph",
+        "text": "Les options qui ont façonné le verrou doivent rester cohérentes, par exemple celles liées aux peer dependencies. Le verrou ne suffit pas à figer l’OS, la version de Node ou les outils natifs : documente ces prérequis lorsque la reproductibilité du build en dépend."
+      }
+    ],
+    "takeaway": "Le verrou fixe une résolution ; npm ci vérifie qu’elle correspond au manifeste.",
+    "searchAliases": [
+      "lockfile",
+      "npm ci",
+      "installation reproductible",
+      "CI/CD"
+    ],
+    "context": {
+      "technology": "npm CLI",
+      "version": "11"
+    },
+    "sources": [
+      {
+        "url": "https://docs.npmjs.com/cli/v11/commands/npm-ci/",
+        "title": "npm CLI 11 — npm ci",
+        "publisher": "npm",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "npm ci exige un verrou cohérent avec package.json, enlève node_modules et n’écrit pas les manifestes.",
+          "Les options de résolution doivent correspondre à celles utilisées pour créer le verrou."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "git-revert-ou-reset",
+    "locale": "fr",
+    "title": "Annuler un commit partagé : pense revert",
+    "format": "comparison",
+    "difficulty": "beginner",
+    "topic": "devops",
+    "tags": [
+      "git",
+      "history"
+    ],
+    "conceptKey": "git.undo.revert-reset",
+    "learningObjective": "Distinguer un commit inverse d’un déplacement de branche.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un commit publié introduit un bug. Tu veux annuler son effet tout en conservant un historique que tes collègues peuvent suivre. Revert et reset ne produisent pas la même histoire."
+      },
+      {
+        "type": "comparison",
+        "leftLabel": "git revert",
+        "rightLabel": "git reset",
+        "left": "Crée un nouveau commit qui inverse les modifications d’un commit existant. Les commits déjà partagés restent dans l’historique. Des conflits peuvent demander une résolution.",
+        "right": "Déplace HEAD et, selon le mode, met aussi à jour l’index et les fichiers de travail. Réécrire une branche partagée change les références sur lesquelles les autres ont travaillé."
+      },
+      {
+        "type": "paragraph",
+        "text": "Le mode --hard peut supprimer des modifications locales : vérifie l’état et le besoin avant toute exécution. Revert d’un merge demande en plus de choisir un parent principal ; ce n’est pas un bouton universel. Aucune commande n’est exécutée par cette fiche."
+      }
+    ],
+    "takeaway": "Revert enregistre une inversion ; reset change la position et parfois les fichiers.",
+    "searchAliases": [
+      "git annuler commit",
+      "revert reset",
+      "annuler commit partagé"
+    ],
+    "context": {
+      "technology": "Git",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://git-scm.com/docs/git-revert",
+        "title": "Git — git-revert",
+        "publisher": "Git project",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "git revert enregistre de nouveaux commits inversant des modifications existantes."
+        ]
+      },
+      {
+        "url": "https://git-scm.com/docs/git-reset",
+        "title": "Git — git-reset",
+        "publisher": "Git project",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "git reset déplace HEAD et peut modifier index et fichiers ; --hard peut supprimer des changements locaux."
+        ]
+      }
+    ],
+    "reviewAfterDays": 180,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "contexte-llm-memoire-de-travail",
+    "locale": "fr",
+    "title": "Le contexte d’un modèle se prépare",
+    "format": "concept",
+    "difficulty": "intermediate",
+    "topic": "ai",
+    "tags": [
+      "context",
+      "tokens"
+    ],
+    "conceptKey": "ai.context.working-set",
+    "learningObjective": "Distinguer contexte de requête et connaissances issues de l’entraînement.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Un modèle ne relit pas spontanément tous les documents de ton application. Il génère à partir de ce que le système place dans sa fenêtre de contexte, en s’appuyant aussi sur les régularités apprises pendant son entraînement. Ces deux sources d’information ont des rôles différents."
+      },
+      {
+        "type": "paragraph",
+        "text": "Selon le fournisseur, instructions, messages, résultats d’outils et sortie consomment cette capacité mesurée en tokens. Il faut donc réserver une place à la réponse, pas remplir toute la fenêtre de documents."
+      },
+      {
+        "type": "paragraph",
+        "text": "Une grande fenêtre ne garantit pas que chaque détail sera retrouvé correctement. Sélectionne les passages utiles, indique leur provenance et teste les questions qui exigent de rapprocher plusieurs sources. Les limites exactes et règles de comptage dépendent du modèle et du fournisseur : cette fiche ne fige aucun chiffre."
+      }
+    ],
+    "takeaway": "Prépare le contexte comme un dossier de travail pertinent, avec de la place pour la réponse.",
+    "searchAliases": [
+      "LLM contexte",
+      "fenêtre contexte",
+      "tokens",
+      "mémoire modèle"
+    ],
+    "context": {
+      "technology": "Modèles de langage, contexte ; exemple documentaire Claude",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+        "title": "Context windows",
+        "publisher": "Anthropic",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "La fenêtre de contexte diffère du corpus d’entraînement et inclut entrées et sortie.",
+          "Les messages, instructions et résultats d’outils occupent du contexte ; une grande fenêtre ne garantit pas une meilleure restitution."
+        ]
+      }
+    ],
+    "reviewAfterDays": 30,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "rag-recherche-puis-generation",
+    "locale": "fr",
+    "title": "Le RAG ajoute une recherche, pas une preuve",
+    "format": "carousel",
+    "difficulty": "intermediate",
+    "topic": "ai",
+    "tags": [
+      "rag",
+      "retrieval"
+    ],
+    "conceptKey": "ai.rag.retrieval-generation",
+    "learningObjective": "Séparer qualité de récupération et qualité de réponse dans un système RAG.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "1 / 4 — Le principe. Un système récupère des passages dans une collection puis conditionne une génération sur ces informations. Le papier RAG de 2020 combine une mémoire paramétrique et un index externe."
+      },
+      {
+        "type": "paragraph",
+        "text": "2 / 4 — La récupération. Une bonne réponse exige d’abord que les passages utiles soient accessibles et retrouvés. Si le document pertinent manque, la génération ne peut pas le citer fidèlement."
+      },
+      {
+        "type": "paragraph",
+        "text": "3 / 4 — La génération. Même avec les bons passages, la réponse doit rester fidèle à leur contenu. Récupérer un texte ne prouve pas que chaque conclusion en découle."
+      },
+      {
+        "type": "paragraph",
+        "text": "4 / 4 — Le test. Sépare les cas « bon passage retrouvé ? » et « réponse soutenue par ce passage ? ». Cette méthode d’évaluation est une conséquence pratique de l’architecture, pas une garantie du papier ni une preuve qu’un RAG élimine toutes les erreurs."
+      }
+    ],
+    "takeaway": "Une bonne recherche et une réponse fidèle sont deux résultats à vérifier.",
+    "searchAliases": [
+      "RAG",
+      "recherche augmentée",
+      "retrieval augmented generation"
+    ],
+    "context": {
+      "technology": "RAG ; papier original de 2020",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2005.11401",
+        "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "publisher": "Patrick Lewis et al. / arXiv",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Le travail introduit des modèles combinant mémoire paramétrique et mémoire externe récupérée.",
+          "Les résultats expérimentaux du papier ne constituent pas une garantie de vérité pour tout système RAG."
+        ],
+        "publishedAt": "2020-05-22"
+      }
+    ],
+    "reviewAfterDays": 30,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  },
+  {
+    "schemaVersion": 1,
+    "slug": "javascript-dix-jours-puis-trente-ans",
+    "locale": "fr",
+    "title": "Les dix jours de JavaScript étaient un début",
+    "format": "history",
+    "difficulty": "intermediate",
+    "topic": "culture",
+    "tags": [
+      "history",
+      "javascript"
+    ],
+    "conceptKey": "history.javascript.prototype",
+    "learningObjective": "Situer le prototype de JavaScript dans son évolution réelle.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "En mai 1995, chez Netscape, Brendan Eich prototype ce qui deviendra JavaScript en dix jours consécutifs. Le nom de code est Mocha. L’objectif immédiat est une démonstration de faisabilité dans le navigateur en développement, pas la conception achevée du langage actuel."
+      },
+      {
+        "type": "paragraph",
+        "text": "Eich et Allen Wirfs-Brock racontent cette période dans leur histoire de JavaScript publiée en 2020. Ils décrivent ensuite les implémentations, les contraintes commerciales et le travail de standardisation qui ont façonné le langage sur deux décennies."
+      },
+      {
+        "type": "paragraph",
+        "text": "L’anecdote est utile si elle distingue prototype et évolution. Dire que tout JavaScript a été « terminé en dix jours » efface les corrections, les implémentations et les décisions collectives. Pour une décision technique actuelle, l’origine explique un contexte ; elle ne remplace pas la spécification moderne."
+      }
+    ],
+    "takeaway": "Les dix jours décrivent un prototype de mai 1995, pas toute l’histoire du langage.",
+    "searchAliases": [
+      "origine JavaScript",
+      "Mocha",
+      "Brendan Eich",
+      "dix jours"
+    ],
+    "context": {
+      "technology": "Histoire de JavaScript",
+      "version": null
+    },
+    "sources": [
+      {
+        "url": "https://wirfs-brock.com/allen/jshopl.pdf",
+        "title": "JavaScript: The First 20 Years, pages 3 et 8",
+        "publisher": "Allen Wirfs-Brock et Brendan Eich / ACM HOPL",
+        "accessedAt": "2026-10-25",
+        "claims": [
+          "Le premier prototype Mocha a été réalisé en dix jours consécutifs en mai 1995 chez Netscape.",
+          "Le papier retrace la création, l’évolution et la standardisation entre 1995 et 2015."
+        ],
+        "publishedAt": "2020-06"
+      }
+    ],
+    "reviewAfterDays": 365,
+    "status": "published",
+    "flags": [],
+    "verification": "Affirmations relues face aux sections documentaires primaires citées le 25 octobre 2026. Exemples narratifs et conseils d’architecture rédigés pour ce corpus ; aucune intégration fournisseur ni mesure de performance exécutée pour cette fiche."
+  }
+]

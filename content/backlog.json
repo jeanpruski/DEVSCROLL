@@ -1,0 +1,542 @@
+[
+  {
+    "id": "CONTENT-031",
+    "conceptKey": "js.promise-all-settled.results",
+    "title": "Promise.allSettled : lire chaque résultat",
+    "topic": "javascript",
+    "angle": "Préserver les réussites quand une opération parallèle échoue.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-032",
+    "conceptKey": "js.async.concurrency-bound",
+    "title": "Limiter une concurrence asynchrone",
+    "topic": "javascript",
+    "angle": "Comparer lancer mille appels et alimenter un petit groupe de workers.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-033",
+    "conceptKey": "js.object.identity",
+    "title": "Deux objets identiques ne sont pas égaux",
+    "topic": "javascript",
+    "angle": "Expliquer identité, copie et comparaison de contenu.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-034",
+    "conceptKey": "js.array.sort-mutation",
+    "title": "sort change le tableau de départ",
+    "topic": "javascript",
+    "angle": "Préserver une collection source avant de modifier son ordre.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-035",
+    "conceptKey": "js.number.precision",
+    "title": "0,1 + 0,2 et les nombres binaires",
+    "topic": "javascript",
+    "angle": "Relier la représentation numérique au choix pour les montants.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-036",
+    "conceptKey": "ts.unknown.any",
+    "title": "unknown oblige à prouver",
+    "topic": "typescript",
+    "angle": "Comparer une entrée inconnue et une désactivation de vérification.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-037",
+    "conceptKey": "ts.union.exhaustiveness",
+    "title": "Détecter un cas oublié avec never",
+    "topic": "typescript",
+    "angle": "Rendre visible l’ajout d’une variante de résultat.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-038",
+    "conceptKey": "ts.optional.exactness",
+    "title": "Une propriété absente est-elle undefined ?",
+    "topic": "typescript",
+    "angle": "Décrire exactOptionalPropertyTypes et son contexte de compilation.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-039",
+    "conceptKey": "react.keys.identity",
+    "title": "Une key décrit une identité de composant",
+    "topic": "react",
+    "angle": "Montrer le déplacement d’état après réordonnancement de liste.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-040",
+    "conceptKey": "react.effect.cleanup",
+    "title": "Nettoyer un abonnement",
+    "topic": "react",
+    "angle": "Relier création, remplacement et suppression d’un effet.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-041",
+    "conceptKey": "react.controlled.input",
+    "title": "Formulaire contrôlé ou non contrôlé",
+    "topic": "react",
+    "angle": "Choisir qui détient la valeur du champ et comment la lire.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-042",
+    "conceptKey": "react.memo.measurement",
+    "title": "Mémoïser après avoir mesuré",
+    "topic": "react",
+    "angle": "Distinguer coût de calcul et identité des références.",
+    "format": "tip",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-043",
+    "conceptKey": "node.stream.backpressure",
+    "title": "Le consommateur peut être plus lent",
+    "topic": "node",
+    "angle": "Expliquer la pression inverse dans une chaîne de streams.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-044",
+    "conceptKey": "node.process.sigterm",
+    "title": "Quitter proprement après SIGTERM",
+    "topic": "node",
+    "angle": "Arrêter d’accepter puis terminer le travail en cours avec une limite.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-045",
+    "conceptKey": "node.fs.sync-cost",
+    "title": "Lire un fichier synchroniquement dans une route",
+    "topic": "node",
+    "angle": "Distinguer temps de démarrage et chemin de requête concurrent.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-046",
+    "conceptKey": "node.async-context",
+    "title": "Suivre un requestId avec AsyncLocalStorage",
+    "topic": "node",
+    "angle": "Préserver un contexte de diagnostic au fil des appels async.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-047",
+    "conceptKey": "sql.not-in.null",
+    "title": "NOT IN et le NULL caché",
+    "topic": "sql",
+    "angle": "Construire un petit contre-exemple et comparer NOT EXISTS.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-048",
+    "conceptKey": "sql.join.left-filter",
+    "title": "Un WHERE peut changer un LEFT JOIN",
+    "topic": "sql",
+    "angle": "Observer où filtrer les lignes de la table jointe.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-049",
+    "conceptKey": "sql.index.selectivity",
+    "title": "Un index peut perdre face au parcours séquentiel",
+    "topic": "sql",
+    "angle": "Lire sélectivité, volume et coût dans un plan mesuré.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-050",
+    "conceptKey": "sql.pagination.keyset",
+    "title": "Paginer avec une clé de tri stable",
+    "topic": "sql",
+    "angle": "Comparer offset et curseur sur un jeu qui grandit.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-051",
+    "conceptKey": "sql.transaction.isolation",
+    "title": "Read committed ne fige pas toutes les lectures",
+    "topic": "sql",
+    "angle": "Décrire deux requêtes dans une transaction avec modification concurrente.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-052",
+    "conceptKey": "sql.lock.deadlock",
+    "title": "Pourquoi une transaction est victime d’un deadlock",
+    "topic": "sql",
+    "angle": "Expliquer ordre des verrous et reprise bornée de transaction.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-053",
+    "conceptKey": "http.cache.etag",
+    "title": "ETag évite un transfert inutile",
+    "topic": "http",
+    "angle": "Distinguer validateur, fraîcheur et réponse 304.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-054",
+    "conceptKey": "http.cache.private-no-store",
+    "title": "private et no-store n’ont pas le même rôle",
+    "topic": "http",
+    "angle": "Choisir le bon contrat pour une réponse personnelle.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-055",
+    "conceptKey": "http.status.202",
+    "title": "202 Accepted ne signifie pas terminé",
+    "topic": "http",
+    "angle": "Concevoir un suivi de job asynchrone et son état final.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-056",
+    "conceptKey": "http.timeout.unknown-result",
+    "title": "Timeout : l’écriture a peut-être réussi",
+    "topic": "http",
+    "angle": "Séparer absence de réponse et absence d’effet distant.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-057",
+    "conceptKey": "http.redirect.307-303",
+    "title": "Une redirection peut changer la méthode",
+    "topic": "http",
+    "angle": "Comparer reprise POST et navigation après formulaire.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-058",
+    "conceptKey": "web.a11y.focus",
+    "title": "Le focus fait partie de la navigation",
+    "topic": "web",
+    "angle": "Préserver un point de reprise après fermeture de dialogue.",
+    "format": "tip",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-059",
+    "conceptKey": "web.intersection.visibility",
+    "title": "Visible ne veut pas dire lu",
+    "topic": "web",
+    "angle": "Définir ce qu’IntersectionObserver peut réellement signaler.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-060",
+    "conceptKey": "web.performance.layout-shift",
+    "title": "Réserver la place d’une image",
+    "topic": "web",
+    "angle": "Relier dimensions connues et stabilité de lecture.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-061",
+    "conceptKey": "web.service-worker.private-cache",
+    "title": "Une PWA privée a besoin d’une politique de cache",
+    "topic": "web",
+    "angle": "Tracer ce qui subsiste après déconnexion.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-062",
+    "conceptKey": "linux.file.open-unlink",
+    "title": "Supprimer un nom ne ferme pas un fichier",
+    "topic": "linux",
+    "angle": "Comprendre un fichier supprimé encore tenu par un processus.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-063",
+    "conceptKey": "linux.process.exit-status",
+    "title": "Un code de sortie raconte un résultat",
+    "topic": "linux",
+    "angle": "Séparer succès, erreur et diagnostic dans un script.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-064",
+    "conceptKey": "linux.pipe.exit-status",
+    "title": "Quel échec voit une pipeline shell ?",
+    "topic": "linux",
+    "angle": "Expliquer le rôle de pipefail avec un shell explicitement indiqué.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-065",
+    "conceptKey": "linux.memory.page-cache",
+    "title": "Mémoire libre et cache de pages",
+    "topic": "linux",
+    "angle": "Lire les métriques sans confondre cache utile et fuite.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-066",
+    "conceptKey": "git.restore.staging",
+    "title": "Index Git et fichiers de travail",
+    "topic": "devops",
+    "angle": "Retirer un fichier du prochain commit sans effacer son travail.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-067",
+    "conceptKey": "git.bisect.search",
+    "title": "Retrouver le premier commit fautif",
+    "topic": "devops",
+    "angle": "Préparer un test reproductible pour une recherche dichotomique.",
+    "format": "tip",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-068",
+    "conceptKey": "docker.layers.cache",
+    "title": "L’ordre du Dockerfile influence le cache",
+    "topic": "devops",
+    "angle": "Séparer dépendances et code applicatif avec mesure de reconstruction.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-069",
+    "conceptKey": "docker.pid1.signals",
+    "title": "Le processus principal reçoit les signaux",
+    "topic": "devops",
+    "angle": "Examiner exec form et arrêt du conteneur.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-070",
+    "conceptKey": "ci.permissions.least-privilege",
+    "title": "Le job CI a-t-il besoin d’écrire ?",
+    "topic": "devops",
+    "angle": "Réduire les permissions du jeton selon l’action de workflow.",
+    "format": "tip",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-071",
+    "conceptKey": "ops.logs.correlation",
+    "title": "Un identifiant relie web et worker",
+    "topic": "devops",
+    "angle": "Construire un diagnostic sans journaliser les données privées complètes.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-072",
+    "conceptKey": "ops.backup.restore-proof",
+    "title": "Une sauvegarde se vérifie par sa restauration",
+    "topic": "devops",
+    "angle": "Définir un exercice sur environnement distinct et ses critères.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-073",
+    "conceptKey": "cloud.object-storage.consistency",
+    "title": "Lire un objet après l’avoir écrit",
+    "topic": "cloud",
+    "angle": "Documenter les garanties précises du stockage choisi.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-074",
+    "conceptKey": "cloud.serverless.cold-start",
+    "title": "Démarrage à froid et latence observée",
+    "topic": "cloud",
+    "angle": "Distinguer initialisation et temps de traitement d’une fonction.",
+    "format": "comparison",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-075",
+    "conceptKey": "cloud.availability.zones",
+    "title": "Deux instances dans la même zone",
+    "topic": "cloud",
+    "angle": "Relier redondance d’instance et domaine de panne.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-076",
+    "conceptKey": "cloud.cost.egress",
+    "title": "Le stockage ne paie pas seulement les gigaoctets",
+    "topic": "cloud",
+    "angle": "Décomposer stockage, requêtes et transferts avec tarifs datés.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-077",
+    "conceptKey": "hubspot.pagination.after",
+    "title": "Parcourir une liste HubSpot",
+    "topic": "integrations",
+    "angle": "Vérifier le curseur after et les limites de l’endpoint retenu.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-078",
+    "conceptKey": "hubspot.rate-limit.contract",
+    "title": "Quotas HubSpot : identifier la bonne limite",
+    "topic": "integrations",
+    "angle": "Distinguer type d’application, authentification et politique d’API.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-079",
+    "conceptKey": "integration.sync.tombstone",
+    "title": "Synchroniser aussi les suppressions",
+    "topic": "integrations",
+    "angle": "Choisir un marqueur de suppression et sa durée de conservation.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-080",
+    "conceptKey": "integration.sync.watermark",
+    "title": "Un watermark évite de repartir de zéro",
+    "topic": "integrations",
+    "angle": "Gérer égalités d’horodatage et fenêtre de recouvrement.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-081",
+    "conceptKey": "integration.oauth.refresh-race",
+    "title": "Deux refresh tokens utilisés en parallèle",
+    "topic": "integrations",
+    "angle": "Décrire coordination, rotation et reprise selon le fournisseur.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-082",
+    "conceptKey": "security.csrf.origin",
+    "title": "Authentifié ne signifie pas voulu",
+    "topic": "security",
+    "angle": "Relier cookie automatique, origine et protection d’une mutation.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-083",
+    "conceptKey": "security.ssrf.redirect",
+    "title": "Une URL autorisée peut rediriger ailleurs",
+    "topic": "security",
+    "angle": "Vérifier chaque destination d’une récupération serveur.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-084",
+    "conceptKey": "security.password.hash",
+    "title": "Un mot de passe ne se chiffre pas pour être comparé",
+    "topic": "security",
+    "angle": "Présenter le hash spécialisé et les paramètres du système choisi.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-085",
+    "conceptKey": "security.sql.parameters",
+    "title": "Séparer valeurs et structure SQL",
+    "topic": "security",
+    "angle": "Comparer paramètre de valeur et nom de colonne dynamique.",
+    "format": "code",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-086",
+    "conceptKey": "ai.evaluation.dataset",
+    "title": "Tester un assistant sur des cas représentatifs",
+    "topic": "ai",
+    "angle": "Définir des critères mesurables avant de comparer des prompts.",
+    "format": "carousel",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-087",
+    "conceptKey": "ai.structured-output.truth",
+    "title": "Un JSON valide peut contenir une erreur",
+    "topic": "ai",
+    "angle": "Séparer validation de forme, règles métier et vérification factuelle.",
+    "format": "pitfall",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-088",
+    "conceptKey": "ai.retrieval.permissions",
+    "title": "Les droits doivent filtrer la recherche",
+    "topic": "ai",
+    "angle": "Empêcher qu’une récupération sémantique contourne l’isolation.",
+    "format": "concept",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-089",
+    "conceptKey": "history.web.hyperlinks",
+    "title": "Le Web relie des documents",
+    "topic": "culture",
+    "angle": "Revenir aux premières propositions et distinguer Web et Internet.",
+    "format": "history",
+    "status": "idea"
+  },
+  {
+    "id": "CONTENT-090",
+    "conceptKey": "history.unix.pipes",
+    "title": "La composition des outils Unix",
+    "topic": "culture",
+    "angle": "Vérifier l’histoire des pipes et expliquer une conséquence de conception.",
+    "format": "history",
+    "status": "idea"
+  }
+]

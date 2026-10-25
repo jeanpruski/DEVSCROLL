@@ -1,0 +1,65 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: devscroll
+      POSTGRES_USER: devscroll
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Définir POSTGRES_PASSWORD}
+    volumes: ['postgres_data:/var/lib/postgresql/data']
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U devscroll -d devscroll']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  web:
+    build: .
+    env_file: .env.production
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      PORT: 3000
+    ports: ['127.0.0.1:3000:3000']
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  worker:
+    build: .
+    command: ['node', '--import', 'tsx', 'worker/index.ts']
+    env_file: .env.production
+    environment:
+      NODE_ENV: production
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+  migrate:
+    build: .
+    profiles: ['tools']
+    command: ['node', '--import', 'tsx', 'scripts/migrate.ts']
+    env_file: .env.production
+    depends_on:
+      db: { condition: service_healthy }
+  edge:
+    image: caddy:2-alpine
+    profiles: ['tls']
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    ports: ['80:80', '443:443']
+    volumes: ['./Caddyfile:/etc/caddy/Caddyfile:ro', 'caddy_data:/data', 'caddy_config:/config']
+    depends_on: [web]
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "origin": "editorial",
+  "notRealUserQueries": true,
+  "description": "25 requêtes préparées à partir du corpus initial pour évaluer la recherche. Elles ne proviennent pas de Jean et ne démontrent pas un besoin de recherche sémantique.",
+  "savedSlugs": [
+    "abortcontroller-un-signal-pas-un-retour-arriere",
+    "promise-all-ne-stoppe-pas-les-autres-promesses",
+    "sql-null-troisieme-valeur",
+    "backoff-jitter-eviter-le-rendez-vous",
+    "git-revert-ou-reset"
+  ],
+  "technicalFixtures": [
+    { "slug": "benchmark-identifiant-cpp", "title": "Fixture de recherche C++", "text": "Document artificiel consacré uniquement à C++, pour vérifier la normalisation d’un identifiant absent du corpus pédagogique.", "searchAliases": ["cpp"] },
+    { "slug": "benchmark-identifiant-csharp", "title": "Fixture de recherche C#", "text": "Document artificiel consacré uniquement à C#, pour vérifier la normalisation d’un identifiant absent du corpus pédagogique.", "searchAliases": ["csharp"] }
+  ],
+  "cases": [
+    { "id": "SEARCH-001", "query": "AbortController", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["abortcontroller-un-signal-pas-un-retour-arriere"] },
+    { "id": "SEARCH-002", "query": "annuler requête", "scope": "saved", "corpus": "seed", "kind": "alias", "expectedSlugs": ["abortcontroller-un-signal-pas-un-retour-arriere"] },
+    { "id": "SEARCH-003", "query": "AbortControler", "scope": "all", "corpus": "seed", "kind": "typo", "expectedSlugs": ["abortcontroller-un-signal-pas-un-retour-arriere"] },
+    { "id": "SEARCH-004", "query": "annuler requete", "scope": "all", "corpus": "seed", "kind": "accent", "expectedSlugs": ["abortcontroller-un-signal-pas-un-retour-arriere"] },
+    { "id": "SEARCH-005", "query": "Promise.all", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["promise-all-ne-stoppe-pas-les-autres-promesses"] },
+    { "id": "SEARCH-006", "query": "annuler promesses", "scope": "saved", "corpus": "seed", "kind": "alias", "expectedSlugs": ["promise-all-ne-stoppe-pas-les-autres-promesses"] },
+    { "id": "SEARCH-007", "query": ".env", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["frontend-variable-publique-secret"] },
+    { "id": "SEARCH-008", "query": "clé frontend", "scope": "saved", "corpus": "seed", "kind": "saved-exclusion", "expectedSlugs": [], "forbiddenSlugs": ["frontend-variable-publique-secret"] },
+    { "id": "SEARCH-009", "query": "CI/CD", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["npm-ci-lockfile-contrat"] },
+    { "id": "SEARCH-010", "query": "Node.js", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["node-eventemitter-synchrone"] },
+    { "id": "SEARCH-011", "query": "C++", "scope": "all", "corpus": "technical-fixtures", "kind": "identifier", "expectedSlugs": ["benchmark-identifiant-cpp"] },
+    { "id": "SEARCH-012", "query": "C#", "scope": "all", "corpus": "technical-fixtures", "kind": "identifier", "expectedSlugs": ["benchmark-identifiant-csharp"] },
+    { "id": "SEARCH-013", "query": "NULL", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["sql-null-troisieme-valeur"] },
+    { "id": "SEARCH-014", "query": "index composite", "scope": "all", "corpus": "seed", "kind": "alias", "expectedSlugs": ["index-composite-ordre-colonnes"] },
+    { "id": "SEARCH-015", "query": "SQL NULL", "scope": "saved", "corpus": "seed", "kind": "saved-positive", "expectedSlugs": ["sql-null-troisieme-valeur"] },
+    { "id": "SEARCH-016", "query": "Retry-After", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["429-retry-after-attendre"] },
+    { "id": "SEARCH-017", "query": "webhook doublon", "scope": "all", "corpus": "seed", "kind": "alias", "expectedSlugs": ["webhook-doublons-idempotence"] },
+    { "id": "SEARCH-018", "query": "raw body", "scope": "saved", "corpus": "seed", "kind": "saved-exclusion", "expectedSlugs": [], "forbiddenSlugs": ["signature-webhook-corps-brut"] },
+    { "id": "SEARCH-019", "query": "git annuler commit", "scope": "saved", "corpus": "seed", "kind": "alias", "expectedSlugs": ["git-revert-ou-reset"] },
+    { "id": "SEARCH-020", "query": "rollback application", "scope": "all", "corpus": "seed", "kind": "alias", "expectedSlugs": ["rollback-code-et-schema"] },
+    { "id": "SEARCH-021", "query": "permission denied", "scope": "all", "corpus": "seed", "kind": "alias", "expectedSlugs": ["linux-permission-traverser-repertoire"] },
+    { "id": "SEARCH-022", "query": "RAG", "scope": "all", "corpus": "seed", "kind": "identifier", "expectedSlugs": ["rag-recherche-puis-generation"] },
+    { "id": "SEARCH-023", "query": "fenêtre contexte", "scope": "all", "corpus": "seed", "kind": "accent", "expectedSlugs": ["contexte-llm-memoire-de-travail"] },
+    { "id": "SEARCH-024", "query": "microtaches", "scope": "all", "corpus": "seed", "kind": "accent", "expectedSlugs": ["microtaches-avant-le-prochain-timer"] },
+    { "id": "SEARCH-025", "query": "idempotance webhook", "scope": "all", "corpus": "seed", "kind": "typo", "expectedSlugs": ["webhook-doublons-idempotence"] }
+  ]
+}

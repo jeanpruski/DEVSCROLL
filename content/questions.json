@@ -1,0 +1,602 @@
+[
+  {
+    "conceptKey": "js.promise-all.failure",
+    "prompt": "Une des opérations de Promise.all rejette. Que devient une autre opération déjà lancée ?",
+    "choices": [
+      {
+        "id": "continues",
+        "text": "Elle peut continuer à travailler."
+      },
+      {
+        "id": "cancelled",
+        "text": "Elle est automatiquement annulée."
+      },
+      {
+        "id": "restarted",
+        "text": "Elle redémarre pour compenser l’échec."
+      }
+    ],
+    "correctChoiceId": "continues",
+    "explanation": "Le rejet règle la promesse agrégée. Il ne fournit ni annulation des autres opérations ni redémarrage compensatoire ; ces comportements exigent des mécanismes séparés."
+  },
+  {
+    "conceptKey": "web.abort-controller.cooperation",
+    "prompt": "Après abort(), comment démarrer une nouvelle opération avec un signal non annulé ?",
+    "choices": [
+      {
+        "id": "reuse",
+        "text": "Réutiliser le même signal après avoir attendu."
+      },
+      {
+        "id": "new",
+        "text": "Créer un nouveau contrôleur et son signal."
+      },
+      {
+        "id": "reset",
+        "text": "Affecter false à signal.aborted."
+      }
+    ],
+    "correctChoiceId": "new",
+    "explanation": "L’état annulé d’un signal ne se réinitialise pas. Attendre ne le change pas et aborted n’est pas une propriété à réécrire pour relancer une opération."
+  },
+  {
+    "conceptKey": "js.event-loop.microtasks",
+    "prompt": "Dans le script de la fiche, quel ordre observe-t-on pour A, B, P, Q et le timer T ?",
+    "choices": [
+      {
+        "id": "timer",
+        "text": "A, B, T, P, Q"
+      },
+      {
+        "id": "microtasks",
+        "text": "A, B, P, Q, T"
+      },
+      {
+        "id": "promise",
+        "text": "A, P, Q, B, T"
+      }
+    ],
+    "correctChoiceId": "microtasks",
+    "explanation": "Le synchrone termine avec A puis B. Les microtâches P et Q passent dans leur ordre d’enregistrement avant la tâche du timer. Un délai zéro ne préempte pas le script."
+  },
+  {
+    "conceptKey": "js.closure.binding",
+    "prompt": "Deux fonctions counter() créent chacune un compteur. Après first(), first(), second(), quelles valeurs sont produites ?",
+    "choices": [
+      {
+        "id": "shared",
+        "text": "1, 2, 3"
+      },
+      {
+        "id": "copies",
+        "text": "1, 1, 1"
+      },
+      {
+        "id": "separate",
+        "text": "1, 2, 1"
+      }
+    ],
+    "correctChoiceId": "separate",
+    "explanation": "Chaque appel à counter crée sa propre liaison count. first conserve ses modifications ; second commence dans un autre environnement. La closure ne copie pas une valeur figée à chaque lecture."
+  },
+  {
+    "conceptKey": "ts.satisfies.inference",
+    "prompt": "Que garantit satisfies sur l’objet de configuration TypeScript de la fiche ?",
+    "choices": [
+      {
+        "id": "runtime",
+        "text": "La validation des données JSON reçues à l’exécution."
+      },
+      {
+        "id": "compatible",
+        "text": "La compatibilité avec le type cible, en conservant le type résultant de l’expression."
+      },
+      {
+        "id": "cast",
+        "text": "La conversion des nombres en chaînes au runtime."
+      }
+    ],
+    "correctChoiceId": "compatible",
+    "explanation": "satisfies réalise un contrôle de type à la compilation. Il ne parse pas le JSON et ne transforme pas les valeurs à l’exécution."
+  },
+  {
+    "conceptKey": "react.state.snapshot",
+    "prompt": "Un gestionnaire React lit count juste après avoir demandé sa mise à jour. Quelle valeur lit-il ?",
+    "choices": [
+      {
+        "id": "snapshot",
+        "text": "Celle du rendu qui a créé ce gestionnaire."
+      },
+      {
+        "id": "future",
+        "text": "Toujours celle du prochain rendu."
+      },
+      {
+        "id": "undefined",
+        "text": "undefined jusqu’au prochain rendu."
+      }
+    ],
+    "correctChoiceId": "snapshot",
+    "explanation": "La mise à jour prépare un rendu suivant. La variable locale du gestionnaire garde l’instantané de son rendu ; elle ne devient ni la future valeur ni undefined."
+  },
+  {
+    "conceptKey": "react.effects.external-system",
+    "prompt": "Une liste affichée se déduit uniquement des props et du filtre courant. Quel choix évite un état redondant ?",
+    "choices": [
+      {
+        "id": "effect",
+        "text": "Copier la liste dans un state via un effet."
+      },
+      {
+        "id": "render",
+        "text": "Calculer la liste pendant le rendu."
+      },
+      {
+        "id": "interval",
+        "text": "Recalculer la liste avec un intervalle."
+      }
+    ],
+    "correctChoiceId": "render",
+    "explanation": "Le calcul suit directement ses entrées. L’effet ajoute une copie à synchroniser ; l’intervalle introduit un retard sans répondre à une synchronisation externe nécessaire."
+  },
+  {
+    "conceptKey": "node.event-emitter.synchronous",
+    "prompt": "Dans EventEmitter, un listener async renvoie une promesse. Que fait emit() avec cette promesse ?",
+    "choices": [
+      {
+        "id": "await",
+        "text": "Il attend automatiquement sa résolution."
+      },
+      {
+        "id": "ignore",
+        "text": "Il n’attend pas cette valeur de retour."
+      },
+      {
+        "id": "reject",
+        "text": "Il rejette automatiquement sa propre promesse."
+      }
+    ],
+    "correctChoiceId": "ignore",
+    "explanation": "emit appelle les listeners puis ignore leurs retours. Il ne renvoie pas une promesse qui agrégerait leur travail ; un contrat d’attente doit être explicite."
+  },
+  {
+    "conceptKey": "sql.null.comparison",
+    "prompt": "Avec PostgreSQL, quelle expression vaut vrai quand ses deux opérandes sont NULL ?",
+    "choices": [
+      {
+        "id": "equal",
+        "text": "NULL = NULL"
+      },
+      {
+        "id": "distinct",
+        "text": "NULL IS DISTINCT FROM NULL"
+      },
+      {
+        "id": "not-distinct",
+        "text": "NULL IS NOT DISTINCT FROM NULL"
+      }
+    ],
+    "correctChoiceId": "not-distinct",
+    "explanation": "IS NOT DISTINCT FROM traite deux absences comme égales. = produit une valeur inconnue ; IS DISTINCT FROM vaut faux dans ce cas."
+  },
+  {
+    "conceptKey": "sql.index.composite-order",
+    "prompt": "Un B-tree est ordonné par client_id puis created_at. Quel filtre correspond directement à l’égalité puis à la plage décrites dans la fiche ?",
+    "choices": [
+      {
+        "id": "date",
+        "text": "Une plage sur created_at seulement."
+      },
+      {
+        "id": "client-date",
+        "text": "Une égalité sur client_id et une plage sur created_at."
+      },
+      {
+        "id": "none",
+        "text": "Aucun filtre : un index impose toujours un parcours complet."
+      }
+    ],
+    "correctChoiceId": "client-date",
+    "explanation": "L’égalité sur la première colonne puis la plage sur la suivante délimitent la zone parcourue. D’autres requêtes peuvent utiliser l’index, mais avec un coût différent."
+  },
+  {
+    "conceptKey": "sql.transaction.boundary",
+    "prompt": "Une transaction est annulée après l’envoi d’un e-mail par le programme. Que garantit le rollback de la base pour cet e-mail ?",
+    "choices": [
+      {
+        "id": "unsent",
+        "text": "L’e-mail est rappelé automatiquement."
+      },
+      {
+        "id": "nothing",
+        "text": "Aucune annulation de cet effet externe."
+      },
+      {
+        "id": "resent",
+        "text": "L’e-mail est renvoyé pour compenser."
+      }
+    ],
+    "correctChoiceId": "nothing",
+    "explanation": "Le rollback abandonne les changements transactionnels de la base. L’e-mail dépend d’un système externe ; son annulation ou sa compensation nécessite un autre protocole."
+  },
+  {
+    "conceptKey": "http.methods.put-patch",
+    "prompt": "Quelle affirmation décrit correctement PATCH ?",
+    "choices": [
+      {
+        "id": "always",
+        "text": "PATCH est toujours idempotent."
+      },
+      {
+        "id": "never",
+        "text": "PATCH ne peut jamais être idempotent."
+      },
+      {
+        "id": "depends",
+        "text": "L’idempotence dépend des instructions de modification."
+      }
+    ],
+    "correctChoiceId": "depends",
+    "explanation": "Remplacer une valeur peut être idempotent ; incrémenter un compteur ne l’est généralement pas. PATCH n’impose pas à toutes les opérations l’une de ces deux propriétés."
+  },
+  {
+    "conceptKey": "http.rate-limit.retry-after",
+    "prompt": "Quelle valeur de Retry-After un client HTTP doit-il savoir interpréter ?",
+    "choices": [
+      {
+        "id": "seconds",
+        "text": "Uniquement un entier exprimé en millisecondes."
+      },
+      {
+        "id": "date-or-seconds",
+        "text": "Une date HTTP ou un délai en secondes."
+      },
+      {
+        "id": "timestamp",
+        "text": "Uniquement un timestamp Unix."
+      }
+    ],
+    "correctChoiceId": "date-or-seconds",
+    "explanation": "La syntaxe autorise une date HTTP ou un délai en secondes. Les millisecondes et le timestamp Unix ne sont pas les deux formes définies pour cet en-tête."
+  },
+  {
+    "conceptKey": "cloud.retries.full-jitter",
+    "prompt": "Pourquoi ajouter du jitter au backoff de plusieurs clients qui échouent ensemble ?",
+    "choices": [
+      {
+        "id": "spread",
+        "text": "Pour répartir leurs instants de nouvelle tentative."
+      },
+      {
+        "id": "success",
+        "text": "Pour garantir la réussite du prochain appel."
+      },
+      {
+        "id": "unlimited",
+        "text": "Pour supprimer le besoin de limiter les essais."
+      }
+    ],
+    "correctChoiceId": "spread",
+    "explanation": "Le tirage disperse les reprises. Il ne répare pas l’erreur et ne remplace ni le plafond d’essais ni les règles d’idempotence."
+  },
+  {
+    "conceptKey": "integration.webhook.idempotency",
+    "prompt": "Un webhook peut être traité par deux workers simultanément. Quelle approche protège le mieux l’effet en base contre un doublon ?",
+    "choices": [
+      {
+        "id": "check",
+        "text": "Vérifier puis écrire dans deux opérations indépendantes."
+      },
+      {
+        "id": "atomic",
+        "text": "Lier déduplication et effet en base par une contrainte et une transaction adaptées."
+      },
+      {
+        "id": "sleep",
+        "text": "Attendre une seconde dans chaque worker."
+      }
+    ],
+    "correctChoiceId": "atomic",
+    "explanation": "Une vérification séparée laisse deux workers passer ensemble. L’unicité et l’atomicité ferment cette course en base ; attendre ne la supprime pas et les effets externes restent à traiter séparément."
+  },
+  {
+    "conceptKey": "security.webhook.raw-body",
+    "prompt": "Pourquoi faut-il conserver le corps brut pour vérifier la signature Stripe d’un webhook ?",
+    "choices": [
+      {
+        "id": "bytes",
+        "text": "Une resérialisation peut modifier les octets signés."
+      },
+      {
+        "id": "encrypted",
+        "text": "Le fournisseur impose de trier les clés avant vérification."
+      },
+      {
+        "id": "secret",
+        "text": "Toute signature Stripe exige de minifier le JSON reçu."
+      }
+    ],
+    "correctChoiceId": "bytes",
+    "explanation": "Les octets du corps reçu comptent, y compris leurs espaces et leur ordre. Trier les clés ou minifier le JSON peut donc invalider la signature au lieu de la réparer."
+  },
+  {
+    "conceptKey": "integration.pagination.cursor",
+    "prompt": "Pour une liste classique Stripe, comment demander la suite après son dernier objet ?",
+    "choices": [
+      {
+        "id": "offset",
+        "text": "Transformer son identifiant en numéro de page."
+      },
+      {
+        "id": "both",
+        "text": "Envoyer ensemble starting_after et ending_before."
+      },
+      {
+        "id": "after",
+        "text": "Passer son identifiant comme starting_after selon le sens du parcours."
+      }
+    ],
+    "correctChoiceId": "after",
+    "explanation": "starting_after place le parcours après l’objet indiqué. Les deux curseurs sont mutuellement exclusifs et l’identifiant n’est pas un numéro de page."
+  },
+  {
+    "conceptKey": "web.cors.response-sharing",
+    "prompt": "Une erreur CORS prouve-t-elle que la requête n’a eu aucun effet sur le serveur ?",
+    "choices": [
+      {
+        "id": "yes",
+        "text": "Oui, toute requête CORS est arrêtée avant envoi."
+      },
+      {
+        "id": "no",
+        "text": "Non, la réponse peut être inaccessible au script après un travail serveur."
+      },
+      {
+        "id": "auth",
+        "text": "Oui, CORS authentifie automatiquement tous les clients."
+      }
+    ],
+    "correctChoiceId": "no",
+    "explanation": "CORS gouverne le partage de réponse. Certaines requêtes partent sans preflight. Les droits et la protection des mutations exigent des contrôles serveur distincts."
+  },
+  {
+    "conceptKey": "security.cookie.httponly",
+    "prompt": "Que limite précisément l’attribut HttpOnly d’un cookie ?",
+    "choices": [
+      {
+        "id": "scripts",
+        "text": "L’exposition du cookie aux API de cookies destinées aux scripts."
+      },
+      {
+        "id": "requests",
+        "text": "Tout envoi du cookie dans une requête HTTP."
+      },
+      {
+        "id": "tls",
+        "text": "Tout envoi du cookie hors HTTPS, à lui seul."
+      }
+    ],
+    "correctChoiceId": "scripts",
+    "explanation": "HttpOnly retire l’accès non HTTP au cookie. Le navigateur peut encore l’envoyer ; Secure porte la restriction de transport sécurisé."
+  },
+  {
+    "conceptKey": "security.frontend.public-env",
+    "prompt": "Dans Next.js, une valeur NEXT_PUBLIC_ intégrée au bundle client au build doit être considérée comme…",
+    "choices": [
+      {
+        "id": "private",
+        "text": "Un secret protégé par le fichier .env."
+      },
+      {
+        "id": "public",
+        "text": "Une configuration publique reçue par le navigateur."
+      },
+      {
+        "id": "dynamic",
+        "text": "Une valeur forcément relue à chaque requête du navigateur."
+      }
+    ],
+    "correctChoiceId": "public",
+    "explanation": "Le client reçoit la valeur intégrée au JavaScript. Le fichier .env ne la chiffre pas ; une modification d’environnement après build ne la remplace pas dans ce bundle."
+  },
+  {
+    "conceptKey": "linux.disk.df-du",
+    "prompt": "Tu veux connaître l’espace disponible sur le volume qui contient un chemin. Quel outil correspond à cette question ?",
+    "choices": [
+      {
+        "id": "du",
+        "text": "du, qui parcourt les fichiers sélectionnés."
+      },
+      {
+        "id": "df",
+        "text": "df, qui rapporte l’usage du système de fichiers."
+      },
+      {
+        "id": "chmod",
+        "text": "chmod, qui change les droits."
+      }
+    ],
+    "correctChoiceId": "df",
+    "explanation": "df donne le périmètre du volume. du estime des fichiers parcourus et chmod modifie des permissions ; ils répondent à d’autres questions."
+  },
+  {
+    "conceptKey": "linux.permissions.path-search",
+    "prompt": "Un fichier est lisible, mais un répertoire parent refuse la recherche pour le processus. Que peut-il se passer ?",
+    "choices": [
+      {
+        "id": "open",
+        "text": "Le fichier s’ouvre quand même grâce à son droit r."
+      },
+      {
+        "id": "denied",
+        "text": "La résolution du chemin échoue avec un refus d’accès."
+      },
+      {
+        "id": "execute",
+        "text": "Le refus concerne seulement le listing, jamais l’ouverture."
+      }
+    ],
+    "correctChoiceId": "denied",
+    "explanation": "La résolution exige le droit de recherche sur les répertoires traversés. Le droit de lecture du fichier ne contourne pas ce contrôle et ne change pas son exécution."
+  },
+  {
+    "conceptKey": "ops.probes.readiness-liveness",
+    "prompt": "Tu souhaites retirer temporairement un pod du trafic d’un Service sans le redémarrer. Quelle sonde correspond à cette intention ?",
+    "choices": [
+      {
+        "id": "live",
+        "text": "Une liveness probe."
+      },
+      {
+        "id": "ready",
+        "text": "Une readiness probe."
+      },
+      {
+        "id": "startup",
+        "text": "Une startup probe répétée pendant toute sa vie."
+      }
+    ],
+    "correctChoiceId": "ready",
+    "explanation": "Readiness contrôle la capacité à recevoir du trafic. Liveness sert à détecter un besoin de redémarrage ; startup protège la phase de démarrage."
+  },
+  {
+    "conceptKey": "ops.migration.expand-contract",
+    "prompt": "Quand retirer l’ancienne colonne dans une migration expand-and-contract ?",
+    "choices": [
+      {
+        "id": "first",
+        "text": "Avant de déployer le code qui utilise la nouvelle."
+      },
+      {
+        "id": "after",
+        "text": "Quand les lecteurs n’en dépendent plus et que la transition a été validée."
+      },
+      {
+        "id": "rollback",
+        "text": "Automatiquement dès qu’un rollback du code est demandé."
+      }
+    ],
+    "correctChoiceId": "after",
+    "explanation": "Le retrait est la phase contract. Le faire trop tôt casse les anciens lecteurs ; un rollback du code n’exécute pas automatiquement une migration inverse."
+  },
+  {
+    "conceptKey": "dns.ttl.cache-duration",
+    "prompt": "Tu abaisses maintenant le TTL d’un enregistrement DNS. Que devient une ancienne réponse déjà en cache ?",
+    "choices": [
+      {
+        "id": "rewrite",
+        "text": "Son TTL est immédiatement réécrit partout."
+      },
+      {
+        "id": "keep",
+        "text": "Elle peut garder la durée de vie issue de la réponse déjà reçue."
+      },
+      {
+        "id": "purge",
+        "text": "Elle est automatiquement supprimée dans tous les résolveurs."
+      }
+    ],
+    "correctChoiceId": "keep",
+    "explanation": "Changer la source ne réécrit pas les caches existants. La baisse du TTL doit précéder la migration prévue ; elle n’agit pas comme une invalidation mondiale."
+  },
+  {
+    "conceptKey": "npm.ci.lockfile",
+    "prompt": "Que fait npm ci si package.json et le lockfile ne correspondent pas ?",
+    "choices": [
+      {
+        "id": "update",
+        "text": "Il corrige silencieusement le lockfile."
+      },
+      {
+        "id": "ignore",
+        "text": "Il ignore package.json."
+      },
+      {
+        "id": "fail",
+        "text": "Il échoue au lieu de modifier le verrou pour les réconcilier."
+      }
+    ],
+    "correctChoiceId": "fail",
+    "explanation": "npm ci exige la cohérence et ne réécrit pas les manifestes. Mettre à jour volontairement le verrou relève d’un autre flux, avec revue des modifications."
+  },
+  {
+    "conceptKey": "git.undo.revert-reset",
+    "prompt": "Quelle opération enregistre un nouveau commit qui inverse l’effet d’un commit précédent ?",
+    "choices": [
+      {
+        "id": "revert",
+        "text": "git revert"
+      },
+      {
+        "id": "hard",
+        "text": "git reset --hard"
+      },
+      {
+        "id": "status",
+        "text": "git status"
+      }
+    ],
+    "correctChoiceId": "revert",
+    "explanation": "Revert écrit un commit inverse. Reset déplace la référence et peut modifier les fichiers ; status affiche l’état sans créer de commit."
+  },
+  {
+    "conceptKey": "ai.context.working-set",
+    "prompt": "Pourquoi faut-il réserver de la place pour la sortie dans la fenêtre de contexte d’un modèle ?",
+    "choices": [
+      {
+        "id": "training",
+        "text": "La sortie réentraîne automatiquement tous les poids du modèle."
+      },
+      {
+        "id": "capacity",
+        "text": "La sortie consomme aussi la capacité de contexte selon les règles du fournisseur."
+      },
+      {
+        "id": "network",
+        "text": "La capacité annoncée ne compte jamais les instructions système."
+      }
+    ],
+    "correctChoiceId": "capacity",
+    "explanation": "La fenêtre couvre l’entrée et la génération selon le contrat du modèle, y compris les instructions. Cela ne signifie pas que chaque réponse réentraîne automatiquement les poids."
+  },
+  {
+    "conceptKey": "ai.rag.retrieval-generation",
+    "prompt": "Un RAG a récupéré le bon document. Quel contrôle reste nécessaire ?",
+    "choices": [
+      {
+        "id": "faithful",
+        "text": "Vérifier que la réponse est soutenue par les passages récupérés."
+      },
+      {
+        "id": "none",
+        "text": "Aucun : le bon document garantit une réponse exacte."
+      },
+      {
+        "id": "disable",
+        "text": "Désactiver la recherche pour les requêtes suivantes."
+      }
+    ],
+    "correctChoiceId": "faithful",
+    "explanation": "Récupération et génération peuvent échouer séparément. Trouver un document ne prouve pas que toutes les conclusions produites en découlent."
+  },
+  {
+    "conceptKey": "history.javascript.prototype",
+    "prompt": "À quoi correspondent les dix jours souvent cités dans l’histoire de JavaScript ?",
+    "choices": [
+      {
+        "id": "finished",
+        "text": "À la conception achevée de toutes les versions actuelles."
+      },
+      {
+        "id": "prototype",
+        "text": "À un premier prototype Mocha réalisé chez Netscape en mai 1995."
+      },
+      {
+        "id": "standard",
+        "text": "À toute la durée du travail de standardisation."
+      }
+    ],
+    "correctChoiceId": "prototype",
+    "explanation": "L’histoire documente un prototype de faisabilité. Le langage a ensuite évolué ; son développement et sa standardisation ne se réduisent pas à cette période."
+  }
+]

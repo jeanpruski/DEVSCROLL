@@ -10,6 +10,15 @@ test('accès privé, connexion, fil, favori, recherche, détail et déconnexion'
   await expect(page.getByRole('heading', { name: 'Une idée à la fois.' })).toBeVisible();
   const card = page.locator('.post-card').first();
   await expect(card).toBeVisible();
+  const visual = card.locator('.post-visual img');
+  await expect(visual).toHaveAttribute('src', /^\/post-art\//);
+  await expect(visual).toHaveAttribute('alt', /Logo|Sticker/);
+  await expect
+    .poll(() => visual.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0))
+    .toBe(true);
+  const artResponse = await page.request.get((await visual.getAttribute('src')) || '');
+  expect(artResponse.status()).toBe(200);
+  expect(artResponse.headers()['cache-control']).toContain('immutable');
   const title = await card.locator('h2').innerText();
   const save = card.getByRole('button', { name: 'Enregistrer dans les favoris' });
   if (await save.count()) await save.click();

@@ -18,6 +18,7 @@ import {
 import type { Block, PublicPost } from '@/lib/contracts';
 import { difficultyLabels, formatLabels, topicLabels } from '@/lib/contracts';
 import { mutation, request } from '@/lib/client';
+import { getPostVisual } from '@/lib/post-visual';
 
 function CodeBlock({ code, language }: { code: string; language: string }) {
   const [copied, setCopied] = useState(false);
@@ -208,6 +209,7 @@ export function PostCard({
         <button onClick={save}>Retirer des favoris</button>
       </article>
     );
+  const visual = getPostVisual(post);
   return (
     <article className={`post-card format-${post.format}`} ref={ref} id={`post-${post.id}`}>
       <div className="post-top">
@@ -257,6 +259,9 @@ export function PostCard({
           </div>
         )}
       </div>
+      <figure className={`post-visual post-visual-${visual.kind}`}>
+        <img src={visual.url} alt={visual.alt} width={360} height={128} loading="lazy" decoding="async" />
+      </figure>
       <h2>{detail || preview ? post.title : <Link href={`/posts/${post.slug}`}>{post.title}</Link>}</h2>
       <div className="post-body">
         {post.format === 'carousel' && !detail ? (

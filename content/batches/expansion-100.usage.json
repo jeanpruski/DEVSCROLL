@@ -1,0 +1,251 @@
+{
+  "batchId": "expansion-100-2026-10-25",
+  "measuredAt": "2026-10-25T10:21:33.568Z",
+  "addedPosts": 100,
+  "totalCorpusPosts": 130,
+  "addedQuestions": 100,
+  "postVisuals": 130,
+  "visualAssignments": {
+    "logos": 33,
+    "stickers": 97
+  },
+  "content": {
+    "jsonBytes": 230164,
+    "gzipBytes": 48736,
+    "brotliBytes": 40409
+  },
+  "questions": {
+    "jsonBytes": 45131,
+    "gzipBytes": 12885,
+    "brotliBytes": 11558
+  },
+  "totalCorpus": {
+    "jsonBytes": 362774,
+    "gzipBytes": 84024,
+    "brotliBytes": 65540
+  },
+  "images": {
+    "uniqueFiles": 24,
+    "uniqueFilesUsedByNewPosts": 23,
+    "bytes": 45472,
+    "gzipBytes": 22367,
+    "brotliBytes": 19416,
+    "files": [
+      {
+        "url": "/post-art/javascript-sticker-1a2e0af3d852.svg",
+        "kind": "sticker",
+        "bytes": 1321,
+        "gzipBytes": 650,
+        "brotliBytes": 555
+      },
+      {
+        "url": "/post-art/typescript-sticker-7232640da8b4.svg",
+        "kind": "sticker",
+        "bytes": 1243,
+        "gzipBytes": 619,
+        "brotliBytes": 522
+      },
+      {
+        "url": "/post-art/react-sticker-96797dcdb8b8.svg",
+        "kind": "sticker",
+        "bytes": 1345,
+        "gzipBytes": 649,
+        "brotliBytes": 554
+      },
+      {
+        "url": "/post-art/node-sticker-667c7596b3be.svg",
+        "kind": "sticker",
+        "bytes": 1181,
+        "gzipBytes": 592,
+        "brotliBytes": 504
+      },
+      {
+        "url": "/post-art/sql-sticker-a7f12eb89d59.svg",
+        "kind": "sticker",
+        "bytes": 1257,
+        "gzipBytes": 628,
+        "brotliBytes": 530
+      },
+      {
+        "url": "/post-art/http-sticker-18e9019e6051.svg",
+        "kind": "sticker",
+        "bytes": 1255,
+        "gzipBytes": 618,
+        "brotliBytes": 518
+      },
+      {
+        "url": "/post-art/linux-sticker-e497b260c59c.svg",
+        "kind": "sticker",
+        "bytes": 1179,
+        "gzipBytes": 592,
+        "brotliBytes": 502
+      },
+      {
+        "url": "/post-art/devops-sticker-e0352ed4ac07.svg",
+        "kind": "sticker",
+        "bytes": 1245,
+        "gzipBytes": 614,
+        "brotliBytes": 521
+      },
+      {
+        "url": "/post-art/cloud-sticker-57624abf0dde.svg",
+        "kind": "sticker",
+        "bytes": 1188,
+        "gzipBytes": 610,
+        "brotliBytes": 519
+      },
+      {
+        "url": "/post-art/integrations-sticker-f9c2a1c7aff8.svg",
+        "kind": "sticker",
+        "bytes": 1465,
+        "gzipBytes": 679,
+        "brotliBytes": 585
+      },
+      {
+        "url": "/post-art/ai-sticker-a5f3fbfaeb29.svg",
+        "kind": "sticker",
+        "bytes": 1698,
+        "gzipBytes": 736,
+        "brotliBytes": 649
+      },
+      {
+        "url": "/post-art/culture-sticker-a275aba85d25.svg",
+        "kind": "sticker",
+        "bytes": 1279,
+        "gzipBytes": 645,
+        "brotliBytes": 539
+      },
+      {
+        "url": "/post-art/security-sticker-d56004756a87.svg",
+        "kind": "sticker",
+        "bytes": 1342,
+        "gzipBytes": 694,
+        "brotliBytes": 603
+      },
+      {
+        "url": "/post-art/web-sticker-1d7df7239cc6.svg",
+        "kind": "sticker",
+        "bytes": 1253,
+        "gzipBytes": 622,
+        "brotliBytes": 522
+      },
+      {
+        "url": "/post-art/devops-logo-4b92156f56d0.svg",
+        "kind": "logo",
+        "bytes": 2424,
+        "gzipBytes": 936,
+        "brotliBytes": 820
+      },
+      {
+        "url": "/post-art/sql-logo-e437e227d534.svg",
+        "kind": "logo",
+        "bytes": 5859,
+        "gzipBytes": 2916,
+        "brotliBytes": 2577
+      },
+      {
+        "url": "/post-art/integrations-logo-e5408a5ac95a.svg",
+        "kind": "logo",
+        "bytes": 1323,
+        "gzipBytes": 717,
+        "brotliBytes": 638
+      },
+      {
+        "url": "/post-art/node-logo-2d09b4606296.svg",
+        "kind": "logo",
+        "bytes": 2262,
+        "gzipBytes": 1128,
+        "brotliBytes": 1010
+      },
+      {
+        "url": "/post-art/typescript-logo-3d05d881e6e7.svg",
+        "kind": "logo",
+        "bytes": 1948,
+        "gzipBytes": 1017,
+        "brotliBytes": 906
+      },
+      {
+        "url": "/post-art/react-logo-ed2176a85e49.svg",
+        "kind": "logo",
+        "bytes": 3580,
+        "gzipBytes": 1753,
+        "brotliBytes": 1476
+      },
+      {
+        "url": "/post-art/javascript-logo-0470b21be1c5.svg",
+        "kind": "logo",
+        "bytes": 1628,
+        "gzipBytes": 888,
+        "brotliBytes": 785
+      },
+      {
+        "url": "/post-art/linux-logo-5cec13c77144.svg",
+        "kind": "logo",
+        "bytes": 6117,
+        "gzipBytes": 2903,
+        "brotliBytes": 2585
+      },
+      {
+        "url": "/post-art/web-logo-08f94f629d1e.svg",
+        "kind": "logo",
+        "bytes": 986,
+        "gzipBytes": 579,
+        "brotliBytes": 498
+      },
+      {
+        "url": "/post-art/culture-logo-e7b60ffe9628.svg",
+        "kind": "logo",
+        "bytes": 1094,
+        "gzipBytes": 582,
+        "brotliBytes": 498
+      }
+    ]
+  },
+  "generation": {
+    "method": "Rédaction dans cette conversation et SVG locaux ; aucun fournisseur de génération appelé par l’application.",
+    "providerApiCalls": 0,
+    "providerInputTokens": 0,
+    "providerOutputTokens": 0,
+    "providerCostUsd": 0,
+    "imageGenerationCalls": 0,
+    "imageGenerationCostUsd": 0,
+    "conversationTokens": null,
+    "conversationCost": null,
+    "pricingEstimate": false
+  },
+  "database": {
+    "before": {
+      "databaseBytes": "12917783",
+      "publishedPosts": 30,
+      "versions": 35,
+      "questions": 30,
+      "storedContentBytes": "60271",
+      "contentTablesAndIndexesBytes": "1728512"
+    },
+    "after": {
+      "databaseBytes": "16071703",
+      "publishedPosts": 130,
+      "versions": 165,
+      "questions": 130,
+      "storedContentBytes": "293947",
+      "contentTablesAndIndexesBytes": "4882432"
+    },
+    "physicalDatabaseDeltaBytes": 3153920,
+    "contentTablesAndIndexesDeltaBytes": 3153920,
+    "storedContentDeltaBytes": 233676,
+    "note": "Variation observée, incluant index, audit et nouvelles versions des visuels. La réutilisation de pages libres peut modifier le delta physique."
+  },
+  "import": {
+    "inserted": 100,
+    "recovered": 0,
+    "visualVersions": 30,
+    "preservedDrafts": 0,
+    "addedQuestions": 100,
+    "durationMs": 1188
+  },
+  "limits": [
+    "Les tokens et le coût de la conversation ne sont pas exposés ; aucun montant n’est inventé.",
+    "Les tailles gzip/brotli sont des mesures de compression sur le corpus, pas une facture réseau ni des tokens.",
+    "Les images sont partagées et mises en cache : leur total unique n’est pas à multiplier par 100."
+  ]
+}

@@ -10,13 +10,13 @@ Les schémas de `lib/contracts.ts` valident les fichiers JSON. La suite `tests/c
 
 Les cinq extraits JavaScript présents dans les posts ont été exécutés tels quels sous Node.js **v22.19.0**, dans des processus courts distincts. Les sorties ont été vérifiées, sans accès réseau :
 
-| Extrait | Résultat observé |
-|---|---|
-| Promise.all et travail restant | `rejet → terminé` |
-| Script, microtâches et timer | `A`, `B`, `P`, `Q`, `T` |
-| Compteurs et closures | `1 2 1` |
-| EventEmitter | `avant`, `listener`, `après` |
-| Full jitter avec générateur déterministe | `250`, `1000`, `15000` |
+| Extrait                                  | Résultat observé             |
+| ---------------------------------------- | ---------------------------- |
+| Promise.all et travail restant           | `rejet → terminé`            |
+| Script, microtâches et timer             | `A`, `B`, `P`, `Q`, `T`      |
+| Compteurs et closures                    | `1 2 1`                      |
+| EventEmitter                             | `avant`, `listener`, `après` |
+| Full jitter avec générateur déterministe | `250`, `1000`, `15000`       |
 
 L’extrait `satisfies` a été contrôlé avec **TypeScript 5.9.3**, `tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext`, puis transpilé et exécuté sous Node. Résultat : `LOCALHOST 3000`. Il s’agit bien d’un contrôle de types, pas seulement d’une transpilation.
 
@@ -64,3 +64,17 @@ Les exemples JavaScript ont été exécutés sous Node, pas dans une matrice de 
 Le corpus ne contient aucun exemple exécutable laissé sans vérification. Tout nouveau code non testé doit rester en brouillon avec `code_unverified`. Les 60 entrées du backlog sont des propositions d’angles, sans revendication de vérification documentaire ou d’exécution.
 
 Les délais `reviewAfterDays` valent 30 jours pour l’IA, 60 pour les contrats Stripe, 90 pour les frameworks et outils de déploiement, et 180 à 365 pour les notions plus stables. Une date dépassée déclenche une revue éditoriale ; elle ne prouve pas qu’un post est faux. Une modification de sens doit créer une nouvelle version de question dans l’application.
+
+## Extension de 100 posts — 25 octobre 2026
+
+État actuel : **130 posts, 130 QCM et un visuel par post**. Les 30 posts initiaux ci-dessus sont conservés ; 100 notions supplémentaires disposent chacune de trois paragraphes originaux (107 à 128 mots hors résumé), d'une référence distincte, d'un contexte, d'une limite et d'un QCM. Les 60 sujets du backlog initial sont maintenant réalisés avec `status: published` et leur `postSlug` ; 40 autres angles complètent le lot.
+
+Les textes sources sont dans `batches/expansion-100.source.mjs`, le manifeste dans `batches/expansion-100.json` et le contrôle des **100 références récupérées avec succès** dans `batches/expansion-100.sources.json`. Les empreintes permettent d'identifier les documents effectivement consultés ; leur texte de travail reste sous `.local/source-reviews/`, hors Git. L'accessibilité d'une URL n'est pas une preuve factuelle : la revue confronte aussi le sens des notions aux références (notamment Array.fromAsync et la séquentialité, égalité des objets, échelle d'EPSILON, propriétés optionnelles, snapshots SQL, unicité/NULL et limites des métriques RAG).
+
+Les références Node sont celles de la branche 22, PostgreSQL celles de la version 16. Le contrôle direct GNU et une référence Stanford ont subi des erreurs de récupération pendant les premières passes : GNU a ensuite été récupéré, et la référence de métriques a été remplacée par la documentation officielle scikit-learn accessible. Aucun échec réseau n'est présenté comme une consultation réussie. Les statuts Bash ont en outre été exécutés dans des processus courts : `exit 0` → 0, `exit 7` → 7, `false | true` → 0, et la même pipeline avec `pipefail` → 1.
+
+Cette extension conceptuelle n'ajoute pas d'extrait de code exécutable non testé. Les extraits des 30 premiers posts restent vérifiés par les tests initiaux. Les QCM sont associés aux notions et leur correction est concise ; le détail se relit dans le post. Revue par l'agent auteur, sans relecture humaine indépendante.
+
+Les **24 SVG** (10 logos, 14 stickers) sont stockés localement dans `public/post-art/` avec empreinte dans leur nom. Logos : tracés Simple Icons CC0 ; stickers : compositions originales avec pictogrammes Lucide ISC. Origines, empreintes et tailles dans `art-manifest.json`, mentions dans `public/post-art/LICENSES.txt`. Les SVG ne contiennent aucun script ou lien externe actif. Les visuels sont partagés, sans appel de génération d'image et sans chargement depuis un CDN tiers à la lecture.
+
+Validation ajoutée : cent textes distincts substantiels, cent références distinctes, tous les visuels présents, absence de contenu SVG actif, refus de chemins arbitraires et compatibilité des anciennes versions sans champ de couverture. Les consommations mesurées et leurs limites sont détaillées dans `docs/CONTENT-CONSUMPTION.md` ; les tokens de la conversation restent inconnus.

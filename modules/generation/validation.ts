@@ -2,6 +2,7 @@ import { postSchema, type PostContent } from '../../lib/contracts';
 import { GenerationError } from './errors';
 import type { DraftRequest } from './provider';
 import type { SourceExcerpt } from './sources';
+import { getPostVisual } from '../../lib/post-visual';
 
 export function validateGeneratedDraft(
   output: unknown,
@@ -51,6 +52,7 @@ export function validateGeneratedDraft(
   return {
     ...post,
     status: 'draft',
+    visual: getPostVisual({ ...post, visual: undefined }),
     flags: [
       ...new Set([
         ...post.flags,

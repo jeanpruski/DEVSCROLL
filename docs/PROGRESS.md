@@ -15,6 +15,29 @@ Mis à jour le **25 octobre 2026**. Application locale fonctionnelle ; **la feui
 | 8 — Sémantique et personnalisation    | Évaluation préparée ; extension conditionnelle | 25 requêtes éditoriales, recherche V1 optimisée. Pas de requêtes d'usage réelles ni de bénéfice démontré pour des embeddings : moteur lexical conservé. |
 | 9 — Production régulière et ouverture | Non activé ; décisions futures                 | Production manuelle bornée disponible. Planification récurrente, inscription publique et nouveaux services payants non activés.                         |
 
+## Extension de contenu — 100 posts illustrés ajoutés
+
+Demande du 25 octobre 2026 : ajouter 100 posts, un logo ou un sticker par post et mesurer la consommation. **Livré : 130 posts publiés au total, 130 QCM et un visuel pour chaque post**, y compris les 30 premiers. Les nouveaux articles comportent chacun 107 à 128 mots hors résumé, trois blocs, une source distincte, contexte/limites et une question. Les 60 idées du backlog initial sont marquées réalisées ; 40 autres angles complètent le lot.
+
+Visuels : **24 SVG uniques locaux, dont 10 logos et 14 stickers**, partagés entre les posts ; 33 couvertures logo et 97 sticker sur le corpus. Noms avec empreinte, dimensions réservées, chargement paresseux, cache public `immutable` vérifié par HTTP au navigateur. Les anciennes versions et les nouveaux posts sans couverture explicite disposent d’un visuel de repli. Le générateur de brouillons affecte une couverture locale connue plutôt qu’un chemin inventé par un modèle. Origines et licences dans `content/art-manifest.json` et `public/post-art/LICENSES.txt`.
+
+Mesure réelle du premier import : **230 164 octets de JSON** pour les 100 posts (48 736 octets gzip, 40 409 Brotli), **45 131 octets de JSON** pour les 100 questions, **45 472 octets** pour les 24 SVG (22 367 octets gzip séparément), **3 153 920 octets** de croissance PostgreSQL observée, index et audit compris. La variation du contenu JSON stocké des versions est de 233 676 octets. L’import et ses mesures ont pris environ 1,19 seconde ; cela ne mesure pas la durée de rédaction.
+
+**Consommation de génération de l’application : zéro appel, zéro token API et zéro USD facturé par un fournisseur appelé par l’application.** La rédaction a eu lieu dans cette conversation et les visuels sont vectoriels ; les tokens et le coût de la conversation ne sont pas accessibles et restent explicitement inconnus. Aucun total de facture ou coût de génération par modèle n’est inventé. Le poids des données n’est pas converti en faux comptage de tokens. Rapport : [CONTENT-CONSUMPTION.md](CONTENT-CONSUMPTION.md), preuve détaillée dans `content/batches/expansion-100.usage.json`.
+
+Commandes et résultats réellement observés :
+
+- `node scripts/build-post-art.mjs` : 24 SVG, 45 472 octets, aucun téléchargement de logo en échec.
+- `node scripts/check-expansion-sources.mjs` : **100 références distinctes récupérées avec succès** lors de la dernière passe ; métadonnées et empreintes conservées. Des échecs transitoires GNU/Stanford ont été traités et documentés dans `content/REVIEW.md` ; un HTTP 200 seul n’est pas une validation factuelle.
+- `npm run content:build` : 130 posts, 130 questions, 100 ajouts éditoriaux ; aucun doublon de slug/notion.
+- `npm run backup -- .local/backups/devscroll-before-expansion100-20261025.dump` : sauvegarde avant import, 145 659 octets, hors Git.
+- `npm run content:import` : **100 posts et 100 questions ajoutés, 30 nouvelles versions de visuel**, réponses/favoris existants conservés. Seconde exécution : **0 ajout, 0 nouvelle version, 0 question ajoutée**. La preuve du premier import n’est pas écrasée par cette passe vide.
+- `npm test` : **82 tests réussis**, cinq tests HTTP ignorés sans serveur explicite. Nouveaux contrôles de contenu substantiel, unicité, SVG existants/sans contenu actif, chemins bornés et compatibilité des versions antérieures.
+- `npm run lint`, `npm run typecheck`, `npm run build` : **succès**.
+- `E2E_BASE_URL=http://localhost:3001 npm run test:e2e` : **5/5 réussis**, dont chargement réel du SVG, texte alternatif, cache immutable, parcours mobile 360 px sans débordement, carrousel/code, favoris et révisions. Capture mobile examinée.
+
+Limites : aucun benchmark d’API IA payante sans clé/modèle/budget ; aucune relecture humaine indépendante. Ces ajouts ne changent pas les conditions de mise en ligne et d’usage des lots 6 à 9.
+
 ## Lot 0 — Cadrage
 
 La feuille de route a été lue intégralement (28 sections), puis copiée sans modification dans `docs/ROADMAP.md`. Création de `docs/DECISIONS.md`, `docs/BACKLOG.md` et de ce journal. Le dossier initial contenait uniquement `DEVSCROLL_CODEX_ROADMAP.md`, sans code ni Git initialisé. Next a ensuite généré `AGENTS.md` ; ses consignes ont été lues avec les guides locaux correspondants.

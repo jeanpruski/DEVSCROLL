@@ -50,11 +50,13 @@ Les tests d'intégration construisent des schémas temporaires et les suppriment
 
 ## Contenu et architecture
 
-30 posts originaux,14 thèmes,7 formats dont5 carrousels ;30 questions et60 autres sujets. Sources et vérifications dans [content/REVIEW.md](content/REVIEW.md). L'ajout au seed est idempotent et refuse la production. La revue documentaire et les exemples exécutés ne remplacent pas une relecture humaine indépendante.
+130 posts originaux, 14 thèmes, 7 formats et 130 questions. Les 100 derniers posts réalisent les 60 sujets du backlog initial et ajoutent 40 angles. Sources et vérifications dans [content/REVIEW.md](content/REVIEW.md). L'ajout au seed est idempotent et refuse la production. La revue documentaire et les exemples exécutés ne remplacent pas une relecture humaine indépendante.
 
 Next.js App Router/React/TypeScript, Better Auth, PostgreSQL16 et SQL explicite (`pg`), Zod, worker Node séparé. Polices locales, aucune télémétrie tierce, aucun HTML/MDX exécutable en base. Favoris, expositions, préférences, réponses, états pédagogiques et versions sont distincts. Les solutions des questions ne sont envoyées qu'après réponse.
 
-Les carrousels sont des blocs éditoriaux lisibles ; les images HTTPS avec texte alternatif sont acceptées par l'éditeur. Le corpus initial utilise texte/code/comparaisons, sans génération d'images systématique.
+Les carrousels sont des blocs éditoriaux lisibles ; les images HTTPS avec texte alternatif sont acceptées par l'éditeur. Chaque post affiche un visuel SVG local : 10 logos et 14 stickers partagés, sans génération d’image payante. Mesures dans [docs/CONTENT-CONSUMPTION.md](docs/CONTENT-CONSUMPTION.md).
+
+Pour reconstruire le lot à partir des textes et des références contrôlées : `npm run content:build`. Pour l’importer sur la base locale existante avec de nouvelles versions de couverture : `npm run content:import`. La seconde exécution ne crée aucun doublon et conserve la première mesure de consommation. Pour recontrôler les sources sur le réseau : `npm run content:sources`.
 
 ## Exploiter et poursuivre
 

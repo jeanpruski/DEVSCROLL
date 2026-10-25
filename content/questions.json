@@ -598,5 +598,2005 @@
     ],
     "correctChoiceId": "prototype",
     "explanation": "L’histoire documente un prototype de faisabilité. Le langage a ensuite évolué ; son développement et sa standardisation ne se réduisent pas à cette période."
+  },
+  {
+    "conceptKey": "js.promise-all-settled.results",
+    "prompt": "Quel ordre suit le tableau renvoyé par Promise.allSettled ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "L’ordre des promesses fournies"
+      },
+      {
+        "id": "b",
+        "text": "L’ordre de leur fin d’exécution"
+      },
+      {
+        "id": "c",
+        "text": "Les réussites avant les échecs"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "allSettled conserve les réussites et les échecs, dans l’ordre des entrées."
+  },
+  {
+    "conceptKey": "js.async.concurrency-bound",
+    "prompt": "Un plafond de concurrence limite quoi ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Le nombre d’opérations actives à un instant"
+      },
+      {
+        "id": "b",
+        "text": "Le nombre total de lignes à traiter"
+      },
+      {
+        "id": "c",
+        "text": "Le nombre exact de requêtes par seconde"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Choisis quand démarrer le travail ; attendre ses promesses ne limite pas ses démarrages."
+  },
+  {
+    "conceptKey": "js.object.identity",
+    "prompt": "Deux objets créés séparément avec les mêmes propriétés sont-ils identiques pour Object.is ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, leurs références sont différentes"
+      },
+      {
+        "id": "b",
+        "text": "Oui, leurs champs sont comparés récursivement"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si leurs clés ont le même ordre"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Même contenu et même identité sont deux questions différentes."
+  },
+  {
+    "conceptKey": "js.array.sort-mutation",
+    "prompt": "Que renvoie sort après avoir réordonné un tableau ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La même référence de tableau"
+      },
+      {
+        "id": "b",
+        "text": "Un clone profond indépendant"
+      },
+      {
+        "id": "c",
+        "text": "Une liste des éléments déplacés"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "sort réordonne le tableau existant ; une copie ne clone pas ses objets."
+  },
+  {
+    "conceptKey": "js.number.precision",
+    "prompt": "Number.EPSILON garantit-il une bonne tolérance pour tout calcul ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la grandeur et la précision attendue comptent"
+      },
+      {
+        "id": "b",
+        "text": "Oui, quelle que soit la grandeur"
+      },
+      {
+        "id": "c",
+        "text": "Oui, après un affichage à deux décimales"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une tolérance se choisit selon l’échelle et le métier, pas seulement avec EPSILON."
+  },
+  {
+    "conceptKey": "ts.unknown.any",
+    "prompt": "Comment rendre exploitable une donnée unknown venant du réseau ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Valider puis réduire son type"
+      },
+      {
+        "id": "b",
+        "text": "La convertir en any pour prouver sa structure"
+      },
+      {
+        "id": "c",
+        "text": "Ajouter un cast qui vérifie automatiquement le JSON"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "unknown oblige à établir ce que tu peux utiliser ; un cast ne vérifie rien."
+  },
+  {
+    "conceptKey": "ts.union.exhaustiveness",
+    "prompt": "À quoi sert never dans la branche finale d’un switch exhaustif ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Détecter un membre d’union resté sans traitement"
+      },
+      {
+        "id": "b",
+        "text": "Valider automatiquement une entrée réseau"
+      },
+      {
+        "id": "c",
+        "text": "Remplacer toutes les exceptions à l’exécution"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "never peut transformer un cas oublié en erreur de compilation."
+  },
+  {
+    "conceptKey": "ts.optional.exactness",
+    "prompt": "Que permet exactOptionalPropertyTypes ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Distinguer plus strictement absence et affectation explicite de undefined"
+      },
+      {
+        "id": "b",
+        "text": "De rendre toutes les propriétés obligatoires"
+      },
+      {
+        "id": "c",
+        "text": "De convertir automatiquement undefined en null"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Absence, undefined et null doivent avoir un sens explicite dans une mise à jour."
+  },
+  {
+    "conceptKey": "react.keys.identity",
+    "prompt": "Quelle key convient à une liste réordonnable ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un identifiant stable de chaque entité"
+      },
+      {
+        "id": "b",
+        "text": "Sa nouvelle position à chaque rendu"
+      },
+      {
+        "id": "c",
+        "text": "Une valeur aléatoire recréée à chaque rendu"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une bonne key suit l’entité quand sa position change."
+  },
+  {
+    "conceptKey": "react.effect.cleanup",
+    "prompt": "Quand React nettoie-t-il un effet dont les dépendances changent ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Avant de relancer cet effet avec les nouvelles dépendances"
+      },
+      {
+        "id": "b",
+        "text": "Uniquement quand toute l’application ferme"
+      },
+      {
+        "id": "c",
+        "text": "Seulement lorsque le serveur répond en erreur"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un effet qui s’abonne doit rendre sa désinscription explicite."
+  },
+  {
+    "conceptKey": "react.controlled.input",
+    "prompt": "Quel attribut initialise un champ texte non contrôlé dans React ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "defaultValue"
+      },
+      {
+        "id": "b",
+        "text": "value avec aucune mise à jour"
+      },
+      {
+        "id": "c",
+        "text": "Un changement de key à chaque touche"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "value pilote la valeur courante ; defaultValue initialise un champ non contrôlé."
+  },
+  {
+    "conceptKey": "react.memo.measurement",
+    "prompt": "Que faut-il établir avant de généraliser la mémorisation ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Quel travail est coûteux dans une interaction mesurée"
+      },
+      {
+        "id": "b",
+        "text": "Que tous les composants ont une fonction longue"
+      },
+      {
+        "id": "c",
+        "text": "Que chaque valeur possède une référence unique globale"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Optimise un coût observé dans un scénario précis, puis mesure à nouveau."
+  },
+  {
+    "conceptKey": "node.stream.backpressure",
+    "prompt": "Pourquoi respecter la backpressure ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pour éviter d’accumuler sans borne des données en attente"
+      },
+      {
+        "id": "b",
+        "text": "Pour garantir que le réseau ne tombe jamais"
+      },
+      {
+        "id": "c",
+        "text": "Pour supprimer toute gestion des erreurs de stream"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La vitesse du consommateur doit pouvoir limiter celle du producteur."
+  },
+  {
+    "conceptKey": "node.process.sigterm",
+    "prompt": "Que doit prévoir un arrêt gracieux ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Une limite de temps pour terminer ou interrompre les opérations"
+      },
+      {
+        "id": "b",
+        "text": "Une attente infinie pour toutes les connexions"
+      },
+      {
+        "id": "c",
+        "text": "La validation de tous les jobs avant même leur exécution"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un arrêt propre associe signal, refus de nouveau travail et délai maximal."
+  },
+  {
+    "conceptKey": "node.fs.sync-cost",
+    "prompt": "Une API asynchrone garantit-elle que le calcul JavaScript suivant ne bloque pas ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, ce calcul peut encore monopoliser la boucle"
+      },
+      {
+        "id": "b",
+        "text": "Oui, tout le code suivant passe automatiquement dans un worker"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si la promesse est attendue avec await"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Asynchrone et rapide sont deux propriétés distinctes ; évite de bloquer les routes."
+  },
+  {
+    "conceptKey": "node.async-context",
+    "prompt": "AsyncLocalStorage propage-t-il automatiquement le contexte vers un autre processus ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, il faut le transmettre à cette frontière"
+      },
+      {
+        "id": "b",
+        "text": "Oui, par le simple nom de la variable"
+      },
+      {
+        "id": "c",
+        "text": "Oui, dès que deux processus utilisent Node.js"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un contexte local suit une chaîne asynchrone ; un autre service exige une propagation explicite."
+  },
+  {
+    "conceptKey": "sql.not-in.null",
+    "prompt": "WHERE conserve-t-il une ligne dont le prédicat est inconnu ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, il conserve les prédicats vrais"
+      },
+      {
+        "id": "b",
+        "text": "Oui, comme si le prédicat était vrai"
+      },
+      {
+        "id": "c",
+        "text": "Uniquement lorsque la colonne possède un index"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un NULL dans NOT IN peut transformer une exclusion attendue en résultat inconnu."
+  },
+  {
+    "conceptKey": "sql.join.left-filter",
+    "prompt": "Où placer le statut des commandes à associer pour conserver aussi les clients sans correspondance ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Dans la condition ON du LEFT JOIN"
+      },
+      {
+        "id": "b",
+        "text": "Toujours dans WHERE sans autre condition"
+      },
+      {
+        "id": "c",
+        "text": "Dans ORDER BY pour ne pas filtrer"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "ON choisit les correspondances ; WHERE filtre les lignes issues de la jointure."
+  },
+  {
+    "conceptKey": "sql.index.selectivity",
+    "prompt": "Un parcours séquentiel malgré un index signifie-t-il forcément une erreur ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, son coût estimé peut être meilleur"
+      },
+      {
+        "id": "b",
+        "text": "Oui, PostgreSQL n’utilise jamais automatiquement les index"
+      },
+      {
+        "id": "c",
+        "text": "Oui, toute lecture doit parcourir un index"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un index est une option du planificateur, pas une obligation d’exécution."
+  },
+  {
+    "conceptKey": "sql.pagination.keyset",
+    "prompt": "Pourquoi ajouter un identifiant au tri par date ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pour départager de façon stable les dates identiques"
+      },
+      {
+        "id": "b",
+        "text": "Pour figer toutes les écritures concurrentes"
+      },
+      {
+        "id": "c",
+        "text": "Pour éviter systématiquement toute lecture de table"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une pagination fiable commence par un ordre entièrement défini."
+  },
+  {
+    "conceptKey": "sql.transaction.isolation",
+    "prompt": "Deux SELECT successifs sous Read Committed peuvent-ils observer une validation concurrente intermédiaire ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Oui, leurs instantanés peuvent différer"
+      },
+      {
+        "id": "b",
+        "text": "Non, BEGIN fige forcément toute la transaction"
+      },
+      {
+        "id": "c",
+        "text": "Seulement si la table ne possède aucun index"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Sous Read Committed, l’instantané est pris par instruction, pas pour toute la transaction."
+  },
+  {
+    "conceptKey": "sql.lock.deadlock",
+    "prompt": "Que représente un deadlock entre deux transactions ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un cycle d’attentes sur des ressources déjà retenues"
+      },
+      {
+        "id": "b",
+        "text": "Une requête qui ne trouve aucune ligne"
+      },
+      {
+        "id": "c",
+        "text": "Une table qui ne possède plus de clé primaire"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un ordre de verrouillage cohérent réduit les deadlocks ; une reprise doit rester sûre."
+  },
+  {
+    "conceptKey": "http.cache.etag",
+    "prompt": "Que signifie une réponse 304 à une lecture conditionnelle adaptée ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Le client peut réutiliser sa représentation correspondante"
+      },
+      {
+        "id": "b",
+        "text": "Le serveur renvoie forcément une nouvelle copie complète"
+      },
+      {
+        "id": "c",
+        "text": "La ressource a été supprimée définitivement"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une revalidation peut économiser le corps transféré, sans supprimer la requête."
+  },
+  {
+    "conceptKey": "http.cache.private-no-store",
+    "prompt": "Quelle directive vise à empêcher le stockage d’une réponse ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "no-store"
+      },
+      {
+        "id": "b",
+        "text": "private uniquement"
+      },
+      {
+        "id": "c",
+        "text": "no-cache signifie toujours zéro copie stockée"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "private limite le partage du cache ; no-store demande de ne pas stocker."
+  },
+  {
+    "conceptKey": "http.status.202",
+    "prompt": "Une réponse 202 garantit-elle que le travail a réussi ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, le traitement reste à suivre"
+      },
+      {
+        "id": "b",
+        "text": "Oui, tous les effets ont été validés"
+      },
+      {
+        "id": "c",
+        "text": "Oui, mais seulement après cinq secondes"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "202 confirme une acceptation, pas la réussite du traitement différé."
+  },
+  {
+    "conceptKey": "http.timeout.unknown-result",
+    "prompt": "Après le timeout d’une écriture, quel état est prudent sans autre preuve ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Résultat inconnu à rapprocher"
+      },
+      {
+        "id": "b",
+        "text": "Écriture forcément annulée"
+      },
+      {
+        "id": "c",
+        "text": "Écriture forcément réussie"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un timeout décrit une absence de réponse à temps, pas une absence d’effet."
+  },
+  {
+    "conceptKey": "http.redirect.307-303",
+    "prompt": "Que demande 307 lors du suivi d’une redirection ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Conserver la méthode et le corps"
+      },
+      {
+        "id": "b",
+        "text": "Remplacer systématiquement POST par GET"
+      },
+      {
+        "id": "c",
+        "text": "Supprimer les contrôles d’autorisation"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Le code de redirection fait partie du contrat de méthode et de destination."
+  },
+  {
+    "conceptKey": "web.a11y.focus",
+    "prompt": "Que faut-il prévoir lorsqu’une fenêtre modale se ferme ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un retour du focus vers un élément pertinent"
+      },
+      {
+        "id": "b",
+        "text": "Un focus obligatoirement perdu sur le fond de page"
+      },
+      {
+        "id": "c",
+        "text": "Un déplacement aléatoire pour signaler la fermeture"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une transition d’interface doit préserver un chemin de focus compréhensible."
+  },
+  {
+    "conceptKey": "web.intersection.visibility",
+    "prompt": "Que démontre directement IntersectionObserver ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Une intersection géométrique avec une zone observée"
+      },
+      {
+        "id": "b",
+        "text": "La compréhension du texte par la personne"
+      },
+      {
+        "id": "c",
+        "text": "La maîtrise durable de la notion affichée"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une intersection mesure une exposition possible, jamais une compréhension."
+  },
+  {
+    "conceptKey": "web.performance.layout-shift",
+    "prompt": "Quelle information aide à réserver la place d’une image ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Ses dimensions intrinsèques ou son ratio"
+      },
+      {
+        "id": "b",
+        "text": "Uniquement loading=\"lazy\""
+      },
+      {
+        "id": "c",
+        "text": "Le nom du fichier sans dimensions"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un ratio connu évite d’attendre les pixels pour réserver leur place."
+  },
+  {
+    "conceptKey": "web.service-worker.private-cache",
+    "prompt": "La Cache API applique-t-elle automatiquement toute la politique du cache HTTP ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, le code doit définir son propre stockage et sa purge"
+      },
+      {
+        "id": "b",
+        "text": "Oui, aucune décision applicative n’est nécessaire"
+      },
+      {
+        "id": "c",
+        "text": "Oui, y compris la séparation de tous les comptes"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un cache applicatif privé exige une politique explicite de stockage et d’effacement."
+  },
+  {
+    "conceptKey": "linux.file.open-unlink",
+    "prompt": "Un fichier sans nom peut-il encore occuper de l’espace si un processus le garde ouvert ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Oui, jusqu’à la libération de ses références pertinentes"
+      },
+      {
+        "id": "b",
+        "text": "Non, unlink ferme tous les processus associés"
+      },
+      {
+        "id": "c",
+        "text": "Non, son contenu disparaît toujours immédiatement"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Supprimer le dernier nom ne ferme pas les descripteurs déjà ouverts."
+  },
+  {
+    "conceptKey": "linux.process.exit-status",
+    "prompt": "Que signifie conventionnellement un code de sortie zéro ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Une réussite de la commande"
+      },
+      {
+        "id": "b",
+        "text": "Une sortie standard forcément vide"
+      },
+      {
+        "id": "c",
+        "text": "Un processus encore en cours d’exécution"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Le code de sortie exprime un résultat ; le texte affiché ne le remplace pas."
+  },
+  {
+    "conceptKey": "linux.pipe.exit-status",
+    "prompt": "Sans pipefail, quel statut Bash utilise-t-il généralement pour une pipeline ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Celui de sa dernière commande"
+      },
+      {
+        "id": "b",
+        "text": "Toujours celui de sa première commande"
+      },
+      {
+        "id": "c",
+        "text": "Toujours zéro si du texte a été produit"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une pipeline réussie ne prouve pas que chacune de ses commandes a réussi."
+  },
+  {
+    "conceptKey": "linux.memory.page-cache",
+    "prompt": "Pourquoi MemFree seul est-il un diagnostic incomplet ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Des caches récupérables et des limites de périmètre comptent aussi"
+      },
+      {
+        "id": "b",
+        "text": "Parce que Linux n’utilise jamais de cache mémoire"
+      },
+      {
+        "id": "c",
+        "text": "Parce que toute mémoire utilisée est définitivement indisponible"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La mémoire entièrement libre et la marge réellement disponible ne sont pas le même compteur."
+  },
+  {
+    "conceptKey": "git.restore.staging",
+    "prompt": "Après une modification supplémentaire suivant git add, que contient l’index ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La version préparée avant cette nouvelle modification"
+      },
+      {
+        "id": "b",
+        "text": "Automatiquement toute nouvelle frappe dans le fichier"
+      },
+      {
+        "id": "c",
+        "text": "Uniquement les noms des fichiers, jamais leur contenu"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Le commit prend l’index, pas automatiquement la dernière version de tous les fichiers."
+  },
+  {
+    "conceptKey": "git.bisect.search",
+    "prompt": "Quelle condition rend une recherche git bisect utile ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un critère de réussite reproductible sur les révisions testées"
+      },
+      {
+        "id": "b",
+        "text": "Un historique sans aucun commit de fusion"
+      },
+      {
+        "id": "c",
+        "text": "Un test qui réussit aléatoirement une fois sur deux"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "bisect est efficace lorsque bon et mauvais reposent sur un test fiable."
+  },
+  {
+    "conceptKey": "docker.layers.cache",
+    "prompt": "Pourquoi copier le lockfile avant tout le code applicatif ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pour réutiliser l’installation lorsque seules les sources changent"
+      },
+      {
+        "id": "b",
+        "text": "Pour incorporer automatiquement les secrets au cache"
+      },
+      {
+        "id": "c",
+        "text": "Pour empêcher toute mise à jour de dépendance future"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Place les étapes stables et coûteuses avant les fichiers qui changent souvent."
+  },
+  {
+    "conceptKey": "docker.pid1.signals",
+    "prompt": "Pourquoi la forme de lancement d’un conteneur compte-t-elle ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Elle influence le processus principal et la transmission des signaux"
+      },
+      {
+        "id": "b",
+        "text": "Elle garantit automatiquement un rollback de toutes les écritures"
+      },
+      {
+        "id": "c",
+        "text": "Elle remplace le besoin d’un gestionnaire d’arrêt applicatif"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Teste la réception des signaux par le processus réellement lancé dans le conteneur."
+  },
+  {
+    "conceptKey": "ci.permissions.least-privilege",
+    "prompt": "Quel droit donner par défaut à un job qui ne fait que lire et tester ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Le minimum nécessaire, sans écriture superflue"
+      },
+      {
+        "id": "b",
+        "text": "Tous les droits disponibles pour éviter les erreurs"
+      },
+      {
+        "id": "c",
+        "text": "Un jeton administrateur partagé entre tous les workflows"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Les permissions d’un job doivent correspondre à son action réelle, pas à tous les besoins du dépôt."
+  },
+  {
+    "conceptKey": "ops.logs.correlation",
+    "prompt": "Un traceId reçu d’un client accorde-t-il un droit d’accès ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la corrélation ne remplace pas l’autorisation"
+      },
+      {
+        "id": "b",
+        "text": "Oui, s’il a la bonne longueur"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si le client utilise le même outil de logs"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La corrélation traverse les services seulement si le contexte traverse leurs frontières."
+  },
+  {
+    "conceptKey": "ops.backup.restore-proof",
+    "prompt": "Quel exercice vérifie réellement l’utilité d’un dump ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Le restaurer dans un environnement distinct puis contrôler son usage"
+      },
+      {
+        "id": "b",
+        "text": "Vérifier uniquement que son nom finit par .dump"
+      },
+      {
+        "id": "c",
+        "text": "Compter les messages de succès dans le script de copie"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une sauvegarde devient crédible lorsqu’une restauration distincte a été vérifiée."
+  },
+  {
+    "conceptKey": "cloud.object-storage.consistency",
+    "prompt": "Une cohérence forte de S3 rend-elle atomique une écriture S3 plus une écriture SQL ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, cette coordination doit être conçue séparément"
+      },
+      {
+        "id": "b",
+        "text": "Oui, si les deux écritures sont dans la même fonction"
+      },
+      {
+        "id": "c",
+        "text": "Oui, dès que le fichier est petit"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La cohérence du stockage ne supprime pas les caches ni les transactions multi-systèmes à concevoir."
+  },
+  {
+    "conceptKey": "cloud.serverless.cold-start",
+    "prompt": "Pourquoi distinguer invocations froides et chaudes ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Elles peuvent inclure des étapes de préparation différentes"
+      },
+      {
+        "id": "b",
+        "text": "Elles garantissent des résultats métier différents"
+      },
+      {
+        "id": "c",
+        "text": "Une invocation chaude ne peut jamais subir de latence réseau"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Sépare le coût d’initialisation du coût d’une invocation déjà prête."
+  },
+  {
+    "conceptKey": "cloud.availability.zones",
+    "prompt": "Quel risque demeure avec deux instances dans la même zone ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Une panne de cette zone peut toucher les deux"
+      },
+      {
+        "id": "b",
+        "text": "Toute panne de processus est forcément définitive"
+      },
+      {
+        "id": "c",
+        "text": "La répartition sur plusieurs zones devient automatique"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Deux machines ne constituent pas deux domaines de panne si leur dépendance commune tombe."
+  },
+  {
+    "conceptKey": "cloud.cost.egress",
+    "prompt": "Que faut-il ajouter au volume stocké dans une estimation de coût ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Les opérations et transferts facturables du parcours"
+      },
+      {
+        "id": "b",
+        "text": "Uniquement le nombre de dossiers affichés"
+      },
+      {
+        "id": "c",
+        "text": "Seulement la longueur des noms de fichiers"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Le coût d’un stockage dépend aussi du parcours de ses objets."
+  },
+  {
+    "conceptKey": "hubspot.pagination.after",
+    "prompt": "Comment obtenir la suite d’une liste paginée de contacts ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Utiliser le curseur renvoyé selon le contrat de l’endpoint"
+      },
+      {
+        "id": "b",
+        "text": "Incrémenter arbitrairement le dernier identifiant de contact"
+      },
+      {
+        "id": "c",
+        "text": "Répéter indéfiniment la première requête sans paramètre"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une synchronisation parcourt le contrat de pagination, pas seulement sa première réponse."
+  },
+  {
+    "conceptKey": "hubspot.rate-limit.contract",
+    "prompt": "Plusieurs workers partagent le même quota : quelle coordination est utile ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un contrôle commun du rythme et des reprises"
+      },
+      {
+        "id": "b",
+        "text": "Une pause locale dans un worker choisie au hasard"
+      },
+      {
+        "id": "c",
+        "text": "Une augmentation automatique de tous les appels concurrents"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Avant de ralentir, identifie quelle limite et quel périmètre sont réellement touchés."
+  },
+  {
+    "conceptKey": "integration.sync.tombstone",
+    "prompt": "L’absence d’un objet dans une réponse filtrée prouve-t-elle sa suppression ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, filtre et autorisation peuvent aussi expliquer cette absence"
+      },
+      {
+        "id": "b",
+        "text": "Oui, dès la première page"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si l’objet était visible la veille"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une synchronisation complète a aussi un contrat pour les disparitions."
+  },
+  {
+    "conceptKey": "integration.sync.watermark",
+    "prompt": "Quand faut-il avancer un watermark de synchronisation ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Après la réussite durable du lot concerné"
+      },
+      {
+        "id": "b",
+        "text": "Avant toute lecture pour éviter les doublons"
+      },
+      {
+        "id": "c",
+        "text": "Dès qu’une seule ligne du lot a été reçue"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Avance le point de reprise après la réussite durable du lot, avec une politique pour les bornes."
+  },
+  {
+    "conceptKey": "integration.oauth.refresh-race",
+    "prompt": "Pourquoi sérialiser le renouvellement pour une même session ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pour éviter une course sur un refresh token soumis à rotation"
+      },
+      {
+        "id": "b",
+        "text": "Pour rendre le jeton public sans risque"
+      },
+      {
+        "id": "c",
+        "text": "Pour supprimer définitivement toute expiration"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un renouvellement de jeton partagé doit être coordonné, pas lancé indépendamment partout."
+  },
+  {
+    "conceptKey": "security.csrf.origin",
+    "prompt": "Pourquoi vérifier davantage que le cookie sur une mutation ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Le navigateur peut envoyer le cookie sans intention légitime de l’utilisateur"
+      },
+      {
+        "id": "b",
+        "text": "Un cookie authentifié prouve toujours l’intention métier"
+      },
+      {
+        "id": "c",
+        "text": "Le chiffrement TLS remplace toutes les protections CSRF"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une session authentifiée ne prouve pas l’intention derrière une mutation."
+  },
+  {
+    "conceptKey": "security.ssrf.redirect",
+    "prompt": "Que faire lors d’une redirection d’un récupérateur côté serveur ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Revalider la nouvelle destination avant de la contacter"
+      },
+      {
+        "id": "b",
+        "text": "Faire confiance au premier contrôle d’hôte pour toute la chaîne"
+      },
+      {
+        "id": "c",
+        "text": "Désactiver les délais pour garantir la récupération"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "L’URL finalement contactée doit être autorisée, pas seulement celle saisie au départ."
+  },
+  {
+    "conceptKey": "security.password.hash",
+    "prompt": "Pourquoi un hash rapide générique est-il insuffisant pour les mots de passe ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Il facilite les essais massifs lorsqu’une base est compromise"
+      },
+      {
+        "id": "b",
+        "text": "Il empêche toute comparaison future"
+      },
+      {
+        "id": "c",
+        "text": "Il rend les mots de passe plus longs à saisir"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Stocke une vérification de mot de passe avec un mécanisme adapté, pas une valeur à déchiffrer."
+  },
+  {
+    "conceptKey": "security.sql.parameters",
+    "prompt": "Un paramètre de valeur remplace-t-il directement n’importe quel nom de colonne ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la structure demande un traitement distinct"
+      },
+      {
+        "id": "b",
+        "text": "Oui, sans autre règle"
+      },
+      {
+        "id": "c",
+        "text": "Oui, mais seulement si la colonne contient du texte"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Paramètre les valeurs ; borne séparément les choix qui modifient la structure SQL."
+  },
+  {
+    "conceptKey": "ai.evaluation.dataset",
+    "prompt": "Que démontre un bon résultat sur un seul exemple choisi ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un succès local, sans garantie sur les autres cas"
+      },
+      {
+        "id": "b",
+        "text": "Une fiabilité universelle"
+      },
+      {
+        "id": "c",
+        "text": "La supériorité de tous les réglages du système"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Évalue une distribution de cas et plusieurs critères, pas une réponse spectaculaire."
+  },
+  {
+    "conceptKey": "ai.structured-output.truth",
+    "prompt": "Que prouve directement une validation JSON Schema réussie ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La conformité aux contraintes formelles du schéma"
+      },
+      {
+        "id": "b",
+        "text": "La vérité de tous les champs textuels"
+      },
+      {
+        "id": "c",
+        "text": "L’actualité de toutes les URL mentionnées"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La validation structurelle sécurise un format ; elle ne certifie pas une affirmation."
+  },
+  {
+    "conceptKey": "ai.retrieval.permissions",
+    "prompt": "La similarité sémantique suffit-elle à autoriser la lecture d’un document ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, les droits doivent être appliqués indépendamment"
+      },
+      {
+        "id": "b",
+        "text": "Oui, si le score dépasse un seuil"
+      },
+      {
+        "id": "c",
+        "text": "Oui, pour les documents dont le titre est connu"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La pertinence ne crée aucun droit ; l’accès fait partie de la requête de recherche."
+  },
+  {
+    "conceptKey": "history.web.hyperlinks",
+    "prompt": "Quelle idée centrale illustre l’hypertexte du Web ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Relier des informations que l’on peut parcourir"
+      },
+      {
+        "id": "b",
+        "text": "Exiger un serveur unique pour tous les documents"
+      },
+      {
+        "id": "c",
+        "text": "Interdire les références entre auteurs différents"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un document devient plus utile lorsqu’il relie la bonne information à son contexte."
+  },
+  {
+    "conceptKey": "history.unix.pipes",
+    "prompt": "Qu’est-ce qui rend fiable la composition de plusieurs outils ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Des contrats explicites pour les flux et les erreurs"
+      },
+      {
+        "id": "b",
+        "text": "Le fait que tous écrivent des phrases libres"
+      },
+      {
+        "id": "c",
+        "text": "L’absence de tout code de sortie non nul"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La composition fonctionne quand format, flux et statut de chaque outil sont définis."
+  },
+  {
+    "conceptKey": "js.structuredclone.contract",
+    "prompt": "structuredClone copie-t-il toute valeur JavaScript sans restriction ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, seules les valeurs compatibles avec son algorithme"
+      },
+      {
+        "id": "b",
+        "text": "Oui, y compris toutes les fonctions"
+      },
+      {
+        "id": "c",
+        "text": "Oui, et il exécute chaque fonction pour la copier"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Cloner, partager et transférer décrivent trois contrats différents."
+  },
+  {
+    "conceptKey": "js.nullish-vs-or",
+    "prompt": "Quel opérateur préserve zéro tout en remplaçant null ou undefined ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Nullish coalescing, ??"
+      },
+      {
+        "id": "b",
+        "text": "OU logique, ||, dans tous les cas"
+      },
+      {
+        "id": "c",
+        "text": "Une conversion systématique en booléen"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une valeur falsy n’est pas forcément une valeur absente."
+  },
+  {
+    "conceptKey": "js.optional-chain.validation",
+    "prompt": "Que ne démontre pas l’accès optionnel ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La validité métier des champs présents"
+      },
+      {
+        "id": "b",
+        "text": "L’absence possible d’un objet intermédiaire"
+      },
+      {
+        "id": "c",
+        "text": "La possibilité d’obtenir undefined"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "L’accès optionnel traite certaines absences ; il ne rend pas une donnée fiable."
+  },
+  {
+    "conceptKey": "js.map.object-keys",
+    "prompt": "Deux objets JSON distincts mais identiques en contenu sont-ils forcément la même clé de Map ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, leur identité diffère"
+      },
+      {
+        "id": "b",
+        "text": "Oui, Map compare récursivement tous leurs champs"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si leurs noms de propriétés sont triés"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une clé objet de Map suit l’identité locale, pas une égalité profonde."
+  },
+  {
+    "conceptKey": "js.set.business-dedup",
+    "prompt": "Pourquoi un Set peut-il conserver deux objets représentant le même contact ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Ils peuvent avoir deux références distinctes"
+      },
+      {
+        "id": "b",
+        "text": "Set interdit les identifiants de contact"
+      },
+      {
+        "id": "c",
+        "text": "Set fusionne seulement les objets provenant du réseau"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Dédupliquer une entité commence par définir sa clé et sa règle de conflit."
+  },
+  {
+    "conceptKey": "js.flatmap.one-level",
+    "prompt": "Quelle profondeur flatMap aplatit-il directement ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un niveau"
+      },
+      {
+        "id": "b",
+        "text": "Tous les niveaux récursivement"
+      },
+      {
+        "id": "c",
+        "text": "Aucun niveau, il renvoie uniquement des promesses"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "flatMap aplatit un niveau après la transformation, pas une profondeur arbitraire."
+  },
+  {
+    "conceptKey": "web.urlsearchparams.encoding",
+    "prompt": "Que résout principalement URLSearchParams ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La construction et l’encodage des paramètres de requête"
+      },
+      {
+        "id": "b",
+        "text": "Les permissions du compte destinataire"
+      },
+      {
+        "id": "c",
+        "text": "La validation de toute donnée métier transmise"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Construis les paramètres comme des valeurs ; l’encodage n’est pas une autorisation."
+  },
+  {
+    "conceptKey": "web.abortsignal.any",
+    "prompt": "Un signal composé peut-il annuler un effet distant déjà confirmé ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, ce mécanisme ne constitue pas un rollback"
+      },
+      {
+        "id": "b",
+        "text": "Oui, pour toute API HTTP"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si deux signaux sont fournis"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Composer les signaux unifie la demande d’annulation, pas le rollback des effets."
+  },
+  {
+    "conceptKey": "ts.readonly.runtime",
+    "prompt": "Que fait readonly à lui seul dans un type TypeScript ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Il limite certaines affectations vérifiées par le compilateur"
+      },
+      {
+        "id": "b",
+        "text": "Il gèle profondément tout objet à l’exécution"
+      },
+      {
+        "id": "c",
+        "text": "Il copie l’objet à chaque lecture"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "readonly contraint des usages typés ; il ne réalise pas un gel profond à l’exécution."
+  },
+  {
+    "conceptKey": "ts.discriminated-union.states",
+    "prompt": "Quel modèle réduit les combinaisons de statuts impossibles ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Une union discriminée avec les données propres à chaque variante"
+      },
+      {
+        "id": "b",
+        "text": "Un booléen supplémentaire pour chaque nouveau cas"
+      },
+      {
+        "id": "c",
+        "text": "Toutes les données optionnelles sans statut commun"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Modélise les variantes valides au lieu de combiner des drapeaux incompatibles."
+  },
+  {
+    "conceptKey": "ts.awaited.type",
+    "prompt": "L’utilitaire Awaited attend-il une promesse à l’exécution ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, il décrit un type pour le compilateur"
+      },
+      {
+        "id": "b",
+        "text": "Oui, il remplace toujours await dans le programme"
+      },
+      {
+        "id": "c",
+        "text": "Oui, et il intercepte automatiquement les rejets"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un calcul de type ne réalise ni l’appel, ni son attente, ni sa validation."
+  },
+  {
+    "conceptKey": "ts.import-type.erasure",
+    "prompt": "Peut-on appeler à l’exécution une valeur fournie uniquement par import type ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, cet import ne fournit pas de valeur runtime"
+      },
+      {
+        "id": "b",
+        "text": "Oui, si son nom commence par une majuscule"
+      },
+      {
+        "id": "c",
+        "text": "Oui, TypeScript la télécharge au premier appel"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un import de type exprime une dépendance de compilation, pas une valeur runtime."
+  },
+  {
+    "conceptKey": "react.state.updater-queue",
+    "prompt": "Quand une fonction de mise à jour d’état est-elle particulièrement utile ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Lorsque la prochaine valeur dépend de la précédente"
+      },
+      {
+        "id": "b",
+        "text": "Pour exécuter une requête réseau dans le calcul de l’état"
+      },
+      {
+        "id": "c",
+        "text": "Pour modifier directement une prop reçue"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Pour composer des mises à jour dépendantes, exprime une transformation de l’état précédent."
+  },
+  {
+    "conceptKey": "react.ref.no-render",
+    "prompt": "Modifier ref.current provoque-t-il automatiquement un rendu React ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non"
+      },
+      {
+        "id": "b",
+        "text": "Oui, toujours immédiatement"
+      },
+      {
+        "id": "c",
+        "text": "Oui, uniquement lorsque la valeur est un objet"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une ref mémorise une valeur ; sa mutation ne demande pas de rendu."
+  },
+  {
+    "conceptKey": "react.context.value",
+    "prompt": "Une mémorisation du composant suffit-elle à ignorer toutes les mises à jour de son contexte ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la lecture du contexte suit ses propres mises à jour"
+      },
+      {
+        "id": "b",
+        "text": "Oui, le contexte cesse alors de fonctionner"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si le provider est au niveau racine"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une nouvelle valeur de contexte peut concerner tous les consommateurs qui la lisent."
+  },
+  {
+    "conceptKey": "react.useid.accessibility",
+    "prompt": "Quel usage convient à useId ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Relier un champ à son label ou sa description"
+      },
+      {
+        "id": "b",
+        "text": "Remplacer l’identifiant métier de chaque ligne reçue"
+      },
+      {
+        "id": "c",
+        "text": "Générer un jeton d’authentification imprévisible"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un identifiant d’accessibilité n’est pas une clé métier ou une key de liste."
+  },
+  {
+    "conceptKey": "react.reducer.transitions",
+    "prompt": "Quel rôle convient au reducer ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Calculer le prochain état depuis une action et l’état courant"
+      },
+      {
+        "id": "b",
+        "text": "Publier directement un message réseau à chaque évaluation"
+      },
+      {
+        "id": "c",
+        "text": "Modifier silencieusement la base de données pendant le rendu"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Centralise les transitions pures ; garde leurs effets externes dans un autre circuit."
+  },
+  {
+    "conceptKey": "node.buffer.utf8-length",
+    "prompt": "Quel compteur convient pour la taille UTF-8 d’un payload texte dans Node ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Une mesure d’octets comme Buffer.byteLength avec cet encodage"
+      },
+      {
+        "id": "b",
+        "text": "Toujours la longueur JavaScript de la chaîne"
+      },
+      {
+        "id": "c",
+        "text": "Toujours le nombre de mots séparés par des espaces"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Pour une limite réseau en octets, mesure l’encodage réellement envoyé."
+  },
+  {
+    "conceptKey": "node.esm.resolution",
+    "prompt": "Un alias défini uniquement pour le compilateur TypeScript est-il forcément compris par Node ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, le runtime ou le build doit aussi le prendre en charge"
+      },
+      {
+        "id": "b",
+        "text": "Oui, tout fichier tsconfig est chargé automatiquement par Node"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si le chemin commence par @"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un code compilé et un module résolu à l’exécution sont deux étapes distinctes."
+  },
+  {
+    "conceptKey": "node.timer.unref",
+    "prompt": "Que fait unref sur un timer Node ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Il permet au processus de terminer sans attendre uniquement ce timer"
+      },
+      {
+        "id": "b",
+        "text": "Il exécute immédiatement le callback"
+      },
+      {
+        "id": "c",
+        "text": "Il garantit la suppression du timer avant tout appel"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "unref change le maintien en vie du processus ; il ne supprime pas le timer."
+  },
+  {
+    "conceptKey": "sql.unique.null-policy",
+    "prompt": "Une contrainte unique rend-elle automatiquement une colonne obligatoire ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la présence relève notamment de NOT NULL"
+      },
+      {
+        "id": "b",
+        "text": "Oui, toujours"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si la colonne contient du texte"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Unicité et présence sont deux contraintes distinctes, avec une politique explicite pour NULL."
+  },
+  {
+    "conceptKey": "sql.savepoint.boundary",
+    "prompt": "Un savepoint valide-t-il définitivement les étapes précédentes ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la transaction englobante reste déterminante"
+      },
+      {
+        "id": "b",
+        "text": "Oui, comme un commit indépendant"
+      },
+      {
+        "id": "c",
+        "text": "Oui, dès qu’il reçoit un nom"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un savepoint est une frontière de retour interne, pas un commit autonome."
+  },
+  {
+    "conceptKey": "sql.upsert.conflict",
+    "prompt": "Qu’est-ce qui définit le conflit traité par un upsert ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La contrainte ou l’index d’unicité concerné"
+      },
+      {
+        "id": "b",
+        "text": "Le nom de la fonction côté navigateur"
+      },
+      {
+        "id": "c",
+        "text": "La proximité des valeurs textuelles"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "L’upsert coordonne un conflit défini ; il ne choisit pas la bonne fusion métier."
+  },
+  {
+    "conceptKey": "sql.distinct-on.order",
+    "prompt": "Pourquoi ordonner les lignes avec une sélection DISTINCT ON ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pour rendre prévisible la ligne retenue dans chaque groupe"
+      },
+      {
+        "id": "b",
+        "text": "Pour transformer automatiquement toutes les dates en identifiants"
+      },
+      {
+        "id": "c",
+        "text": "Pour rendre la requête portable vers tous les moteurs SQL"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Choisir une ligne par groupe exige de définir laquelle, pas seulement combien."
+  },
+  {
+    "conceptKey": "sql.skip-locked.queue",
+    "prompt": "Quel cas convient à SKIP LOCKED ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Prendre un autre job disponible sans attendre un job déjà verrouillé"
+      },
+      {
+        "id": "b",
+        "text": "Calculer un total exhaustif en ignorant volontairement des lignes"
+      },
+      {
+        "id": "c",
+        "text": "Garantir à lui seul une facturation externe exactement une fois"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Ignorer une ligne verrouillée convient à une prise de travail, pas à une lecture exhaustive."
+  },
+  {
+    "conceptKey": "http.204.no-content",
+    "prompt": "Que doit éviter un client devant une réponse 204 ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Exiger systématiquement un corps JSON"
+      },
+      {
+        "id": "b",
+        "text": "Vérifier le statut HTTP"
+      },
+      {
+        "id": "c",
+        "text": "Appliquer les règles d’autorisation du parcours"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une réussite HTTP peut ne contenir aucun document à décoder."
+  },
+  {
+    "conceptKey": "http.401-vs-403",
+    "prompt": "Une nouvelle connexion résout-elle forcément un refus pour manque de rôle ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, l’authentification et l’autorisation sont distinctes"
+      },
+      {
+        "id": "b",
+        "text": "Oui, tout utilisateur connecté est administrateur"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si le navigateur efface son cache"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Se réauthentifier ne crée pas le rôle ou le droit qui manque."
+  },
+  {
+    "conceptKey": "http.vary.cache-key",
+    "prompt": "Quel rôle joue Vary ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Indiquer des en-têtes qui influencent la variante de réponse"
+      },
+      {
+        "id": "b",
+        "text": "Accorder des droits de lecture supplémentaires"
+      },
+      {
+        "id": "c",
+        "text": "Interdire automatiquement tout cache privé"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "La clé d’un cache doit suivre les dimensions qui changent réellement la représentation."
+  },
+  {
+    "conceptKey": "css.flex.min-width",
+    "prompt": "Pourquoi min-width: 0 peut-il aider dans un layout flex ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Il autorise un enfant à rétrécir sous certaines tailles minimales automatiques"
+      },
+      {
+        "id": "b",
+        "text": "Il réduit automatiquement la police de tous les descendants"
+      },
+      {
+        "id": "c",
+        "text": "Il transforme tout texte en image responsive"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Autoriser un conteneur à rétrécir et rendre son contenu lisible sont deux décisions complémentaires."
+  },
+  {
+    "conceptKey": "css.object-fit.cover-contain",
+    "prompt": "Quel réglage privilégier pour conserver tout un logo dans sa boîte ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "contain"
+      },
+      {
+        "id": "b",
+        "text": "cover dans tous les cas"
+      },
+      {
+        "id": "c",
+        "text": "Un découpage manuel sans texte alternatif"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "cover remplit avec un recadrage possible ; contain préserve le contenu entier."
+  },
+  {
+    "conceptKey": "a11y.button-vs-link",
+    "prompt": "Quel élément convient normalement à une action sans navigation ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Un bouton natif adapté"
+      },
+      {
+        "id": "b",
+        "text": "Un lien sans destination uniquement pour son style"
+      },
+      {
+        "id": "c",
+        "text": "Une zone générique sans comportement clavier"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Commence par le rôle du contrôle, puis donne-lui son apparence."
+  },
+  {
+    "conceptKey": "a11y.live-feedback",
+    "prompt": "À quoi sert une région aria-live adaptée ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Annoncer un changement dynamique aux technologies d’assistance"
+      },
+      {
+        "id": "b",
+        "text": "Chiffrer une solution avant la réponse"
+      },
+      {
+        "id": "c",
+        "text": "Déplacer automatiquement tous les utilisateurs en haut de page"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Annonce la correction après sa révélation, sans perturber inutilement le parcours."
+  },
+  {
+    "conceptKey": "security.constant-time-compare",
+    "prompt": "timingSafeEqual garantit-il à lui seul la sûreté temporelle de tout le traitement ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, le code autour peut encore introduire des différences"
+      },
+      {
+        "id": "b",
+        "text": "Oui, même si la signature n’est jamais calculée"
+      },
+      {
+        "id": "c",
+        "text": "Oui, pour tous les types et toutes les tailles sans contrainte"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un outil de comparaison sensible est une brique, pas une preuve sur tout le protocole."
+  },
+  {
+    "conceptKey": "security.logging.minimization",
+    "prompt": "Que privilégier dans un log de diagnostic ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Des identifiants et codes utiles sans secrets superflus"
+      },
+      {
+        "id": "b",
+        "text": "Tous les jetons pour reproduire exactement la session"
+      },
+      {
+        "id": "c",
+        "text": "Le mot de passe en clair avec une rétention plus courte"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Le meilleur secret masqué est souvent celui qui n’a jamais été journalisé."
+  },
+  {
+    "conceptKey": "docker.build-context.ignore",
+    "prompt": "Quel rôle joue .dockerignore ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Exclure des fichiers du contexte de build selon ses règles"
+      },
+      {
+        "id": "b",
+        "text": "Chiffrer automatiquement tous les fichiers copiés"
+      },
+      {
+        "id": "c",
+        "text": "Rendre publics les secrets au moment de COPY"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Un contexte de build doit contenir les sources nécessaires, pas tout le dossier de travail."
+  },
+  {
+    "conceptKey": "git.stash.local-work",
+    "prompt": "Un stash est-il automatiquement envoyé au dépôt distant ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non"
+      },
+      {
+        "id": "b",
+        "text": "Oui, dès sa création"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si la branche courante suit une branche distante"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Vérifie le périmètre d’un stash ; sa présence locale ne crée pas une sauvegarde distante."
+  },
+  {
+    "conceptKey": "ir.precision-recall",
+    "prompt": "Quelle mesure examine la part pertinente parmi les résultats renvoyés ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "La précision"
+      },
+      {
+        "id": "b",
+        "text": "Le rappel uniquement"
+      },
+      {
+        "id": "c",
+        "text": "Le volume brut de toutes les pages indexées"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Le rappel mesure ce qui manque ; la précision mesure ce qui encombre."
+  },
+  {
+    "conceptKey": "rag.faithfulness.context",
+    "prompt": "Une forte fidélité au contexte prouve-t-elle que la source est actuelle et correcte ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non, la qualité des sources reste une autre question"
+      },
+      {
+        "id": "b",
+        "text": "Oui, automatiquement"
+      },
+      {
+        "id": "c",
+        "text": "Oui, si la réponse contient plusieurs liens"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Soutenu par le contexte ne signifie pas que le contexte est complet et vrai."
+  },
+  {
+    "conceptKey": "queue.at-least-once.delivery",
+    "prompt": "Quel comportement doit tolérer un consommateur au moins une fois ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Recevoir à nouveau un travail déjà traité"
+      },
+      {
+        "id": "b",
+        "text": "Supposer qu’aucun message ne sera jamais répété"
+      },
+      {
+        "id": "c",
+        "text": "Acquitter tous les messages avant toute écriture"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "Une file au moins une fois exige un consommateur prêt à revoir le même travail."
+  },
+  {
+    "conceptKey": "api.idempotency-key.retention",
+    "prompt": "Quelle stratégie convient pour retenter la même opération protégée ?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Réutiliser sa clé selon le contrat du serveur"
+      },
+      {
+        "id": "b",
+        "text": "Créer systématiquement une nouvelle clé à chaque retry"
+      },
+      {
+        "id": "c",
+        "text": "Envoyer une clé sans vérifier qu’elle est prise en charge"
+      }
+    ],
+    "correctChoiceId": "a",
+    "explanation": "L’idempotence repose sur une identité d’opération reconnue et mémorisée par le serveur."
   }
 ]

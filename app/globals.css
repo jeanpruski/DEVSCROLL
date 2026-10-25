@@ -577,6 +577,19 @@ form > label {
   position: relative;
   overflow-wrap: anywhere;
 }
+.post-visual {
+  margin: 0 0 20px;
+  border-radius: 10px;
+  background: #17231d;
+  overflow: hidden;
+  contain: layout paint;
+}
+.post-visual img {
+  display: block;
+  width: 100%;
+  height: 112px;
+  object-fit: contain;
+}
 .post-top {
   display: flex;
   justify-content: space-between;

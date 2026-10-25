@@ -13,9 +13,9 @@ const posts = rawPosts.map((post) => postSchema.parse(post));
 const questions = rawQuestions.map((question) => questionSchema.parse(question));
 const require = createRequire(import.meta.url);
 
-describe('corpus éditorial initial', () => {
-  it('livre 30 posts publiables avec la diversité et la traçabilité demandées', () => {
-    expect(posts).toHaveLength(30);
+describe('corpus éditorial et extension de cent posts', () => {
+  it('livre 130 posts publiables avec la diversité et la traçabilité demandées', () => {
+    expect(posts).toHaveLength(130);
     expect(new Set(posts.map((post) => post.slug)).size).toBe(posts.length);
     expect(new Set(posts.map((post) => post.topic)).size).toBeGreaterThanOrEqual(8);
     expect(new Set(posts.map((post) => post.format)).size).toBeGreaterThanOrEqual(6);
@@ -51,17 +51,23 @@ describe('corpus éditorial initial', () => {
       topic: string;
       angle: string;
       format: string;
+      status: string;
     }[];
     expect(backlog).toHaveLength(60);
     expect(new Set(backlog.map((item) => item.id)).size).toBe(60);
     expect(new Set(backlog.map((item) => item.conceptKey)).size).toBe(60);
-    const initialConcepts = new Set(posts.map((post) => post.conceptKey));
+    const batch = JSON.parse(readFileSync('content/batches/expansion-100.json', 'utf8'));
+    const initialConcepts = new Set(
+      posts.filter((post) => !batch.slugs.includes(post.slug)).map((post) => post.conceptKey),
+    );
     for (const item of backlog) {
       expect(initialConcepts.has(item.conceptKey)).toBe(false);
       expect(item.angle.length).toBeGreaterThan(15);
       expect(item.topic).toBeTruthy();
       expect(item.title).toBeTruthy();
       expect(item.format).toBeTruthy();
+      expect(item.status).toBe('published');
+      expect(posts.some((post) => post.conceptKey === item.conceptKey)).toBe(true);
     }
   });
 });

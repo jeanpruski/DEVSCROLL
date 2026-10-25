@@ -1,0 +1,902 @@
+[
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled",
+    "status": 200,
+    "title": "Promise.allSettled() - JavaScript | MDN",
+    "textBytes": 3965,
+    "sha256": "b649213744d1bb23bebc0ccce9d797c1b9917e537c03f307550a172e43e16652",
+    "checkedAt": "2026-10-25T10:18:36.813Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync",
+    "status": 200,
+    "title": "Array.fromAsync() - JavaScript | MDN",
+    "textBytes": 7068,
+    "sha256": "e1d88b829fca7764eb8ffcabd4ee19508c072a6ea3048d0633ded8c849d20a07",
+    "checkedAt": "2026-10-25T10:18:36.814Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is",
+    "status": 200,
+    "title": "Object.is() - JavaScript | MDN",
+    "textBytes": 2969,
+    "sha256": "ea0282b9c4ce5e8a4c1dda37f967419babe78d00bf7e87f682c9b4235986aa80",
+    "checkedAt": "2026-10-25T10:18:36.802Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort",
+    "status": 200,
+    "title": "Array.prototype.sort() - JavaScript | MDN",
+    "textBytes": 13162,
+    "sha256": "7b94b394dc32ce717e783f06bae7a324509650efc5f88a9dec2386409f79cc80",
+    "checkedAt": "2026-10-25T10:18:36.815Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON",
+    "status": 200,
+    "title": "Number.EPSILON - JavaScript | MDN",
+    "textBytes": 4343,
+    "sha256": "26511c961186260d74096e2981e0726c5ddfe6a4a600eab0f8b86492e022bdd8",
+    "checkedAt": "2026-10-25T10:18:36.813Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html",
+    "finalUrl": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html",
+    "status": 200,
+    "title": "TypeScript: Documentation - TypeScript 3.0",
+    "textBytes": 11947,
+    "sha256": "86a403e73370e0293a7778086fd79e33adaceda01d99db487a07fa3e4202e5aa",
+    "checkedAt": "2026-10-25T10:18:36.819Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+    "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+    "status": 200,
+    "title": "TypeScript: Documentation - Narrowing",
+    "textBytes": 25619,
+    "sha256": "66a7f090694d858f7ddbbc2362e1ddb4abfcef6a17deb8ccb86486a408c38c5a",
+    "checkedAt": "2026-10-25T10:18:36.837Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/tsconfig/exactOptionalPropertyTypes.html",
+    "finalUrl": "https://www.typescriptlang.org/tsconfig/exactOptionalPropertyTypes.html",
+    "status": 200,
+    "title": "TypeScript: TSConfig Option: exactOptionalPropertyTypes",
+    "textBytes": 1592,
+    "sha256": "e2b6edc1f5ece556938ede86b98c6956b4fb091da47c311e489daafdf327b846",
+    "checkedAt": "2026-10-25T10:18:36.862Z"
+  },
+  {
+    "url": "https://react.dev/learn/rendering-lists",
+    "finalUrl": "https://react.dev/learn/rendering-lists",
+    "status": 200,
+    "title": "Rendering Lists – React",
+    "textBytes": 11970,
+    "sha256": "029e87b3955fc65083e285f7574bbac394ea56a1dbb97aae93500e3b743702db",
+    "checkedAt": "2026-10-25T10:18:36.891Z"
+  },
+  {
+    "url": "https://react.dev/reference/react/useEffect",
+    "finalUrl": "https://react.dev/reference/react/useEffect",
+    "status": 200,
+    "title": "useEffect – React",
+    "textBytes": 39629,
+    "sha256": "4c7da03cf64df669a28f8c878344da16b1de95a5deaf5bdeba262bd007b8e4cf",
+    "checkedAt": "2026-10-25T10:18:36.899Z"
+  },
+  {
+    "url": "https://react.dev/reference/react-dom/components/input",
+    "finalUrl": "https://react.dev/reference/react-dom/components/input",
+    "status": 200,
+    "title": "&lt;input&gt; – React",
+    "textBytes": 19246,
+    "sha256": "a4cf821f7183228ed246fac0ab9adb72a83592adc922b1320e6f2c9b27dc47ee",
+    "checkedAt": "2026-10-25T10:18:36.901Z"
+  },
+  {
+    "url": "https://react.dev/reference/react/Profiler",
+    "finalUrl": "https://react.dev/reference/react/Profiler",
+    "status": 200,
+    "title": "&lt;Profiler&gt; – React",
+    "textBytes": 4688,
+    "sha256": "10d3049ca239c03f1b8d415dded593833d4a04f3114a75714a4198aa64be0fad",
+    "checkedAt": "2026-10-25T10:18:36.899Z"
+  },
+  {
+    "url": "https://nodejs.org/en/learn/modules/backpressuring-in-streams",
+    "finalUrl": "https://nodejs.org/learn/modules/backpressuring-in-streams",
+    "status": 200,
+    "title": "Backpressuring in Streams | Node.js Learn",
+    "textBytes": 24558,
+    "sha256": "5defb112382e749442ceb0a24b0d454940e912bb51f64426881f8e018a4f5b47",
+    "checkedAt": "2026-10-25T10:18:37.008Z"
+  },
+  {
+    "url": "https://nodejs.org/docs/latest-v22.x/api/process.html#signal-events",
+    "finalUrl": "https://nodejs.org/docs/latest-v22.x/api/process.html",
+    "status": 200,
+    "title": "Process | Node.js v22.23.4 Documentation",
+    "textBytes": 127871,
+    "sha256": "052d96324227851f35294282024873d85135b73e0e2ca94d0ad248878c6d0db3",
+    "checkedAt": "2026-10-25T10:18:36.955Z"
+  },
+  {
+    "url": "https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop",
+    "finalUrl": "https://nodejs.org/learn/asynchronous-work/dont-block-the-event-loop",
+    "status": 200,
+    "title": "Don't Block the Event Loop (or the Worker Pool) | Node.js Learn",
+    "textBytes": 29498,
+    "sha256": "811dca5acc710d9ef71010b70e796d124d0c3110dd3c4f34139149e727f4ffc7",
+    "checkedAt": "2026-10-25T10:18:37.021Z"
+  },
+  {
+    "url": "https://nodejs.org/docs/latest-v22.x/api/async_context.html",
+    "finalUrl": "https://nodejs.org/docs/latest-v22.x/api/async_context.html",
+    "status": 200,
+    "title": "Asynchronous context tracking | Node.js v22.23.4 Documentation",
+    "textBytes": 27191,
+    "sha256": "d58051d0e4e4c1358b85d62c1e9e40bc7c20741a76efba7fa4acd79828ade777",
+    "checkedAt": "2026-10-25T10:18:36.957Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/functions-subquery.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/functions-subquery.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 9.23. Subquery Expressions",
+    "textBytes": 9851,
+    "sha256": "1956224dab33cfac92ebbe5d582618b0bfb4c7d879454f93f9cb83b32b47df69",
+    "checkedAt": "2026-10-25T10:18:37.463Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/queries-table-expressions.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/queries-table-expressions.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 7.2. Table Expressions",
+    "textBytes": 32765,
+    "sha256": "f1bdaa30e20c1e1804930311247e584c9c4e08e76d0fc60bf3e7ad8faf5bf4a4",
+    "checkedAt": "2026-10-25T10:18:37.463Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/using-explain.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/using-explain.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 14.1. Using EXPLAIN",
+    "textBytes": 35858,
+    "sha256": "737e591387f996ba77cbc4f6e99f720688cca767d6fe2be17b4dd2f70919ba74",
+    "checkedAt": "2026-10-25T10:18:37.588Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/queries-limit.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/queries-limit.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 7.6. LIMIT and OFFSET",
+    "textBytes": 2621,
+    "sha256": "b214b232d3cdec6205f66b2da96fe80e149f74241125100a731cbee2d767b21e",
+    "checkedAt": "2026-10-25T10:18:37.589Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/transaction-iso.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/transaction-iso.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 13.2. Transaction Isolation",
+    "textBytes": 24070,
+    "sha256": "1bfa5846c5b03c9f3fc3648efc740e715f41cc8f34700223de76dcd16d59369f",
+    "checkedAt": "2026-10-25T10:18:37.928Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/explicit-locking.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/explicit-locking.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 13.3. Explicit Locking",
+    "textBytes": 17368,
+    "sha256": "f852eb5ec6a85d754f96e72295f790be0772f4d3a42351d0cc77e1f02b263d80",
+    "checkedAt": "2026-10-25T10:18:37.974Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ETag",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ETag",
+    "status": 200,
+    "title": "ETag header - HTTP | MDN",
+    "textBytes": 3814,
+    "sha256": "887ee7ec14173982b2f4be362b9198feb31a3fb20e792249254eab3607615615",
+    "checkedAt": "2026-10-25T10:18:37.484Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control",
+    "status": 200,
+    "title": "Cache-Control header - HTTP | MDN",
+    "textBytes": 20410,
+    "sha256": "bdcd49786c993ba2765bf80f60f9a3b9a72754fda94beab042efa0a23e138b7c",
+    "checkedAt": "2026-10-25T10:18:37.484Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/202",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/202",
+    "status": 200,
+    "title": "202 Accepted - HTTP | MDN",
+    "textBytes": 1654,
+    "sha256": "e55965876fc378f547674c15cd1486cf9efe8d8090e7927d4fca3861452419da",
+    "checkedAt": "2026-10-25T10:18:37.987Z"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.html",
+    "status": 200,
+    "title": "RFC 9110: HTTP Semantics",
+    "textBytes": 443998,
+    "sha256": "c2ab06c7c8f85b3c15e2f8383e31fd95813bd0aba9402fab10cb6889d6b6cf43",
+    "checkedAt": "2026-10-25T10:18:38.354Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/307",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/307",
+    "status": 200,
+    "title": "307 Temporary Redirect - HTTP | MDN",
+    "textBytes": 2171,
+    "sha256": "5fcd43984f2752eecb92f869be96a67c7921d995ae7089671a022944006ce1e6",
+    "checkedAt": "2026-10-25T10:18:37.988Z"
+  },
+  {
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html",
+    "finalUrl": "https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html",
+    "status": 200,
+    "title": "Understanding Success Criterion 2.4.3: Focus Order | WAI | W3C",
+    "textBytes": 15360,
+    "sha256": "5849347b500f5f8a78748ba4d2b0d83f98b636159b96cd78637583877ada61b5",
+    "checkedAt": "2026-10-25T10:18:38.043Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API",
+    "status": 200,
+    "title": "Intersection Observer API - Web APIs | MDN",
+    "textBytes": 37669,
+    "sha256": "cad035fd8df3c81b18699e42f164b043c2f0135fdc72594d16d3a7f540bfc06e",
+    "checkedAt": "2026-10-25T10:18:37.990Z"
+  },
+  {
+    "url": "https://web.dev/articles/optimize-cls",
+    "finalUrl": "https://web.dev/articles/optimize-cls?hl=hi",
+    "status": 200,
+    "title": "कुल लेआउट शिफ़्ट ऑप्टिमाइज़ करें &nbsp;|&nbsp; Articles &nbsp;|&nbsp; web.dev",
+    "textBytes": 71744,
+    "sha256": "34a26b04e15ebe128ac835977f3483d20d023ef69da6ad929feb4e2e6906e984",
+    "checkedAt": "2026-10-25T10:18:39.492Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Cache",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Cache",
+    "status": 200,
+    "title": "Cache - Web APIs | MDN",
+    "textBytes": 8731,
+    "sha256": "31e7caf27de6f0705f43ad520a4cad64dee5d0aef97bc5d896bdbc77dd694d24",
+    "checkedAt": "2026-10-25T10:18:39.509Z"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man2/unlink.2.html",
+    "finalUrl": "https://man7.org/linux/man-pages/man2/unlink.2.html",
+    "status": 200,
+    "title": "unlink(2) - Linux manual page",
+    "textBytes": 6913,
+    "sha256": "a176339c06b824551fedcd98033e91cd9a760ff5526684725ea4ff50d0c05aa9",
+    "checkedAt": "2026-10-25T10:18:39.577Z"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html",
+    "finalUrl": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html",
+    "status": 200,
+    "title": "Exit Status (Bash Reference Manual)",
+    "textBytes": 2105,
+    "sha256": "fe81f9b433585320a0c2c19042f86528538471dfdb034ea823e34e706bc59ead",
+    "checkedAt": "2026-10-25T10:18:39.858Z"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/html_node/Pipelines.html",
+    "finalUrl": "https://www.gnu.org/software/bash/manual/html_node/Pipelines.html",
+    "status": 200,
+    "title": "Pipelines (Bash Reference Manual)",
+    "textBytes": 3312,
+    "sha256": "a01545460ddb273cc35df43b85eb7aa7b5cc4d4dad575786684052e06df6b79d",
+    "checkedAt": "2026-10-25T10:18:39.776Z"
+  },
+  {
+    "url": "https://man7.org/linux/man-pages/man5/proc_meminfo.5.html",
+    "finalUrl": "https://man7.org/linux/man-pages/man5/proc_meminfo.5.html",
+    "status": 200,
+    "title": "proc_meminfo(5) - Linux manual page",
+    "textBytes": 10103,
+    "sha256": "70501995492ce8c32a627b35a33e947b8b8bc4a430d4c4bd40e1b9a5eb782dc2",
+    "checkedAt": "2026-10-25T10:18:39.577Z"
+  },
+  {
+    "url": "https://git-scm.com/docs/git-add",
+    "finalUrl": "https://git-scm.com/docs/git-add",
+    "status": 200,
+    "title": "Git - git-add Documentation",
+    "textBytes": 18777,
+    "sha256": "ebf2476e6f0998966035c1259f3c6c4167947dfa94a9c281dcad28346d67b5cb",
+    "checkedAt": "2026-10-25T10:18:39.538Z"
+  },
+  {
+    "url": "https://git-scm.com/docs/git-bisect",
+    "finalUrl": "https://git-scm.com/docs/git-bisect",
+    "status": 200,
+    "title": "Git - git-bisect Documentation",
+    "textBytes": 18408,
+    "sha256": "407ac4db0638964d9e18a9d1ad800ecc338b1bcfdd2121840f7df47af94c19fd",
+    "checkedAt": "2026-10-25T10:18:39.889Z"
+  },
+  {
+    "url": "https://docs.docker.com/build/cache/optimize/",
+    "finalUrl": "https://docs.docker.com/build/cache/optimize/",
+    "status": 200,
+    "title": "Optimize cache usage in builds | Docker Docs",
+    "textBytes": 14680,
+    "sha256": "a749fadbde6b072f3232a2904b755de484b25f97d6af5e7fa85672f09e78ae2e",
+    "checkedAt": "2026-10-25T10:18:39.953Z"
+  },
+  {
+    "url": "https://docs.docker.com/reference/dockerfile/#entrypoint",
+    "finalUrl": "https://docs.docker.com/reference/dockerfile/",
+    "status": 200,
+    "title": "Dockerfile reference | Docker Docs",
+    "textBytes": 116507,
+    "sha256": "d1c57d25feb585db111754e9a50184d9257fb8b09277fbf0f5286d556d5d5681",
+    "checkedAt": "2026-10-25T10:18:39.968Z"
+  },
+  {
+    "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication",
+    "finalUrl": "https://docs.github.com/en/actions/tutorials/authenticate-with-github_token",
+    "status": 200,
+    "title": "Use GITHUB_TOKEN for authentication in workflows - GitHub Docs",
+    "textBytes": 3897,
+    "sha256": "ae9f1b25d096a07b9c7709a640eaa39062064c70cb3814201c6c7ea2b7c59dc2",
+    "checkedAt": "2026-10-25T10:18:39.970Z"
+  },
+  {
+    "url": "https://opentelemetry.io/docs/concepts/context-propagation/",
+    "finalUrl": "https://opentelemetry.io/docs/concepts/context-propagation/",
+    "status": 200,
+    "title": "Context propagation | OpenTelemetry",
+    "textBytes": 6702,
+    "sha256": "b0d85f594779e663a513da3c262a20ec2235984650a51ec3c634662265cff5a4",
+    "checkedAt": "2026-10-25T10:18:40.024Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/backup-dump.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/backup-dump.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 26.1. SQL Dump",
+    "textBytes": 10011,
+    "sha256": "6bb65346eb743cf515d73f0a651f87eaabae9b169b2214ada333769c0e38b5a7",
+    "checkedAt": "2026-10-25T10:18:40.114Z"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+    "finalUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+    "status": 200,
+    "title": "What is Amazon S3? - Amazon Simple Storage Service",
+    "textBytes": 35283,
+    "sha256": "c196c98d39549ea62701d0fd3057b350419daa3558dd55a18f5cc4c4d0dca8b4",
+    "checkedAt": "2026-10-25T10:18:40.170Z"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html",
+    "finalUrl": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html",
+    "status": 200,
+    "title": "Understanding the Lambda execution environment lifecycle - AWS Lambda",
+    "textBytes": 20912,
+    "sha256": "5218c4d9bcaaed710fd733c7be2ac336f34c38fe36b2a2203fdd9bbd989650a9",
+    "checkedAt": "2026-10-25T10:18:40.170Z"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
+    "finalUrl": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
+    "status": 200,
+    "title": "Regions and Zones - Amazon Elastic Compute Cloud",
+    "textBytes": 12113,
+    "sha256": "ff75fb2fceae8977b3fcdc02fcc569838420f0ac7c9f9b73c83fb0bc4167409c",
+    "checkedAt": "2026-10-25T10:18:40.170Z"
+  },
+  {
+    "url": "https://aws.amazon.com/s3/pricing/",
+    "finalUrl": "https://aws.amazon.com/s3/pricing/",
+    "status": 200,
+    "title": "S3 Pricing",
+    "textBytes": 91796,
+    "sha256": "b2d20ac4734fecee815ae66a9269540458cd7e5b67da4b755d885215de803578",
+    "checkedAt": "2026-10-25T10:18:40.316Z"
+  },
+  {
+    "url": "https://developers.hubspot.com/docs/api-reference/crm-contacts-v3/guide",
+    "finalUrl": "https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/contacts/guide",
+    "status": 200,
+    "title": "CRM API | Contacts - HubSpot docs",
+    "textBytes": 15088,
+    "sha256": "ba95c64c9a1c59d38fe35c7ca13ae35157c73b4f054a6a2de62b358392df8411",
+    "checkedAt": "2026-10-25T10:18:40.549Z"
+  },
+  {
+    "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
+    "finalUrl": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
+    "status": 200,
+    "title": "API usage guidelines and limits - HubSpot docs",
+    "textBytes": 10810,
+    "sha256": "5945f55f9358f020856eab46ba537541122fd6b95a60ba0530c4da0edcbefd49",
+    "checkedAt": "2026-10-25T10:18:40.275Z"
+  },
+  {
+    "url": "https://developers.hubspot.com/docs/api-reference/crm-objects-v3/guide",
+    "finalUrl": "https://developers.hubspot.com/docs/api-reference/legacy/crm/using-object-apis",
+    "status": 200,
+    "title": "Using Object APIs - HubSpot docs",
+    "textBytes": 21372,
+    "sha256": "1f5af9af17f3ccca8b2def4f41f8e20ff09ef585b33c1712040f7be034f789c3",
+    "checkedAt": "2026-10-25T10:18:41.051Z"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/azure/data-factory/tutorial-incremental-copy-overview",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/data-factory/tutorial-incremental-copy-overview",
+    "status": 200,
+    "title": "Incrementally copy data from a source data store to a destination data store - Azure Data Factory | Microsoft Learn",
+    "textBytes": 3730,
+    "sha256": "58d6eeb72d56e9cfad831607a48480e42b42e0ce641545c7a30e0433776edbe7",
+    "checkedAt": "2026-10-25T10:18:40.639Z"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc9700.html",
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc9700.html",
+    "status": 200,
+    "title": "RFC 9700: Best Current Practice for OAuth 2.0 Security",
+    "textBytes": 112615,
+    "sha256": "b0203589123551597a830f2e51e9b8e2bf7b198cf25c3ef53716ba411d396a21",
+    "checkedAt": "2026-10-25T10:18:40.768Z"
+  },
+  {
+    "url": "https://owasp.org/www-community/attacks/csrf",
+    "finalUrl": "https://community.owasp.org/attacks/csrf",
+    "status": 200,
+    "title": "Cross Site Request Forgery (CSRF) | OWASP Foundation",
+    "textBytes": 13807,
+    "sha256": "757e248944226b6ef5dc6d24d9b9cef8e45f62e6d202aaf9543cf5ff99e1e00d",
+    "checkedAt": "2026-10-25T10:18:40.778Z"
+  },
+  {
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html",
+    "finalUrl": "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html",
+    "status": 200,
+    "title": "Server Side Request Forgery Prevention - OWASP Cheat Sheet Series",
+    "textBytes": 24612,
+    "sha256": "b6fdd9f84c82098ce5dcc167258be173322b7c70641e088a4f8021be9123e1cd",
+    "checkedAt": "2026-10-25T10:18:40.791Z"
+  },
+  {
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+    "finalUrl": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+    "status": 200,
+    "title": "Password Storage - OWASP Cheat Sheet Series",
+    "textBytes": 20321,
+    "sha256": "cd9e11d3b33be2b51fa689c9458a93b9672ca1b8f9cd32848ab9b6505ff6d3b1",
+    "checkedAt": "2026-10-25T10:18:40.771Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/sql-prepare.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/sql-prepare.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: PREPARE",
+    "textBytes": 7588,
+    "sha256": "18d7521bbd79d5df73aa6eade85dffbadebbd0e9437e7889bf8afd33e7059be4",
+    "checkedAt": "2026-10-25T10:18:41.176Z"
+  },
+  {
+    "url": "https://arxiv.org/abs/2211.09110",
+    "finalUrl": "https://arxiv.org/abs/2211.09110",
+    "status": 200,
+    "title": "[2211.09110] Holistic Evaluation of Language Models",
+    "textBytes": 5926,
+    "sha256": "7842dd70eede313fbbf4430efb8c4285abfae0a0fd0ee3155e65561fd5f0b4a1",
+    "checkedAt": "2026-10-25T10:18:41.089Z"
+  },
+  {
+    "url": "https://json-schema.org/understanding-json-schema/reference/object",
+    "finalUrl": "https://json-schema.org/understanding-json-schema/reference/object",
+    "status": 200,
+    "title": "JSON Schema - object",
+    "textBytes": 15096,
+    "sha256": "e1ec55041c5e75be5dabc88fec35bc851ae648112ef7981456e8c00618caac4c",
+    "checkedAt": "2026-10-25T10:18:41.174Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/ddl-rowsecurity.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/ddl-rowsecurity.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 5.8. Row Security Policies",
+    "textBytes": 16005,
+    "sha256": "4ce8d49426b10b1bfd945b5d94dbd4b2ca6a689128d46c798e1a2c238c3f579c",
+    "checkedAt": "2026-10-25T10:18:41.301Z"
+  },
+  {
+    "url": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+    "finalUrl": "https://info.cern.ch/hypertext/WWW/TheProject.html",
+    "status": 200,
+    "title": "The World Wide Web project",
+    "textBytes": 1009,
+    "sha256": "3b98d867a78a5ae03b7ed024de83cb3758e6e3095c81d08648c7d0c45105ca8a",
+    "checkedAt": "2026-10-25T10:18:41.193Z"
+  },
+  {
+    "url": "https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html",
+    "finalUrl": "https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html",
+    "status": 200,
+    "title": "Shell Command Language",
+    "textBytes": 229511,
+    "sha256": "070813161dc301e011dade76952ed5e247af6842e4a187c8f96c811a340a14fb",
+    "checkedAt": "2026-10-25T10:18:41.794Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone",
+    "status": 200,
+    "title": "Window: structuredClone() method - Web APIs | MDN",
+    "textBytes": 5179,
+    "sha256": "582d3878f6dcd0b234fecfef7d21aa53456d4b8ddbf55509d497259855c3f563",
+    "checkedAt": "2026-10-25T10:18:41.807Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing",
+    "status": 200,
+    "title": "Nullish coalescing operator (??) - JavaScript | MDN",
+    "textBytes": 5016,
+    "sha256": "8aba624a2079f4d3e4682f6aa259eb5fe69b25c0a5a9fe5369800a6a2548b57c",
+    "checkedAt": "2026-10-25T10:18:41.807Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining",
+    "status": 200,
+    "title": "Optional chaining (?.) - JavaScript | MDN",
+    "textBytes": 8806,
+    "sha256": "b44f8d7a0c505ba2d3ca2873a287bb5c09722ded43d0927e22e8e94efa51cbce",
+    "checkedAt": "2026-10-25T10:18:41.808Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "status": 200,
+    "title": "Map - JavaScript | MDN",
+    "textBytes": 14823,
+    "sha256": "e338b1666a242eee6fb61584485f7eb5f007a7d5ac6f2974135a79b735cd8bc0",
+    "checkedAt": "2026-10-25T10:18:41.830Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "status": 200,
+    "title": "Set - JavaScript | MDN",
+    "textBytes": 12797,
+    "sha256": "d3f869323d0d01877584ce3acf44baa7b4e1a15e193a274ee5f1a296e21fab4d",
+    "checkedAt": "2026-10-25T10:18:41.826Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap",
+    "status": 200,
+    "title": "Array.prototype.flatMap() - JavaScript | MDN",
+    "textBytes": 6975,
+    "sha256": "d48f734050a9a3d60c1f69766f4275452e93ac6256e53f8cb32cf7f1e07cc75a",
+    "checkedAt": "2026-10-25T10:18:41.830Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams",
+    "status": 200,
+    "title": "URLSearchParams - Web APIs | MDN",
+    "textBytes": 9874,
+    "sha256": "df68f21721b94cbfee9a1d949981aaf609a5972ed025955bc3e01048f52e2310",
+    "checkedAt": "2026-10-25T10:18:41.841Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/any_static",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/any_static",
+    "status": 200,
+    "title": "AbortSignal: any() static method - Web APIs | MDN",
+    "textBytes": 3282,
+    "sha256": "993feff361ca17e99661a9689c8d0f096537b39332e7a950552ae4e7a75dcb76",
+    "checkedAt": "2026-10-25T10:18:41.841Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/docs/handbook/2/objects.html",
+    "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/objects.html",
+    "status": 200,
+    "title": "TypeScript: Documentation - Object Types",
+    "textBytes": 32931,
+    "sha256": "dd5c8b8201eb0a93b2df4954937a12e87d38049009665848d8ea4e081256a4c5",
+    "checkedAt": "2026-10-25T10:18:41.874Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html",
+    "finalUrl": "https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html",
+    "status": 200,
+    "title": "TypeScript: Handbook - Unions and Intersection Types",
+    "textBytes": 10254,
+    "sha256": "597912e54ed21fdeb19b4317aa6b4ae382d1a21f8e863b96b04c184d4bb9c997",
+    "checkedAt": "2026-10-25T10:18:42.004Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html",
+    "finalUrl": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html",
+    "status": 200,
+    "title": "TypeScript: Documentation - TypeScript 4.5",
+    "textBytes": 18074,
+    "sha256": "c6dd3b8509dfac7ac2e54b3e2e01b14fb93eec2cf600007c20961c104050d9fa",
+    "checkedAt": "2026-10-25T10:18:41.877Z"
+  },
+  {
+    "url": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html",
+    "finalUrl": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html",
+    "status": 200,
+    "title": "TypeScript: Documentation - TypeScript 3.8",
+    "textBytes": 18025,
+    "sha256": "2eac748909f74da568918d0ac5fa6612f7d9164e8711215732b8f9108381b60a",
+    "checkedAt": "2026-10-25T10:18:41.877Z"
+  },
+  {
+    "url": "https://react.dev/learn/queueing-a-series-of-state-updates",
+    "finalUrl": "https://react.dev/learn/queueing-a-series-of-state-updates",
+    "status": 200,
+    "title": "Queueing a Series of State Updates – React",
+    "textBytes": 9982,
+    "sha256": "98cef21100891cf80bb5f5fa6faec37565bc60132a6f02b87b84c795b200fe11",
+    "checkedAt": "2026-10-25T10:18:42.070Z"
+  },
+  {
+    "url": "https://react.dev/learn/referencing-values-with-refs",
+    "finalUrl": "https://react.dev/learn/referencing-values-with-refs",
+    "status": 200,
+    "title": "Referencing Values with Refs – React",
+    "textBytes": 12620,
+    "sha256": "aeee1fa630c47e7e3df3ea33cbea8e7184b3385efa44880478263403e7d7d51b",
+    "checkedAt": "2026-10-25T10:18:42.117Z"
+  },
+  {
+    "url": "https://react.dev/reference/react/useContext",
+    "finalUrl": "https://react.dev/reference/react/useContext",
+    "status": 200,
+    "title": "useContext – React",
+    "textBytes": 14293,
+    "sha256": "595945b9ca686b6325e74272a89e3891eba353fb0088faa558019063a5c46d14",
+    "checkedAt": "2026-10-25T10:18:42.367Z"
+  },
+  {
+    "url": "https://react.dev/reference/react/useId",
+    "finalUrl": "https://react.dev/reference/react/useId",
+    "status": 200,
+    "title": "useId – React",
+    "textBytes": 7412,
+    "sha256": "11085e9e93ea91d0426a0d0be3f23ceaca0eec7664cf8ff418a85fde2a524373",
+    "checkedAt": "2026-10-25T10:18:42.313Z"
+  },
+  {
+    "url": "https://react.dev/learn/extracting-state-logic-into-a-reducer",
+    "finalUrl": "https://react.dev/learn/extracting-state-logic-into-a-reducer",
+    "status": 200,
+    "title": "Extracting State Logic into a Reducer – React",
+    "textBytes": 19304,
+    "sha256": "0085353cb5c6ecddacf80303ac9d6e38f6aa1740e1052ae76bbe9049b50bca3d",
+    "checkedAt": "2026-10-25T10:18:42.124Z"
+  },
+  {
+    "url": "https://nodejs.org/docs/latest-v22.x/api/buffer.html",
+    "finalUrl": "https://nodejs.org/docs/latest-v22.x/api/buffer.html",
+    "status": 200,
+    "title": "Buffer | Node.js v22.23.4 Documentation",
+    "textBytes": 148960,
+    "sha256": "4bac63d147ec95e62cf9552163304a94a28e6c8c7e80d36b3216f178d575d16d",
+    "checkedAt": "2026-10-25T10:18:42.153Z"
+  },
+  {
+    "url": "https://nodejs.org/docs/latest-v22.x/api/esm.html",
+    "finalUrl": "https://nodejs.org/docs/latest-v22.x/api/esm.html",
+    "status": 200,
+    "title": "Modules: ECMAScript modules | Node.js v22.23.4 Documentation",
+    "textBytes": 39078,
+    "sha256": "e9dcbfb584d23e55e40817cb442a9f57a43873987990a135a090a76b23f9f5d6",
+    "checkedAt": "2026-10-25T10:18:42.407Z"
+  },
+  {
+    "url": "https://nodejs.org/docs/latest-v22.x/api/timers.html",
+    "finalUrl": "https://nodejs.org/docs/latest-v22.x/api/timers.html",
+    "status": 200,
+    "title": "Timers | Node.js v22.23.4 Documentation",
+    "textBytes": 18429,
+    "sha256": "22e7c8dbd6caf2360cdd650f3f294128ceb4eb63c1c9e862040860804e7b1aa1",
+    "checkedAt": "2026-10-25T10:18:42.570Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/ddl-constraints.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/ddl-constraints.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 5.4. Constraints",
+    "textBytes": 22040,
+    "sha256": "88abd19d808993e927f29f56165e3f1c75a868e6e83c0037deb16bb8580e9ef4",
+    "checkedAt": "2026-10-25T10:18:42.609Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/sql-savepoint.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/sql-savepoint.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: SAVEPOINT",
+    "textBytes": 3316,
+    "sha256": "1a1b108582a4a4327b7dab61f17270b9a5c6280a783bcdce31bca495e718202c",
+    "checkedAt": "2026-10-25T10:18:42.492Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/sql-insert.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/sql-insert.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: INSERT",
+    "textBytes": 19666,
+    "sha256": "d1956535b400bba4db1439868abe8e1a0daaf75e1a59abec7bac1a16eaac5814",
+    "checkedAt": "2026-10-25T10:18:42.498Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/queries-select-lists.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/queries-select-lists.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: 7.3. Select Lists",
+    "textBytes": 5469,
+    "sha256": "ea1aef475bd00376ee14e1a4d0d0f34f0980e0ddc352a8898e2ec949cffedf7b",
+    "checkedAt": "2026-10-25T10:18:42.492Z"
+  },
+  {
+    "url": "https://www.postgresql.org/docs/16/sql-select.html",
+    "finalUrl": "https://www.postgresql.org/docs/16/sql-select.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 16: SELECT",
+    "textBytes": 62120,
+    "sha256": "a1288e6ba47f1fc0aba67cc0b7137defcb1099e5153b9f7ef8c29dd70cdc9ee6",
+    "checkedAt": "2026-10-25T10:18:42.853Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/204",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/204",
+    "status": 200,
+    "title": "204 No Content - HTTP | MDN",
+    "textBytes": 2594,
+    "sha256": "602a9553d11564999821741ea5e7ca8477aa6344442c2e255e17610f31f13220",
+    "checkedAt": "2026-10-25T10:18:42.624Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/401",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/401",
+    "status": 200,
+    "title": "401 Unauthorized - HTTP | MDN",
+    "textBytes": 1544,
+    "sha256": "cc42226f8bd67b62818c2e6a87e2de9d72e5b211d69ddf7f2fb5f13a9f92d0c0",
+    "checkedAt": "2026-10-25T10:18:42.623Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Vary",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Vary",
+    "status": 200,
+    "title": "Vary header - HTTP | MDN",
+    "textBytes": 1550,
+    "sha256": "c372c6ccb8a0b522a934498f965ad61f34ce5caa0f48fe7a0d5d1735b201f42d",
+    "checkedAt": "2026-10-25T10:18:42.620Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/min-width",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/min-width",
+    "status": 200,
+    "title": "min-width CSS property - CSS | MDN",
+    "textBytes": 5036,
+    "sha256": "0af9092b3cb4d653aa64aa8961722fd91962f222f6e4e60dba72ac45e40c0473",
+    "checkedAt": "2026-10-25T10:18:42.627Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit",
+    "status": 200,
+    "title": "object-fit CSS property - CSS | MDN",
+    "textBytes": 4372,
+    "sha256": "1520ee3f94f990ec26f9bb1346d1220382f796c8795e05d272a89813751d2b9a",
+    "checkedAt": "2026-10-25T10:18:42.628Z"
+  },
+  {
+    "url": "https://www.w3.org/WAI/ARIA/apg/patterns/button/",
+    "finalUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/button/",
+    "status": 200,
+    "title": "Button Pattern | APG | WAI | W3C",
+    "textBytes": 4337,
+    "sha256": "13d77bd7ad9612e7b68998e840eb15c54ccf281b2a47d838e55aa99c62011ebc",
+    "checkedAt": "2026-10-25T10:18:42.911Z"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live",
+    "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live",
+    "status": 200,
+    "title": "ARIA: aria-live attribute - ARIA | MDN",
+    "textBytes": 5945,
+    "sha256": "89b147d44f5d0db7d3d7d9ae52a1ce5099bbe6c0e333bab8e7633cd566a009d0",
+    "checkedAt": "2026-10-25T10:18:42.867Z"
+  },
+  {
+    "url": "https://nodejs.org/docs/latest-v22.x/api/crypto.html#cryptotimingsafeequala-b",
+    "finalUrl": "https://nodejs.org/docs/latest-v22.x/api/crypto.html",
+    "status": 200,
+    "title": "Crypto | Node.js v22.23.4 Documentation",
+    "textBytes": 184918,
+    "sha256": "42c72af0ff7839f837acf8f85b546571f426a077ea7c2500fda076695dd75bf9",
+    "checkedAt": "2026-10-25T10:18:42.907Z"
+  },
+  {
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+    "finalUrl": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+    "status": 200,
+    "title": "Logging - OWASP Cheat Sheet Series",
+    "textBytes": 30397,
+    "sha256": "e2b8d828090d36a1fb4a1256c82716d9c3d6478f6fea562a9d0f743ad3caa752",
+    "checkedAt": "2026-10-25T10:18:43.026Z"
+  },
+  {
+    "url": "https://docs.docker.com/build/building/context/",
+    "finalUrl": "https://docs.docker.com/build/concepts/context/",
+    "status": 200,
+    "title": "Build context | Docker Docs",
+    "textBytes": 26567,
+    "sha256": "e3bcf39c815cb7901ba5da1d2d55540414d11eec892087a100b7cdb11f3726f7",
+    "checkedAt": "2026-10-25T10:18:42.943Z"
+  },
+  {
+    "url": "https://git-scm.com/docs/git-stash",
+    "finalUrl": "https://git-scm.com/docs/git-stash",
+    "status": 200,
+    "title": "Git - git-stash Documentation",
+    "textBytes": 18593,
+    "sha256": "a4249758ed22904b133560a53e2a0839eb10100583c5ef9c8b4024a867e2a30d",
+    "checkedAt": "2026-10-25T10:18:42.882Z"
+  },
+  {
+    "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html",
+    "finalUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html",
+    "status": 200,
+    "title": "precision_score &#8212; scikit-learn 1.9.1 documentation",
+    "textBytes": 5990,
+    "sha256": "dd28c52bf254b1378061d91b48d978cf46c5795880ee986ebea839fd7a754511",
+    "checkedAt": "2026-10-25T10:18:43.181Z"
+  },
+  {
+    "url": "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/",
+    "finalUrl": "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/",
+    "status": 200,
+    "title": "Faithfulness - Ragas",
+    "textBytes": 5292,
+    "sha256": "e195f09628f6751fc0b12e667aa57647494da565a04d429a2b90dcc90c8a8a48",
+    "checkedAt": "2026-10-25T10:18:43.117Z"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html",
+    "finalUrl": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html",
+    "status": 200,
+    "title": "Amazon SQS at-least-once delivery - Amazon Simple Queue Service",
+    "textBytes": 1384,
+    "sha256": "a9d27a372369afe3ca45766c628c73b85a7b844cc775aa582e110ef7a5cb647f",
+    "checkedAt": "2026-10-25T10:18:43.038Z"
+  },
+  {
+    "url": "https://docs.stripe.com/api/idempotent_requests",
+    "finalUrl": "https://docs.stripe.com/api/idempotent_requests",
+    "status": 200,
+    "title": "Idempotent requests | Stripe API Reference",
+    "textBytes": 8080,
+    "sha256": "38dac7a045f5e1ada8291102fa156b73596f7826b1f7cf85bc527723b1354978",
+    "checkedAt": "2026-10-25T10:18:43.793Z"
+  }
+]

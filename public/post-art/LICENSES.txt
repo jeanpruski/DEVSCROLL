@@ -1,0 +1,4 @@
+DevScroll sticker compositions: original project artwork.
+Brand paths: Simple Icons, CC0 1.0, https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
+Brands remain owned by their respective owners; logos identify technologies discussed.
+Sticker pictograms: Lucide, ISC license, https://lucide.dev/license

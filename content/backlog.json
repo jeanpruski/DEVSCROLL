@@ -6,7 +6,8 @@
     "topic": "javascript",
     "angle": "Préserver les réussites quand une opération parallèle échoue.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "promise-allsettled-lire-chaque-resultat"
   },
   {
     "id": "CONTENT-032",
@@ -15,7 +16,8 @@
     "topic": "javascript",
     "angle": "Comparer lancer mille appels et alimenter un petit groupe de workers.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "concurrence-bornee-ne-pas-tout-lancer"
   },
   {
     "id": "CONTENT-033",
@@ -24,7 +26,8 @@
     "topic": "javascript",
     "angle": "Expliquer identité, copie et comparaison de contenu.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "objets-egalite-identite-et-contenu"
   },
   {
     "id": "CONTENT-034",
@@ -33,7 +36,8 @@
     "topic": "javascript",
     "angle": "Préserver une collection source avant de modifier son ordre.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "sort-modifie-le-tableau-source"
   },
   {
     "id": "CONTENT-035",
@@ -42,7 +46,8 @@
     "topic": "javascript",
     "angle": "Relier la représentation numérique au choix pour les montants.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "nombres-binaires-comparer-une-tolerance"
   },
   {
     "id": "CONTENT-036",
@@ -51,7 +56,8 @@
     "topic": "typescript",
     "angle": "Comparer une entrée inconnue et une désactivation de vérification.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "unknown-valider-avant-utiliser"
   },
   {
     "id": "CONTENT-037",
@@ -60,7 +66,8 @@
     "topic": "typescript",
     "angle": "Rendre visible l’ajout d’une variante de résultat.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "never-verifier-un-switch-exhaustif"
   },
   {
     "id": "CONTENT-038",
@@ -69,7 +76,8 @@
     "topic": "typescript",
     "angle": "Décrire exactOptionalPropertyTypes et son contexte de compilation.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "propriete-absente-ou-undefined"
   },
   {
     "id": "CONTENT-039",
@@ -78,7 +86,8 @@
     "topic": "react",
     "angle": "Montrer le déplacement d’état après réordonnancement de liste.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "react-key-identite-dans-une-liste"
   },
   {
     "id": "CONTENT-040",
@@ -87,7 +96,8 @@
     "topic": "react",
     "angle": "Relier création, remplacement et suppression d’un effet.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "react-nettoyer-un-abonnement"
   },
   {
     "id": "CONTENT-041",
@@ -96,7 +106,8 @@
     "topic": "react",
     "angle": "Choisir qui détient la valeur du champ et comment la lire.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "react-formulaire-controle-ou-non"
   },
   {
     "id": "CONTENT-042",
@@ -105,7 +116,8 @@
     "topic": "react",
     "angle": "Distinguer coût de calcul et identité des références.",
     "format": "tip",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "react-profiler-avant-memoisation"
   },
   {
     "id": "CONTENT-043",
@@ -114,7 +126,8 @@
     "topic": "node",
     "angle": "Expliquer la pression inverse dans une chaîne de streams.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "node-backpressure-consommateur-lent"
   },
   {
     "id": "CONTENT-044",
@@ -123,7 +136,8 @@
     "topic": "node",
     "angle": "Arrêter d’accepter puis terminer le travail en cours avec une limite.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "node-sigterm-arret-propre"
   },
   {
     "id": "CONTENT-045",
@@ -132,7 +146,8 @@
     "topic": "node",
     "angle": "Distinguer temps de démarrage et chemin de requête concurrent.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "node-fichier-synchrone-dans-une-route"
   },
   {
     "id": "CONTENT-046",
@@ -141,7 +156,8 @@
     "topic": "node",
     "angle": "Préserver un contexte de diagnostic au fil des appels async.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "node-asynclocalstorage-requestid"
   },
   {
     "id": "CONTENT-047",
@@ -150,7 +166,8 @@
     "topic": "sql",
     "angle": "Construire un petit contre-exemple et comparer NOT EXISTS.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "sql-not-in-null-cache"
   },
   {
     "id": "CONTENT-048",
@@ -159,7 +176,8 @@
     "topic": "sql",
     "angle": "Observer où filtrer les lignes de la table jointe.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "sql-left-join-filtre-au-bon-endroit"
   },
   {
     "id": "CONTENT-049",
@@ -168,7 +186,8 @@
     "topic": "sql",
     "angle": "Lire sélectivité, volume et coût dans un plan mesuré.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "postgres-index-ou-parcours-sequentiel"
   },
   {
     "id": "CONTENT-050",
@@ -177,7 +196,8 @@
     "topic": "sql",
     "angle": "Comparer offset et curseur sur un jeu qui grandit.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "sql-pagination-tri-deterministe"
   },
   {
     "id": "CONTENT-051",
@@ -186,7 +206,8 @@
     "topic": "sql",
     "angle": "Décrire deux requêtes dans une transaction avec modification concurrente.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "postgres-read-committed-deux-lectures"
   },
   {
     "id": "CONTENT-052",
@@ -195,7 +216,8 @@
     "topic": "sql",
     "angle": "Expliquer ordre des verrous et reprise bornée de transaction.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "postgres-deadlock-ordre-verrous"
   },
   {
     "id": "CONTENT-053",
@@ -204,7 +226,8 @@
     "topic": "http",
     "angle": "Distinguer validateur, fraîcheur et réponse 304.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "etag-revalider-sans-retransferer"
   },
   {
     "id": "CONTENT-054",
@@ -213,7 +236,8 @@
     "topic": "http",
     "angle": "Choisir le bon contrat pour une réponse personnelle.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "cache-private-et-no-store"
   },
   {
     "id": "CONTENT-055",
@@ -222,7 +246,8 @@
     "topic": "http",
     "angle": "Concevoir un suivi de job asynchrone et son état final.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "http-202-travail-accepte-pas-termine"
   },
   {
     "id": "CONTENT-056",
@@ -231,7 +256,8 @@
     "topic": "http",
     "angle": "Séparer absence de réponse et absence d’effet distant.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "timeout-resultat-inconnu-ecriture"
   },
   {
     "id": "CONTENT-057",
@@ -240,7 +266,8 @@
     "topic": "http",
     "angle": "Comparer reprise POST et navigation après formulaire.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "redirection-307-preserver-la-methode"
   },
   {
     "id": "CONTENT-058",
@@ -249,7 +276,8 @@
     "topic": "web",
     "angle": "Préserver un point de reprise après fermeture de dialogue.",
     "format": "tip",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "focus-clavier-apres-une-navigation"
   },
   {
     "id": "CONTENT-059",
@@ -258,7 +286,8 @@
     "topic": "web",
     "angle": "Définir ce qu’IntersectionObserver peut réellement signaler.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "intersection-visible-ne-veut-pas-dire-lu"
   },
   {
     "id": "CONTENT-060",
@@ -267,7 +296,8 @@
     "topic": "web",
     "angle": "Relier dimensions connues et stabilité de lecture.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "image-reserver-espace-avant-chargement"
   },
   {
     "id": "CONTENT-061",
@@ -276,7 +306,8 @@
     "topic": "web",
     "angle": "Tracer ce qui subsiste après déconnexion.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "pwa-privee-politique-cache-explicite"
   },
   {
     "id": "CONTENT-062",
@@ -285,7 +316,8 @@
     "topic": "linux",
     "angle": "Comprendre un fichier supprimé encore tenu par un processus.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "linux-fichier-supprime-encore-ouvert"
   },
   {
     "id": "CONTENT-063",
@@ -294,7 +326,8 @@
     "topic": "linux",
     "angle": "Séparer succès, erreur et diagnostic dans un script.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "shell-code-sortie-contrat"
   },
   {
     "id": "CONTENT-064",
@@ -303,7 +336,8 @@
     "topic": "linux",
     "angle": "Expliquer le rôle de pipefail avec un shell explicitement indiqué.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "bash-pipeline-et-pipefail"
   },
   {
     "id": "CONTENT-065",
@@ -312,7 +346,8 @@
     "topic": "linux",
     "angle": "Lire les métriques sans confondre cache utile et fuite.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "linux-memoire-libre-et-cache"
   },
   {
     "id": "CONTENT-066",
@@ -321,7 +356,8 @@
     "topic": "devops",
     "angle": "Retirer un fichier du prochain commit sans effacer son travail.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "git-index-et-arbre-de-travail"
   },
   {
     "id": "CONTENT-067",
@@ -330,7 +366,8 @@
     "topic": "devops",
     "angle": "Préparer un test reproductible pour une recherche dichotomique.",
     "format": "tip",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "git-bisect-premier-commit-fautif"
   },
   {
     "id": "CONTENT-068",
@@ -339,7 +376,8 @@
     "topic": "devops",
     "angle": "Séparer dépendances et code applicatif avec mesure de reconstruction.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "dockerfile-ordonner-le-cache"
   },
   {
     "id": "CONTENT-069",
@@ -348,7 +386,8 @@
     "topic": "devops",
     "angle": "Examiner exec form et arrêt du conteneur.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "docker-processus-principal-signaux"
   },
   {
     "id": "CONTENT-070",
@@ -357,7 +396,8 @@
     "topic": "devops",
     "angle": "Réduire les permissions du jeton selon l’action de workflow.",
     "format": "tip",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "github-actions-permissions-minimales"
   },
   {
     "id": "CONTENT-071",
@@ -366,7 +406,8 @@
     "topic": "devops",
     "angle": "Construire un diagnostic sans journaliser les données privées complètes.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "traces-relier-web-et-worker"
   },
   {
     "id": "CONTENT-072",
@@ -375,7 +416,8 @@
     "topic": "devops",
     "angle": "Définir un exercice sur environnement distinct et ses critères.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "sauvegarde-tester-la-restauration"
   },
   {
     "id": "CONTENT-073",
@@ -384,7 +426,8 @@
     "topic": "cloud",
     "angle": "Documenter les garanties précises du stockage choisi.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "s3-consistance-et-perimetre"
   },
   {
     "id": "CONTENT-074",
@@ -393,7 +436,8 @@
     "topic": "cloud",
     "angle": "Distinguer initialisation et temps de traitement d’une fonction.",
     "format": "comparison",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "lambda-demarrage-a-froid-et-latence"
   },
   {
     "id": "CONTENT-075",
@@ -402,7 +446,8 @@
     "topic": "cloud",
     "angle": "Relier redondance d’instance et domaine de panne.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "disponibilite-deux-instances-meme-zone"
   },
   {
     "id": "CONTENT-076",
@@ -411,7 +456,8 @@
     "topic": "cloud",
     "angle": "Décomposer stockage, requêtes et transferts avec tarifs datés.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "stockage-objets-compter-autres-couts"
   },
   {
     "id": "CONTENT-077",
@@ -420,7 +466,8 @@
     "topic": "integrations",
     "angle": "Vérifier le curseur after et les limites de l’endpoint retenu.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "hubspot-pagination-contacts-after"
   },
   {
     "id": "CONTENT-078",
@@ -429,7 +476,8 @@
     "topic": "integrations",
     "angle": "Distinguer type d’application, authentification et politique d’API.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "hubspot-identifier-la-bonne-limite-api"
   },
   {
     "id": "CONTENT-079",
@@ -438,7 +486,8 @@
     "topic": "integrations",
     "angle": "Choisir un marqueur de suppression et sa durée de conservation.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "synchroniser-les-suppressions-crm"
   },
   {
     "id": "CONTENT-080",
@@ -447,7 +496,8 @@
     "topic": "integrations",
     "angle": "Gérer égalités d’horodatage et fenêtre de recouvrement.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "watermark-reprise-synchronisation"
   },
   {
     "id": "CONTENT-081",
@@ -456,7 +506,8 @@
     "topic": "integrations",
     "angle": "Décrire coordination, rotation et reprise selon le fournisseur.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "oauth-refresh-tokens-concurrents"
   },
   {
     "id": "CONTENT-082",
@@ -465,7 +516,8 @@
     "topic": "security",
     "angle": "Relier cookie automatique, origine et protection d’une mutation.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "csrf-session-ne-prouve-pas-intention"
   },
   {
     "id": "CONTENT-083",
@@ -474,7 +526,8 @@
     "topic": "security",
     "angle": "Vérifier chaque destination d’une récupération serveur.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "ssrf-reverifier-les-redirections"
   },
   {
     "id": "CONTENT-084",
@@ -483,7 +536,8 @@
     "topic": "security",
     "angle": "Présenter le hash spécialisé et les paramètres du système choisi.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "mot-de-passe-hachage-adapte"
   },
   {
     "id": "CONTENT-085",
@@ -492,7 +546,8 @@
     "topic": "security",
     "angle": "Comparer paramètre de valeur et nom de colonne dynamique.",
     "format": "code",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "sql-valeurs-et-structure-parametrees"
   },
   {
     "id": "CONTENT-086",
@@ -501,7 +556,8 @@
     "topic": "ai",
     "angle": "Définir des critères mesurables avant de comparer des prompts.",
     "format": "carousel",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "evaluer-un-assistant-sur-un-jeu"
   },
   {
     "id": "CONTENT-087",
@@ -510,7 +566,8 @@
     "topic": "ai",
     "angle": "Séparer validation de forme, règles métier et vérification factuelle.",
     "format": "pitfall",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "json-valide-ne-prouve-pas-le-fait"
   },
   {
     "id": "CONTENT-088",
@@ -519,7 +576,8 @@
     "topic": "ai",
     "angle": "Empêcher qu’une récupération sémantique contourne l’isolation.",
     "format": "concept",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "recherche-droits-avant-pagination"
   },
   {
     "id": "CONTENT-089",
@@ -528,7 +586,8 @@
     "topic": "culture",
     "angle": "Revenir aux premières propositions et distinguer Web et Internet.",
     "format": "history",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "web-hypertexte-documents-lies"
   },
   {
     "id": "CONTENT-090",
@@ -537,6 +596,7 @@
     "topic": "culture",
     "angle": "Vérifier l’histoire des pipes et expliquer une conséquence de conception.",
     "format": "history",
-    "status": "idea"
+    "status": "published",
+    "postSlug": "unix-composer-des-outils-par-flux"
   }
 ]

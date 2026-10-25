@@ -28,6 +28,11 @@ export const sourceSchema = z.object({
   publishedAt: z.string().nullable().optional(),
   claims: z.array(z.string().max(1000)).min(1).max(15),
 });
+export const visualSchema = z.object({
+  kind: z.enum(['logo', 'sticker']),
+  url: z.string().regex(/^\/post-art\/[a-z0-9-]+\.svg$/),
+  alt: z.string().min(3).max(300),
+});
 export const blockSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('paragraph'), text: z.string().min(1).max(5000) }),
   z.object({ type: z.literal('list'), items: z.array(z.string().max(1000)).min(1).max(20) }),
@@ -64,6 +69,7 @@ export const postSchema = z.object({
   status: z.enum(['idea', 'draft', 'review', 'published', 'archived']),
   flags: z.array(z.enum(['needs_sources', 'code_unverified', 'stale', 'reported'])).default([]),
   verification: z.string().max(2000).optional(),
+  visual: visualSchema.optional(),
 });
 export const questionSchema = z
   .object({
